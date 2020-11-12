@@ -26,6 +26,7 @@ namespace Final_Project
         }
 
         #region var init
+
         /// <summary>
         /// This boolean var show if the user
         /// selected the InvoiceNumber as search criteria
@@ -43,6 +44,9 @@ namespace Final_Project
         /// the Invoice Date as search criteria
         /// </summary>
         bool InvoiceDateChosen;
+
+
+
         #endregion var init
 
         /// <summary>
@@ -62,6 +66,9 @@ namespace Final_Project
              * 
              * The correct SQL return objects will be stored in the clsSearchLogic variables
              * From the clsSearchLogic, we will store the values where they can then be accessed any other class that needs it
+             * 
+             * I plan on obtaining exactly what the user chose by using code like:
+             * 
              */
 
             try

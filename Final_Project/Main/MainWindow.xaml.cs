@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Final_Project
 {
@@ -58,6 +59,19 @@ namespace Final_Project
         /// <param name="e"></param>
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                wndSearch SearchWin = new wndSearch();
+
+                this.Hide();
+                SearchWin.ShowDialog();
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
 
         }
 
