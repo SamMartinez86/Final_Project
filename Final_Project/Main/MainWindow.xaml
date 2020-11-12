@@ -26,30 +26,54 @@
                     <GradientStop Color="#FF3B799E" Offset="0.83"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            <MenuItem Header="File" Width="47" FontSize="14" FontFamily="Verdana" FontWeight="Bold" Height="24">
-                <MenuItem x:Name="ItemInventory" Header="Item Inventory" Background="#FF487396" FontWeight="Bold" FontSize="12"/>
-                <MenuItem x:Name="SearchInvoices" Header="Search Invoices" Background="#FF52A9CD" FontWeight="Bold" FontSize="12"/>
+            <MenuItem Header="File" Width="47" FontSize="14" FontFamily="Verdana" FontWeight="Bold" Height="24" Foreground="#FF10415F">
+                <MenuItem x:Name="Update" Header="Update" Background="#FF487396" FontWeight="Bold" FontSize="12"/>
+                <MenuItem x:Name="Search" Header="Search" Background="#FF52A9CD" FontWeight="Bold" FontSize="12"/>
                 <MenuItem x:Name="Exit" Header="Exit" Background="#FF83BFC9" FontWeight="Bold" FontSize="12"/>
             </MenuItem>
         </Menu>
-        <Canvas Margin="15,15,15,15" Grid.Row="1" Background="#FF487396" Opacity="0.7">
-            <Canvas.Effect>
-                <DropShadowEffect/>
-            </Canvas.Effect>
+        <Grid Margin="15" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="269*"/>
+            </Grid.RowDefinitions>
+            <Canvas Background="#FF487396" Opacity="0.7" Grid.RowSpan="2">
+                <Canvas.Effect>
+                    <DropShadowEffect/>
+                </Canvas.Effect>
 
-        </Canvas>
-        <Canvas Grid.Column="1" Margin="15,15,15,15" Grid.Row="1" Background="#FF6BB9DD" Opacity="0.7">
-            <Canvas.Effect>
-                <DropShadowEffect/>
-            </Canvas.Effect>
+                <Button Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold"/>
 
-        </Canvas>
-        <Canvas Grid.Column="2" Margin="15,15,15,15" Grid.Row="1" Background="#FF3C7086" Opacity="0.7">
-            <Canvas.Effect>
-                <DropShadowEffect/>
-            </Canvas.Effect>
+            </Canvas>
+        </Grid>
+        <Grid Grid.Column="1" Margin="15" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="67*"/>
+                <RowDefinition Height="261*"/>
+            </Grid.RowDefinitions>
+            <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2">
+                <Canvas.Effect>
+                    <DropShadowEffect/>
+                </Canvas.Effect>
+                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
+                <Label Content="Invoice #:" Canvas.Left="10" Canvas.Top="34" FontFamily="Verdana" FontWeight="Bold"/>
+                <TextBox Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana"/>
+                <DataGrid Height="254" Canvas.Left="10" Canvas.Top="64" Width="214"/>
 
-        </Canvas>
+            </Canvas>
+        </Grid>
+        <Grid Grid.Column="2" Margin="15" Grid.Row="1">
+            <Canvas Background="#FF3C7086" Opacity="0.7">
+                <Canvas.Effect>
+                    <DropShadowEffect/>
+                </Canvas.Effect>
+                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="100" FontFamily="Verdana" FontWeight="Bold"/>
+
+            </Canvas>
+
+
+        </Grid>
 
 
     </Grid>
