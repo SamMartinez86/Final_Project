@@ -6,10 +6,45 @@
         xmlns:local="clr-namespace:Final_Project"
         mc:Ignorable="d"
         Title="wndItems" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,2,-60">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="266*"/>
+            <ColumnDefinition Width="266*"/>
+            <ColumnDefinition Width="266*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg"/>
+            <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
+        <Grid Grid.ColumnSpan="3" Margin="10,70,10,10">
+            <Canvas Background="#FF4C9DBA" Opacity="0.7">
+                <Canvas.Effect>
+                    <DropShadowEffect/>
+                </Canvas.Effect>
+
+
+
+            </Canvas>
+            <DataGrid Margin="10,10,10,10" Opacity="0.7">
+                <DataGrid.Effect>
+                    <DropShadowEffect/>
+                </DataGrid.Effect>
+            </DataGrid>
+        </Grid>
+        <Button Content="Add Item"  Margin="10,10,120,365" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Edit Item" Grid.Column="1" Margin="65,10,65,365" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Delete Item" Grid.Column="2" Margin="120,10,10,365" Opacity="0.7" FontFamily="Verdana" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>

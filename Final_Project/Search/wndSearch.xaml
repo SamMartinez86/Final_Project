@@ -25,22 +25,46 @@
                 <ColumnDefinition Width="128*"/>
                 <ColumnDefinition Width="128*"/>
             </Grid.ColumnDefinitions>
-            <Canvas Background="#FF487396" Opacity="0.7" Grid.ColumnSpan="3">
+            <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.ColumnSpan="3">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
                 <Label Content="Invoice #:" Margin="10,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox Margin="90,13,0,0" Width="160" />
+                <ComboBox Margin="90,13,0,0" Width="160" Opacity="0.7" >
+                    <ComboBox.Effect>
+                        <DropShadowEffect/>
+                    </ComboBox.Effect>
+                </ComboBox>
                 <Label Content="Total Charges:" Margin="260,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox Margin="370,13,0,0" Width="140"/>
+                <ComboBox Margin="370,13,0,0" Width="140" Opacity="0.7">
+                    <ComboBox.Effect>
+                        <DropShadowEffect/>
+                    </ComboBox.Effect>
+                </ComboBox>
                 <Label Content="Invoice Date:" Margin="520,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <DatePicker Margin="620,10,0,0" Width="145"/>
+                <DatePicker Margin="620,10,0,0" Width="145" Opacity="0.7">
+                    <DatePicker.Effect>
+                        <DropShadowEffect/>
+                    </DatePicker.Effect>
+                </DatePicker>
 
             </Canvas>
-            <DataGrid Margin="10,50,10,10" Grid.ColumnSpan="3"/>
+            <DataGrid Margin="10,50,10,10" Grid.ColumnSpan="3" Opacity="0.7">
+                <DataGrid.Effect>
+                    <DropShadowEffect/>
+                </DataGrid.Effect>
+            </DataGrid>
         </Grid>
-        <Button Content="Select" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10"/>
-        <Button Content="Reset" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10" Grid.Column="2"/>
+        <Button Content="Select" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10" Opacity="0.7">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Reset" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10" Grid.Column="2" Opacity="0.7">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>

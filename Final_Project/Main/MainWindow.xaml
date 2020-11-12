@@ -42,10 +42,22 @@
                     <DropShadowEffect/>
                 </Canvas.Effect>
 
-                <Button Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
-                <Button Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="Date:" Canvas.Left="10" Canvas.Top="54" FontFamily="Verdana" FontWeight="Bold"/>
-                <DatePicker Canvas.Left="61" Canvas.Top="55" Width="163"/>
+                <DatePicker Canvas.Left="61" Canvas.Top="55" Width="163" Opacity="0.7">
+                    <DatePicker.Effect>
+                        <DropShadowEffect/>
+                    </DatePicker.Effect>
+                </DatePicker>
 
             </Canvas>
         </Grid>
@@ -58,10 +70,22 @@
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="Invoice #:" Canvas.Left="10" Canvas.Top="34" FontFamily="Verdana" FontWeight="Bold"/>
-                <TextBox Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana"/>
-                <DataGrid Margin="10,65,-226,-321"/>
+                <TextBox Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana" Opacity="0.7">
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+                <DataGrid Margin="10,65,-226,-321" Opacity="0.7">
+                    <DataGrid.Effect>
+                        <DropShadowEffect/>
+                    </DataGrid.Effect>
+                </DataGrid>
 
 
             </Canvas>
@@ -81,14 +105,38 @@
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="Cost:" Canvas.Left="10" Canvas.Top="47" FontFamily="Verdana" FontWeight="Bold" Width="47"/>
                 <Label Content="Total:" Canvas.Left="8" Canvas.Top="86" FontFamily="Verdana" FontWeight="Bold" Width="52"/>
-                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Total" Canvas.Top="86" Width="159"/>
-                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159"/>
-                <ComboBox Canvas.Left="10" Canvas.Top="125" Width="214" Height="24"/>
-                <Button Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
-                <Button Content="Add" Canvas.Left="79" Margin="0,290,0,0" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
+                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Total" Canvas.Top="86" Width="159" Opacity="0.7">
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159" Opacity="0.7">
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+                <ComboBox Canvas.Left="10" Canvas.Top="125" Width="214" Height="24" Opacity="0.7">
+                    <ComboBox.Effect>
+                        <DropShadowEffect/>
+                    </ComboBox.Effect>
+                </ComboBox>
+                <Button Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button Content="Add" Canvas.Left="79" Margin="0,290,0,0" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
 
             </Canvas>
 
