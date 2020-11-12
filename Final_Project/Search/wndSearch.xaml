@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:Final_Project"
         mc:Ignorable="d"
         Title="wndSearch" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Storyboard x:Key="OnLoaded1" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="JewelryShoppeLbl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="56*"/>
@@ -65,7 +80,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="The Jewelry Shoppe" Grid.Column="1" Margin="100,10,100,10" Style="{DynamicResource JewelryShoppeStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="JewelryShoppeLbl" Content="The Jewelry Shoppe" Grid.Column="1" Margin="100,10,100,10" Style="{DynamicResource JewelryShoppeStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>
