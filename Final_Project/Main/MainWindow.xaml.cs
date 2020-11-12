@@ -24,12 +24,31 @@ namespace Final_Project
 
         #region Attributes
 
+        /// <summary>
+        /// Search window object
+        /// </summary>
+        wndSearch CurrentSearch;
+
+        /// <summary>
+        /// Items window object
+        /// </summary>
+        wndItems CurrentItems;
+
         #endregion
 
         #region Constructor
         public MainWindow()
         {
             InitializeComponent();
+
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+
+            // new search object
+            CurrentSearch = new wndSearch();
+
+            // new items object
+            CurrentItems = new wndItems();
+
         }
         #endregion
 
@@ -49,9 +68,17 @@ namespace Final_Project
         /// <param name="e"></param>
         private void Update_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
-
         /// <summary>
         /// Click event for file menu Search item
         /// </summary>
@@ -61,6 +88,7 @@ namespace Final_Project
         {
             try
             {
+<<<<<<< Updated upstream
                 wndSearch SearchWin = new wndSearch();
 
                 this.Hide();
@@ -72,7 +100,27 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
 
+=======
+                // hide main menu
+                this.Hide();
 
+                // show search menu
+                CurrentSearch.ShowDialog();
+
+
+                // show this menu
+                this.Show();
+>>>>>>> Stashed changes
+
+               
+
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -82,7 +130,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -92,7 +149,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void EditInvoiceBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -102,7 +168,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void DltInvoiceBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -112,7 +187,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void NewInvoiceBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -122,7 +206,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void AddItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -132,7 +225,16 @@ namespace Final_Project
         /// <param name="e"></param>
         private void RemoveItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -142,7 +244,53 @@ namespace Final_Project
         /// <param name="e"></param>
         private void SaveInvoiceBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// this method handles errors 
+        /// </summary>
+        /// <param name="sClass"></param>
+        /// <param name="sMethod"></param>
+        /// <param name="sMessage"></param>
+        private void HandleError(string sClass, string sMethod, string sMessage)
+        {
+            try
+            {
+                //would write to a file or database here.
+                MessageBox.Show(sClass + "." + sMethod + "->" + sMessage);
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:Error.txt", Environment.NewLine + "HandleError Exception: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// this method handles the window closing event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
         }
 
         #endregion
