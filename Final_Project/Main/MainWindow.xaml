@@ -34,8 +34,8 @@
         </Menu>
         <Grid Margin="15" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="59*"/>
-                <RowDefinition Height="269*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="141*"/>
             </Grid.RowDefinitions>
             <Canvas Background="#FF487396" Opacity="0.7" Grid.RowSpan="2">
                 <Canvas.Effect>
@@ -44,13 +44,15 @@
 
                 <Button Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
                 <Button Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold"/>
+                <Label Content="Date:" Canvas.Left="10" Canvas.Top="54" FontFamily="Verdana" FontWeight="Bold"/>
+                <DatePicker Canvas.Left="61" Canvas.Top="55" Width="163"/>
 
             </Canvas>
         </Grid>
         <Grid Grid.Column="1" Margin="15" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="67*"/>
-                <RowDefinition Height="261*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="267*"/>
             </Grid.RowDefinitions>
             <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2">
                 <Canvas.Effect>
@@ -59,16 +61,34 @@
                 <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold"/>
                 <Label Content="Invoice #:" Canvas.Left="10" Canvas.Top="34" FontFamily="Verdana" FontWeight="Bold"/>
                 <TextBox Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana"/>
-                <DataGrid Height="254" Canvas.Left="10" Canvas.Top="64" Width="214"/>
+                <DataGrid Margin="10,65,-226,-321"/>
+
 
             </Canvas>
         </Grid>
         <Grid Grid.Column="2" Margin="15" Grid.Row="1">
-            <Canvas Background="#FF3C7086" Opacity="0.7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="58*"/>
+                <ColumnDefinition Width="59*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="106*"/>
+            </Grid.RowDefinitions>
+            <Canvas Background="#FF3C7086" Opacity="0.7" Grid.RowSpan="4" Grid.ColumnSpan="2">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="100" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
+                <Label Content="Cost:" Canvas.Left="10" Canvas.Top="47" FontFamily="Verdana" FontWeight="Bold" Width="47"/>
+                <Label Content="Total:" Canvas.Left="8" Canvas.Top="86" FontFamily="Verdana" FontWeight="Bold" Width="52"/>
+                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Total" Canvas.Top="86" Width="159"/>
+                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159"/>
+                <ComboBox Canvas.Left="10" Canvas.Top="125" Width="214" Height="24"/>
+                <Button Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
+                <Button Content="Add" Canvas.Left="79" Margin="0,290,0,0" Width="80" FontFamily="Verdana" FontWeight="Bold"/>
 
             </Canvas>
 
