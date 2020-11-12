@@ -8,9 +8,20 @@ namespace Final_Project
 {
     class clsSearchLogic
     {
-        // In this we will have the get; set for
-        // InvoiceId
-        // InvoiceCost
-        // InvoiceDate
+        
+
+        /* In this class we will hold the get; set values for
+         * 
+         * InvoiceId
+         * InvoiceCost
+         * InvoiceDate
+         * 
+         * From here we will call to the dataAccessClass with our 
+         * SQL staements that are set in the clsSearchSQL
+         * 
+         * We will hold data specified on the Search Window,
+         *  Things like the invoice number, date and cost
+         * 
+         */
     }
 }
