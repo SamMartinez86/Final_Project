@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Final_Project
 {
@@ -31,7 +32,15 @@ namespace Final_Project
         /// <param name="e"></param>
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -41,6 +50,14 @@ namespace Final_Project
         /// <param name="e"></param>
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
 
         }
     }
