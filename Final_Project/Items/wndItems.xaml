@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final_Project"
         mc:Ignorable="d"
-        Title="wndItems" Height="450" Width="800">
+        Title="wndItems" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,2,-60">
         <Grid.Background>
             <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg"/>
