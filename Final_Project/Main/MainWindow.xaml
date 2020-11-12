@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg" TileMode="Tile" Stretch="UniformToFill"/>
+        </Grid.Background>
+
         <Button x:Name="NewInvoiceBtn" Content="New Invoice" HorizontalAlignment="Left" Margin="113,243,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" HorizontalAlignment="Left" Margin="348,243,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" HorizontalAlignment="Left" Margin="595,248,0,0" VerticalAlignment="Top" Width="80"/>

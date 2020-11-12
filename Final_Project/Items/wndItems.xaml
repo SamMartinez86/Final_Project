@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Final_Project"
         mc:Ignorable="d"
         Title="wndItems" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="0,0,2,-60">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg"/>
+        </Grid.Background>
+
     </Grid>
 </Window>

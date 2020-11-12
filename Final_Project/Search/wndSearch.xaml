@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="wndSearch" Height="450" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg"/>
+        </Grid.Background>
+
     </Grid>
 </Window>
