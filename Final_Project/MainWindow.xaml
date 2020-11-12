@@ -9,7 +9,8 @@
     <Grid>
         <Button x:Name="NewInvoiceBtn" Content="New Invoice" HorizontalAlignment="Left" Margin="113,243,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" HorizontalAlignment="Left" Margin="348,243,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" HorizontalAlignment="Left" Margin="595,248,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" HorizontalAlignment="Left" Margin="595,248,0,0" VerticalAlignment="Top" Width="80"/>
+        <Menu HorizontalAlignment="Left" Height="105" Margin="261,41,0,0" VerticalAlignment="Top" Width="291"/>
 
     </Grid>
 </Window>
