@@ -25,6 +25,26 @@ namespace Final_Project
             InitializeComponent();
         }
 
+        #region var init
+        /// <summary>
+        /// This boolean var show if the user
+        /// selected the InvoiceNumber as search criteria
+        /// </summary>
+        bool InvoiceNumChosen;
+
+        /// <summary>
+        /// This var shows if the user selected 
+        /// the total charges as search criteria
+        /// </summary>
+        bool TotalChargesChosen;
+
+        /// <summary>
+        /// This var shows if the user selected
+        /// the Invoice Date as search criteria
+        /// </summary>
+        bool InvoiceDateChosen;
+        #endregion var init
+
         /// <summary>
         /// This Selects the specified invoice and redirects
         /// </summary>
@@ -32,6 +52,18 @@ namespace Final_Project
         /// <param name="e"></param>
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
+            /* From here, we will use the combo box boolean variables to decide
+             * which SQL statment to choose. For example, if there are non chosen, 
+             * we will use the SelectAllInvoices method within the clsSearchSQL
+             * If the Invoice Num CB has been chosen we will call to the 
+             * SelectInvoiceData method in clsSearchSQL (and pass the invoice num argument
+             * and set the SQL statement to return all values with that Invoice Number. If all 3 variables are 
+             * true, we will call / pass the correct method and argument to clsSearchSQL
+             * 
+             * The correct SQL return objects will be stored in the clsSearchLogic variables
+             * From the clsSearchLogic, we will store the values where they can then be accessed any other class that needs it
+             */
+
             try
             {
                 this.Close();
@@ -50,6 +82,8 @@ namespace Final_Project
         /// <param name="e"></param>
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
+            /* We will reset this screen so the user can search for different criteria
+             */
             try
             {
                 this.Close();
