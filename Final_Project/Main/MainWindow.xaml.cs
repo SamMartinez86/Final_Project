@@ -20,11 +20,27 @@ namespace Final_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region Attributes
+
+        #endregion
+
+        #region Constructor
         public MainWindow()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Properties
+
+        #endregion
+
+        #region Enumerations
+
+        #endregion
+
+        #region Methods
         /// <summary>
         /// Click event for file menu update item
         /// </summary>
@@ -114,5 +130,7 @@ namespace Final_Project
         {
 
         }
+
+        #endregion
     }
 }
