@@ -134,7 +134,9 @@
     <Content Include="Invoice.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Voronoi-Blue-Grey-BG.jpg" />
+    <Resource Include="Voronoi-Blue-Grey-BG.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

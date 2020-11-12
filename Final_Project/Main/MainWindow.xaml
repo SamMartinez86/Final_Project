@@ -10,10 +10,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg" TileMode="Tile" Stretch="UniformToFill"/>
         </Grid.Background>
-
-        <Button x:Name="NewInvoiceBtn" Content="New Invoice" HorizontalAlignment="Left" Margin="113,243,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" HorizontalAlignment="Left" Margin="348,243,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" HorizontalAlignment="Left" Margin="595,248,0,0" VerticalAlignment="Top" Width="80"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="0,-1,0,0" VerticalAlignment="Top" Width="792" FontFamily="Verdana">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#0062747A" Offset="1"/>
+                    <GradientStop Color="#FF3B799E" Offset="0.713"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="File" Width="47" FontSize="14" FontFamily="Verdana" FontWeight="Bold" Height="24">
+                <MenuItem x:Name="ItemInventory" Header="Item Inventory" Background="#FF487396" FontWeight="Bold" FontSize="12"/>
+                <MenuItem x:Name="SearchInvoices" Header="Search Invoices" Background="#FF52A9CD" FontWeight="Bold" FontSize="12"/>
+                <MenuItem x:Name="Exit" Header="Exit" Background="#FF83BFC9" FontWeight="Bold" FontSize="12"/>
+            </MenuItem>
+        </Menu>
 
     </Grid>
 </Window>
