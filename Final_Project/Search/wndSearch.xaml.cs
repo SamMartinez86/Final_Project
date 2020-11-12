@@ -23,5 +23,25 @@ namespace Final_Project
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// This Selects the specified invoice and redirects
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// This resets the DataGrid holding the information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

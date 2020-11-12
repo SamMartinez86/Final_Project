@@ -8,5 +8,9 @@ namespace Final_Project
 {
     class clsSearchLogic
     {
+        // In this we will have the get; set for
+        // InvoiceId
+        // InvoiceCost
+        // InvoiceDate
     }
 }
