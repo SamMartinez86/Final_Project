@@ -65,6 +65,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Label Content="The Jewelry Shoppe" Grid.Column="1" Margin="100,10,100,10" Style="{DynamicResource JewelryShoppeStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

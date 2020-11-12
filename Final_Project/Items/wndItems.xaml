@@ -15,7 +15,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Grid Grid.ColumnSpan="3" Margin="10,70,10,10">
+        <Grid Grid.ColumnSpan="3" Margin="10,100,10,10">
             <Canvas Background="#FF4C9DBA" Opacity="0.7">
                 <Canvas.Effect>
                     <DropShadowEffect/>
@@ -30,21 +30,22 @@
                 </DataGrid.Effect>
             </DataGrid>
         </Grid>
-        <Button Content="Add Item"  Margin="10,10,120,365" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+        <Button Content="Add Item"  Margin="10,50,120,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Edit Item" Grid.Column="1" Margin="65,10,65,365" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+        <Button Content="Edit Item" Grid.Column="1" Margin="65,50,65,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Delete Item" Grid.Column="2" Margin="120,10,10,365" Opacity="0.7" FontFamily="Verdana" FontWeight="Bold">
+        <Button Content="Delete Item" Grid.Column="2" Margin="120,50,10,325" Opacity="0.7" FontFamily="Verdana" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Label Content="The Jewelry Shoppe" Grid.Column="1" Margin="0,0,0.0,370" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource JewelryShoppeStyle}"/>
 
     </Grid>
 </Window>

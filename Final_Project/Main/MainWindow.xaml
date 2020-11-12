@@ -142,6 +142,7 @@
 
 
         </Grid>
+        <Label Content="The Jewelry Shoppe" Grid.Column="1" Margin="30,15,30,10" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource JewelryShoppeStyle}" />
 
 
     </Grid>
