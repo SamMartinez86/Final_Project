@@ -24,5 +24,95 @@ namespace Final_Project
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Click event for file menu update item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for file menu Search item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for file menu exit item (exit program)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for save invoice Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for delete invoice button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DltInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for new invoice button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// click event for add item button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for remove item button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Click event for save invoice button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

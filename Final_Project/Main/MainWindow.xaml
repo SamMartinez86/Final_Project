@@ -42,9 +42,9 @@
                 </LinearGradientBrush>
             </Menu.Background>
             <MenuItem Header="File" Width="47" FontSize="14" FontFamily="Verdana" FontWeight="Bold" Height="24" Foreground="#FF10415F">
-                <MenuItem x:Name="Update" Header="Update" Background="#FF487396" FontWeight="Bold" FontSize="12"/>
-                <MenuItem x:Name="Search" Header="Search" Background="#FF52A9CD" FontWeight="Bold" FontSize="12"/>
-                <MenuItem x:Name="Exit" Header="Exit" Background="#FF83BFC9" FontWeight="Bold" FontSize="12"/>
+                <MenuItem x:Name="Update" Header="Update" Background="#FF487396" FontWeight="Bold" FontSize="12" Click="Update_Click"/>
+                <MenuItem x:Name="Search" Header="Search" Background="#FF52A9CD" FontWeight="Bold" FontSize="12" Click="Search_Click"/>
+                <MenuItem x:Name="Exit" Header="Exit" Background="#FF83BFC9" FontWeight="Bold" FontSize="12" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
         <Grid Margin="15" Grid.Row="1">
@@ -57,12 +57,12 @@
                     <DropShadowEffect/>
                 </Canvas.Effect>
 
-                <Button Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="EditInvoiceBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <Button Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="DltInvoiceBtn" Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="DltInvoiceBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
@@ -85,7 +85,7 @@
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="NewInvoiceBtn" Content="New Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="NewInvoiceBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
@@ -120,7 +120,7 @@
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="AddItemBtn" Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="AddItemBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
@@ -142,12 +142,12 @@
                         <DropShadowEffect/>
                     </ComboBox.Effect>
                 </ComboBox>
-                <Button Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="RemoveItemBtn" Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="RemoveItemBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <Button Content="Add" Canvas.Left="79" Margin="0,290,0,0" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7">
+                <Button x:Name="SaveInvoiceBtn" Content="Save" Canvas.Left="79" Margin="0,290,0,0" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="SaveInvoiceBtn_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
