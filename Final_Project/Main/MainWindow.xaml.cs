@@ -88,19 +88,7 @@ namespace Final_Project
         {
             try
             {
-<<<<<<< Updated upstream
-                wndSearch SearchWin = new wndSearch();
 
-                this.Hide();
-                SearchWin.ShowDialog();
-                this.Show();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-            }
-
-=======
                 // hide main menu
                 this.Hide();
 
@@ -110,18 +98,14 @@ namespace Final_Project
 
                 // show this menu
                 this.Show();
->>>>>>> Stashed changes
-
-               
-
             }
             catch (Exception ex)
             {
-                //This is the top level method so we want to handle the exception
-                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
-                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
+
         }
+
 
         /// <summary>
         /// Click event for file menu exit item (exit program)
@@ -296,3 +280,5 @@ namespace Final_Project
         #endregion
     }
 }
+
+
