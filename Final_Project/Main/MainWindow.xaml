@@ -7,14 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="358*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="266*"/>
+            <ColumnDefinition Width="266*"/>
+            <ColumnDefinition Width="266*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Final_Project;component/Voronoi-Blue-Grey-BG.jpg" TileMode="Tile" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="0,-1,0,0" VerticalAlignment="Top" Width="792" FontFamily="Verdana">
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="0,-1,0,0" VerticalAlignment="Top" Width="792" FontFamily="Verdana" Grid.ColumnSpan="3">
             <Menu.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#0062747A" Offset="1"/>
-                    <GradientStop Color="#FF3B799E" Offset="0.713"/>
+                    <GradientStop Color="#FF3B799E" Offset="0.83"/>
                 </LinearGradientBrush>
             </Menu.Background>
             <MenuItem Header="File" Width="47" FontSize="14" FontFamily="Verdana" FontWeight="Bold" Height="24">
@@ -23,6 +32,25 @@
                 <MenuItem x:Name="Exit" Header="Exit" Background="#FF83BFC9" FontWeight="Bold" FontSize="12"/>
             </MenuItem>
         </Menu>
+        <Canvas Margin="15,15,15,15" Grid.Row="1" Background="#FF487396" Opacity="0.7">
+            <Canvas.Effect>
+                <DropShadowEffect/>
+            </Canvas.Effect>
+
+        </Canvas>
+        <Canvas Grid.Column="1" Margin="15,15,15,15" Grid.Row="1" Background="#FF6BB9DD" Opacity="0.7">
+            <Canvas.Effect>
+                <DropShadowEffect/>
+            </Canvas.Effect>
+
+        </Canvas>
+        <Canvas Grid.Column="2" Margin="15,15,15,15" Grid.Row="1" Background="#FF3C7086" Opacity="0.7">
+            <Canvas.Effect>
+                <DropShadowEffect/>
+            </Canvas.Effect>
+
+        </Canvas>
+
 
     </Grid>
 </Window>
