@@ -57,10 +57,10 @@ namespace Final_Project
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
             /* From here, we will use the combo box boolean variables to decide
-             * which SQL statment to choose. For example, if there are non chosen, 
+             * which SQL statement to choose. For example, if there are non chosen, 
              * we will use the SelectAllInvoices method within the clsSearchSQL
-             * If the Invoice Num CB has been chosen we will call to the 
-             * SelectInvoiceData method in clsSearchSQL (and pass the invoice num argument
+             * If the Invoice number CB has been chosen we will call to the 
+             * SelectInvoiceData method in clsSearchSQL (and pass the invoice number argument
              * and set the SQL statement to return all values with that Invoice Number. If all 3 variables are 
              * true, we will call / pass the correct method and argument to clsSearchSQL
              * 
