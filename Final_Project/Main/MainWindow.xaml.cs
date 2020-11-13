@@ -88,6 +88,7 @@ namespace Final_Project
         {
             try
             {
+                CurrentSearch = new wndSearch();
 
                 // hide main menu
                 this.Hide();
@@ -192,6 +193,7 @@ namespace Final_Project
         {
             try
             {
+                CurrentSearch = new wndSearch();
 
                 // hide main menu
                 this.Hide();
