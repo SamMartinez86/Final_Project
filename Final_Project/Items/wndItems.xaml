@@ -45,17 +45,17 @@
                 </DataGrid.Effect>
             </DataGrid>
         </Grid>
-        <Button Content="Add Item"  Margin="10,50,120,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+        <Button Name="addItemButton" Content="Add Item"  Margin="10,50,120,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold" Click="addItemButton_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Edit Item" Grid.Column="1" Margin="65,50,65,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold">
+        <Button Name="editButton" Content="Edit Item" Grid.Column="1" Margin="65,50,65,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold" Click="editButton_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Delete Item" Grid.Column="2" Margin="120,50,10,325" Opacity="0.7" FontFamily="Verdana" FontWeight="Bold">
+        <Button Name="deleteButton" Content="Delete Item" Grid.Column="2" Margin="120,50,10,325" Opacity="0.7" FontFamily="Verdana" FontWeight="Bold" Click="deleteButton_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

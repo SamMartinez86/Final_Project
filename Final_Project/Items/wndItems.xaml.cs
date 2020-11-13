@@ -23,5 +23,20 @@ namespace Final_Project
         {
             InitializeComponent();
         }
+
+        private void addItemButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
