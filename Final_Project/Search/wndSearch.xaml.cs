@@ -93,7 +93,7 @@ namespace Final_Project
              */
             try
             {
-                this.Close();
+                this.Hide();
             }
             catch (Exception ex)
             {

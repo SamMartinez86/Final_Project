@@ -81,7 +81,7 @@
                 <RowDefinition Height="61*"/>
                 <RowDefinition Height="267*"/>
             </Grid.RowDefinitions>
-            <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2">
+            <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2" Margin="-11,0">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
@@ -96,11 +96,16 @@
                         <DropShadowEffect/>
                     </TextBox.Effect>
                 </TextBox>
-                <DataGrid Margin="10,65,-226,-321" Opacity="0.7">
+                <DataGrid Opacity="0.7" Canvas.Left="10" Canvas.Top="65" Width="236" Height="253">
                     <DataGrid.Effect>
                         <DropShadowEffect/>
                     </DataGrid.Effect>
                 </DataGrid>
+                <Button x:Name="searchForInvoiceButton" Content="Search for Invoice" Canvas.Left="105" Canvas.Top="10" Width="141" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="searchForInvoiceButton_Click">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
 
 
             </Canvas>

@@ -184,6 +184,31 @@ namespace Final_Project
         }
 
         /// <summary>
+        /// Click event for search for invoice button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void searchForInvoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                // hide main menu
+                this.Hide();
+
+                // show search menu
+                CurrentSearch.ShowDialog();
+
+
+                // show this menu
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+        /// <summary>
         /// click event for add item button
         /// </summary>
         /// <param name="sender"></param>
