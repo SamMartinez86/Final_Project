@@ -70,17 +70,7 @@ namespace Final_Project
         {
             try
             {
-                //CurrentItems = new wndItems();
-
-                // hide main menu
-                this.Hide();
-
-                // show search menu
-                CurrentItems.ShowDialog();
-
-
-                // show this menu
-                this.Show();
+                // update current invoice like the save feature.
             }
             catch (Exception ex)
             {
@@ -127,7 +117,7 @@ namespace Final_Project
         {
             try
             {
-
+                // exit menu screen
             }
             catch (Exception ex)
             {
@@ -138,7 +128,7 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// Click event for save invoice Button
+        /// Click event for edit invoice Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,7 +136,17 @@ namespace Final_Project
         {
             try
             {
+                //goes to items screen for editing
 
+                // hide main menu
+                this.Hide();
+
+                // show Items menu
+                CurrentItems.ShowDialog();
+
+
+                // show this menu
+                this.Show();
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace Final_Project
         {
             try
             {
-
+                // deletes current invoice
             }
             catch (Exception ex)
             {
@@ -184,7 +184,8 @@ namespace Final_Project
         {
             try
             {
-
+                // creates new invoice 
+                // populate new invoice number
             }
             catch (Exception ex)
             {
@@ -229,7 +230,7 @@ namespace Final_Project
         {
             try
             {
-
+                // adds an items to the current invoice
             }
             catch (Exception ex)
             {
@@ -247,8 +248,8 @@ namespace Final_Project
         private void RemoveItemBtn_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
-
+            {   
+                // removes items from current invoice
             }
             catch (Exception ex)
             {
@@ -267,7 +268,7 @@ namespace Final_Project
         {
             try
             {
-
+                // save current invoice
             }
             catch (Exception ex)
             {
