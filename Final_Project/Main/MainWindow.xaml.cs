@@ -70,7 +70,17 @@ namespace Final_Project
         {
             try
             {
+                //CurrentItems = new wndItems();
 
+                // hide main menu
+                this.Hide();
+
+                // show search menu
+                CurrentItems.ShowDialog();
+
+
+                // show this menu
+                this.Show();
             }
             catch (Exception ex)
             {
@@ -88,7 +98,7 @@ namespace Final_Project
         {
             try
             {
-                CurrentSearch = new wndSearch();
+                //CurrentSearch = new wndSearch();
 
                 // hide main menu
                 this.Hide();
