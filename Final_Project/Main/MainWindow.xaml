@@ -91,7 +91,7 @@
                     </Button.Effect>
                 </Button>
                 <Label Content="Invoice #:" Canvas.Left="10" Canvas.Top="34" FontFamily="Verdana" FontWeight="Bold"/>
-                <TextBox Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana" Opacity="0.7">
+                <TextBox x:Name="InvoiceNumberTxtBx" Height="19" Canvas.Left="95" TextWrapping="Wrap" Text="TBD" Canvas.Top="38" Width="129" FontFamily="Verdana" Opacity="0.7">
                     <TextBox.Effect>
                         <DropShadowEffect/>
                     </TextBox.Effect>

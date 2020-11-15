@@ -185,7 +185,8 @@ namespace Final_Project
             try
             {
                 // creates new invoice 
-                // populate new invoice number
+                // populate new invoice "TBD" number
+                //InvoiceNumberTxtBx.Text
             }
             catch (Exception ex)
             {
