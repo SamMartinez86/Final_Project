@@ -17,7 +17,7 @@ namespace Final_Project
          * InvoiceDate
          * 
          * From here we will call to the dataAccessClass with our 
-         * SQL staements that are set in the clsSearchSQL
+         * SQL statements that are set in the clsSearchSQL
          * 
          * We will hold data specified on the Search Window,
          *  Things like the invoice number, date and cost
