@@ -39,7 +39,7 @@
 
 
             </Canvas>
-            <DataGrid Margin="10,10,10,10" Opacity="0.7">
+            <DataGrid x:Name="ItemDataGrid" Margin="10,10,10,10" Opacity="0.7">
                 <DataGrid.Effect>
                     <DropShadowEffect/>
                 </DataGrid.Effect>

@@ -11,6 +11,7 @@ namespace Final_Project
     /// This class sets up all of the SQL statements
     /// needed for the item class / window
     /// </summary>
+    /// 
     class clsItemsSQL
     {
         /// <summary>
