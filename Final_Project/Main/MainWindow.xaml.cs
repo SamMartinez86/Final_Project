@@ -49,7 +49,6 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
-            
 
         }
         #endregion

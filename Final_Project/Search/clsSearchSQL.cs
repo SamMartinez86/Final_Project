@@ -125,7 +125,7 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// This SQL returns allinvoice data for a specified date
+        /// This SQL returns all invoice data for a specified date
         /// </summary>
         /// <param name="sInvoiceDate"></param>
         /// <returns>All data for the given invoice</returns>
