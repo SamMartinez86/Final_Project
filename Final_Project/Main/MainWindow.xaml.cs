@@ -49,6 +49,8 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
+            
+
         }
         #endregion
 
@@ -209,7 +211,6 @@ namespace Final_Project
 
                 // show search menu
                 CurrentSearch.ShowDialog();
-
 
                 // show this menu
                 this.Show();

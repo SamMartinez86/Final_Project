@@ -96,7 +96,7 @@
                         <DropShadowEffect/>
                     </TextBox.Effect>
                 </TextBox>
-                <DataGrid Opacity="0.7" Canvas.Left="10" Canvas.Top="65" Width="236" Height="253">
+                <DataGrid x:Name="MainDataGrid" Opacity="0.7" Canvas.Left="10" Canvas.Top="65" Width="236" Height="253">
                     <DataGrid.Effect>
                         <DropShadowEffect/>
                     </DataGrid.Effect>
