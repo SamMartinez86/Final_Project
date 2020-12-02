@@ -71,6 +71,10 @@ namespace Final_Project
             try
             {
                 // update current invoice like the save feature.
+                wndItems CurrentItems = new wndItems();
+
+                CurrentItems.ShowDialog();
+
             }
             catch (Exception ex)
             {
@@ -88,17 +92,10 @@ namespace Final_Project
         {
             try
             {
-                //CurrentSearch = new wndSearch();
 
-                // hide main menu
-                this.Hide();
-
-                // show search menu
+                wndSearch CurrentSearch = new wndSearch();
                 CurrentSearch.ShowDialog();
 
-
-                // show this menu
-                this.Show();
             }
             catch (Exception ex)
             {
@@ -118,6 +115,7 @@ namespace Final_Project
             try
             {
                 // exit menu screen
+                Close();
             }
             catch (Exception ex)
             {
@@ -143,7 +141,6 @@ namespace Final_Project
 
                 // show Items menu
                 CurrentItems.ShowDialog();
-
 
                 // show this menu
                 this.Show();
