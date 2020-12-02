@@ -19,13 +19,13 @@ namespace Final_Project
     /// </summary>
     public partial class wndItems : Window
     {
-        #region Attributes
+        #region Class Members
         /// <summary>
         /// This is a boolean to tell the Main 
         /// Page whether or not it needs to refresh.
         /// </summary>
         public bool changesMade;
-
+        public clsItemsLogic product = new clsItemsLogic();
         /// <summary>
         /// This will hold a list of items passed in
         /// from the database
@@ -36,6 +36,7 @@ namespace Final_Project
         public wndItems()
         {
             InitializeComponent();
+            ItemDataGrid.ItemsSource = product.getItems();
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace Final_Project
             ///anything is selected in the itemsComboBox and if there is it will
             ///add that item to the invoice and add the item to the list of 
             ///items in the grid below for the user to see
+            ///
         }
 
         /// <summary>
