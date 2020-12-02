@@ -8,7 +8,7 @@ using System.IO;
 using System.Data.OleDb;
 using System.Reflection;
 
-namespace Assignment6AirlineReservation
+namespace Final_Project
 {
     public class clsDataAccess
     {

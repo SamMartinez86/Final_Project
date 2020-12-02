@@ -22,5 +22,10 @@ namespace Final_Project
         /// Variable for the Invoice Date
         /// </summary>
         public string InvoiceDate { get; set; }
+
+        /// <summary>
+        /// Instantiating the new clsDataAccess
+        /// </summary>
+        clsDataAccess db = new clsDataAccess();
     }
 }
