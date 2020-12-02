@@ -23,6 +23,8 @@ namespace Final_Project
         public wndSearch()
         {
             InitializeComponent();
+            
+            // need to display all invoices in each drop down
         }
 
         #region var init
@@ -31,19 +33,19 @@ namespace Final_Project
         /// This boolean var show if the user
         /// selected the InvoiceNumber as search criteria
         /// </summary>
-        bool InvoiceNumChosen;
+        bool InvoiceNumChosen = false;
 
         /// <summary>
         /// This var shows if the user selected 
         /// the total charges as search criteria
         /// </summary>
-        bool TotalChargesChosen;
+        bool TotalChargesChosen = false;
 
         /// <summary>
         /// This var shows if the user selected
         /// the Invoice Date as search criteria
         /// </summary>
-        bool InvoiceDateChosen;
+        bool InvoiceDateChosen = false;
 
 
 
@@ -56,24 +58,9 @@ namespace Final_Project
         /// <param name="e"></param>
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* From here, we will use the combo box boolean variables to decide
-             * which SQL statement to choose. For example, if there are non chosen, 
-             * we will use the SelectAllInvoices method within the clsSearchSQL
-             * If the Invoice number CB has been chosen we will call to the 
-             * SelectInvoiceData method in clsSearchSQL (and pass the invoice number argument
-             * and set the SQL statement to return all values with that Invoice Number. If all 3 variables are 
-             * true, we will call / pass the correct method and argument to clsSearchSQL
-             * 
-             * The correct SQL return objects will be stored in the clsSearchLogic variables
-             * From the clsSearchLogic, we will store the values where they can then be accessed any other class that needs it
-             * 
-             * I plan on obtaining exactly what the user chose by using code like:
-             * 
-             */
-
             try
             {
-                this.Close();
+                // sends all selected db info back to main page
             }
             catch (Exception ex)
             {
@@ -89,8 +76,7 @@ namespace Final_Project
         /// <param name="e"></param>
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* We will reset this screen so the user can search for different criteria
-             */
+
             try
             {
                 this.Hide();
@@ -102,5 +88,38 @@ namespace Final_Project
 
         }
 
+        /// <summary>
+        /// This method handles when the user selects a different invoice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InvoiceCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This method handles the when a user changes the total charges box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TotalChargesCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
     }
 }

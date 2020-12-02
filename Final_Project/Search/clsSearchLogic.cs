@@ -8,20 +8,19 @@ namespace Final_Project
 {
     class clsSearchLogic
     {
-        
+        /// <summary>
+        /// This is the variable for the Invoice ID
+        /// </summary>
+        public string InvoiceID { get; set; }
 
-        /* In this class we will hold the get; set values for
-         * 
-         * InvoiceId
-         * InvoiceCost
-         * InvoiceDate
-         * 
-         * From here we will call to the dataAccessClass with our 
-         * SQL statements that are set in the clsSearchSQL
-         * 
-         * We will hold data specified on the Search Window,
-         *  Things like the invoice number, date and cost
-         * 
-         */
+        /// <summary>
+        /// Variable for the Invoice Cost
+        /// </summary>
+        public string InvoiceCost { get; set; }
+
+        /// <summary>
+        /// Variable for the Invoice Date
+        /// </summary>
+        public string InvoiceDate { get; set; }
     }
 }

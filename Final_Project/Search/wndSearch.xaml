@@ -45,13 +45,13 @@
                     <DropShadowEffect/>
                 </Canvas.Effect>
                 <Label Content="Invoice #:" Margin="10,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox x:Name="InvoiceCB" Margin="90,13,0,0" Width="160" Opacity="0.7" >
+                <ComboBox x:Name="InvoiceCB" Margin="90,13,0,0" Width="160" Opacity="0.7" SelectionChanged="InvoiceCB_SelectionChanged" >
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>
                 </ComboBox>
                 <Label Content="Total Charges:" Margin="260,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox x:Name="TotalChargesCB" Margin="370,13,0,0" Width="140" Opacity="0.7">
+                <ComboBox x:Name="TotalChargesCB" Margin="370,13,0,0" Width="140" Opacity="0.7" SelectionChanged="TotalChargesCB_SelectionChanged">
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>
