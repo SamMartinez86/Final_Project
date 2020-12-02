@@ -62,6 +62,7 @@
     <Compile Include="Items\clsItemsSQL.cs" />
     <Compile Include="Main\clsMainLogic.cs" />
     <Compile Include="Main\clsMainSQL.cs" />
+    <Compile Include="Search\clsSearch.cs" />
     <Compile Include="Search\clsSearchLogic.cs" />
     <Compile Include="Search\clsSearchSQL.cs" />
     <Compile Include="InvoiceDataSet.Designer.cs">

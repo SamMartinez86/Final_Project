@@ -17,7 +17,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices";
+                string sSQL = "SELECT * FROM Invoices ORDER BY TotalCost";
                 return sSQL;
             }
             catch (Exception ex)

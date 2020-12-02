@@ -20,11 +20,32 @@ namespace Final_Project
     /// </summary>
     public partial class wndSearch : Window
     {
+        /// <summary>
+        /// Search Logic constructor
+        /// </summary>
+        clsSearchLogic clsSL;
+        List<clsSearch> Invoices = new List<clsSearch>();
         public wndSearch()
         {
             InitializeComponent();
-            
-            // need to display all invoices in each drop down
+
+            // New instance of Search Logic class
+            clsSL = new clsSearchLogic();
+
+            Invoices = clsSL.GetInvoices();
+
+            foreach(var invoice in Invoices)
+            {
+                // need to display all invoices in each drop down
+                InvoiceCB.Items.Add(invoice.InvoiceNum);
+                TotalChargesCB.Items.Add(invoice.InvoiceCost);
+              
+            }
+
+            srchDataGrid.ItemsSource = clsSL.GetInvoices();
+
+            TotalChargesCB.Items.Add(clsSL.GetInvoices());
+
         }
 
         #region var init
@@ -46,8 +67,6 @@ namespace Final_Project
         /// the Invoice Date as search criteria
         /// </summary>
         bool InvoiceDateChosen = false;
-
-
 
         #endregion var init
 
@@ -79,7 +98,9 @@ namespace Final_Project
 
             try
             {
-                this.Hide();
+                InvoiceCB.SelectedIndex = -1;
+                TotalChargesCB.SelectedIndex = -1;
+                srchDataGrid.ItemsSource = clsSL.GetInvoices();
             }
             catch (Exception ex)
             {

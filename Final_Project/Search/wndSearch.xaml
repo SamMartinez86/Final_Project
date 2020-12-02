@@ -68,6 +68,7 @@
                 <DataGrid.Effect>
                     <DropShadowEffect/>
                 </DataGrid.Effect>
+
             </DataGrid>
         </Grid>
         <Button x:Name="SelectBtn" Content="Select" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10" Opacity="0.7" Click="SelectBtn_Click">
