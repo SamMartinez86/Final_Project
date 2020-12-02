@@ -37,17 +37,30 @@ namespace Final_Project
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Search Logic constructor
+        /// </summary>
+        clsSearchLogic clsSL;
+        List<clsSearch> Invoices = new List<clsSearch>();
+
         public MainWindow()
         {
             InitializeComponent();
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
+            clsSL = new clsSearchLogic();
+
+            Invoices = clsSL.GetInvoices();
+
             // new search object
             CurrentSearch = new wndSearch();
 
             // new items object
             CurrentItems = new wndItems();
+
+
+            MainDataGrid.ItemsSource = clsSL.GetInvoices();
 
 
         }
