@@ -11,14 +11,15 @@ namespace Final_Project
     class clsSearchLogic
     {
         /// <summary>
-        /// This is the variable for the Invoice ID
+        /// New clsSearchSQL class
         /// </summary>
-        public string InvoiceID { get; set; }
+        clsSearchSQL SQLSearch = new clsSearchSQL();
+
 
         /// <summary>
-        /// Variable for the Invoice Cost
+        /// Instantiating the new clsDataAccess
         /// </summary>
-        public string InvoiceCost { get; set; }
+        clsDataAccess db = new clsDataAccess();
 
         /// <summary>
         /// This is the var that will hold the SQL statement
