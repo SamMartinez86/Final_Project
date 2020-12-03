@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;          
+using System.Windows;
+using System.Reflection;
 
 namespace Final_Project
 {
     class clsMainLogic
     {
+
+        List<Item> items = new List<Item>();
+        private clsDataAccess clsDataAccess = new clsDataAccess();
+        private clsItemsSQL clsItemsSQL = new clsItemsSQL();
+
+
+
+
+       
+
         /// <summary>
         /// HandleError 
         /// </summary>
@@ -27,5 +38,8 @@ namespace Final_Project
                                              "HandleError Exception: " + ex.Message);
             }
         }
+
+
+
     }
 }

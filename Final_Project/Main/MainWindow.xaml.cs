@@ -34,6 +34,13 @@ namespace Final_Project
         /// </summary>
         wndItems CurrentItems;
 
+        /// <summary>
+        /// This will store the selected invoice number
+        /// </summary>
+        private string selectedInvoiceNumber;
+
+        string InvoiceNum;
+
         #endregion
 
         #region Constructor
@@ -49,9 +56,10 @@ namespace Final_Project
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
+            // pull from search window
             clsSL = new clsSearchLogic();
 
-            Invoices = clsSL.GetInvoices();
+            InvoiceNum = clsSL.getInvoiceNum();
 
             // new search object
             CurrentSearch = new wndSearch();
@@ -60,7 +68,9 @@ namespace Final_Project
             CurrentItems = new wndItems();
 
 
-            MainDataGrid.ItemsSource = clsSL.GetInvoices();
+            MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
+
+            
 
 
         }
@@ -70,11 +80,9 @@ namespace Final_Project
 
         #endregion
 
-        #region Enumerations
-
-        #endregion
 
         #region Methods
+
         /// <summary>
         /// Click event for file menu update item
         /// </summary>
