@@ -24,6 +24,5 @@ namespace Final_Project
         /// </summary>
         public string InvoiceDate { get; set; }
 
-
     }
 }

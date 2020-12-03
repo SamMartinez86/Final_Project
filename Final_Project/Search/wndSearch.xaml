@@ -57,18 +57,17 @@
                     </ComboBox.Effect>
                 </ComboBox>
                 <Label Content="Invoice Date:" Margin="520,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <DatePicker x:Name="InvoiceDateDP" Margin="620,10,0,0" Width="145" Opacity="0.7">
+                <DatePicker x:Name="InvoiceDateDP" Margin="620,10,0,0" Width="145" Opacity="0.7" SelectedDateChanged="InvoiceDateChanged">
                     <DatePicker.Effect>
                         <DropShadowEffect/>
                     </DatePicker.Effect>
                 </DatePicker>
 
             </Canvas>
-            <DataGrid x:Name="srchDataGrid" Margin="10,50,10,10" Grid.ColumnSpan="3" Opacity="0.7">
+            <DataGrid x:Name="srchDataGrid" Margin="10,50,10,10" Grid.ColumnSpan="23" Opacity="0.7">
                 <DataGrid.Effect>
                     <DropShadowEffect/>
                 </DataGrid.Effect>
-
             </DataGrid>
         </Grid>
         <Button x:Name="SelectBtn" Content="Select" FontFamily="Verdana" FontWeight="Bold" Margin="10,10,10,10" Opacity="0.7" Click="SelectBtn_Click">

@@ -9,6 +9,8 @@ namespace Final_Project
 {
     class clsSearchSQL
     {
+
+        private string sSQL;
         /// <summary>
         /// This SQL gets all data from the Invoice table
         /// </summary>
@@ -17,7 +19,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices ORDER BY TotalCost";
+                sSQL = "SELECT * FROM Invoices ORDER BY TotalCost";
                 return sSQL;
             }
             catch (Exception ex)
@@ -35,7 +37,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE InvoiceNum = " + sInvoiceID;
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceNum = " + sInvoiceID;
                 return sSQL;
             }
             catch (Exception ex)
@@ -55,7 +57,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE InvoiceNum =" + sInvoiceID + " AND InvoiceDate = #" + sInvoiceDate + "#";
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceNum =" + sInvoiceID + " AND InvoiceDate = #" + sInvoiceDate + "#";
                 return sSQL;
             }
             catch (Exception ex)
@@ -76,7 +78,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE InvoiceNum =" + sInvoiceID + " AND InvoiceDate = #" + sInvoiceDate + "#" + "AND TotalCost = " + InvoiceCost;
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceNum =" + sInvoiceID + " AND InvoiceDate = #" + sInvoiceDate + "#" + "AND TotalCost = " + InvoiceCost;
                 return sSQL;
             }
             catch (Exception ex)
@@ -95,7 +97,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE TotalCost = " + sInvoiceCost;
+                sSQL = "SELECT * FROM Invoices WHERE TotalCost = " + sInvoiceCost;
                 return sSQL;
             }
             catch (Exception ex)
@@ -115,7 +117,25 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE TotalCost = " + sInvoiceCost + " AND InvoiceDate = #" + sInvoiceDate + "#";
+                sSQL = "SELECT * FROM Invoices WHERE TotalCost = " + sInvoiceCost + " AND InvoiceDate = #" + sInvoiceDate + "#";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This SQL returns all data for a specified invoice number
+        /// and a specified cost
+        /// </summary>
+        /// <returns>All data for the given invoice</returns>
+        public string SelectInvoiceNumCost(string sInvoiceNum, string sInvoiceCost)
+        {
+            try
+            {
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceNum = " + sInvoiceNum + " AND TotalCost = " + sInvoiceCost;
                 return sSQL;
             }
             catch (Exception ex)
@@ -133,7 +153,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT * FROM Invoices WHERE InvoiceDate = #" + sInvoiceDate + "#";
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceDate = #" + sInvoiceDate + "#";
                 return sSQL;
             }
             catch (Exception ex)

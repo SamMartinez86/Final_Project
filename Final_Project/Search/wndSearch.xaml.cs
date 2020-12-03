@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection;
 
+
 namespace Final_Project
 {
     /// <summary>
@@ -24,6 +25,10 @@ namespace Final_Project
         /// Search Logic constructor
         /// </summary>
         clsSearchLogic clsSL;
+
+        /// <summary>
+        /// List constructor
+        /// </summary>
         List<clsSearch> Invoices = new List<clsSearch>();
         public wndSearch()
         {
@@ -32,7 +37,8 @@ namespace Final_Project
             // New instance of Search Logic class
             clsSL = new clsSearchLogic();
 
-            Invoices = clsSL.GetInvoices();
+            // Getting all invoice records from the Db
+            Invoices = clsSL.GetAllInvoices();
 
             foreach(var invoice in Invoices)
             {
@@ -42,9 +48,9 @@ namespace Final_Project
               
             }
 
-            srchDataGrid.ItemsSource = clsSL.GetInvoices();
-
-            TotalChargesCB.Items.Add(clsSL.GetInvoices());
+            // Populating the data grid
+            srchDataGrid.CanUserAddRows = false;
+            srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
 
         }
 
@@ -68,7 +74,29 @@ namespace Final_Project
         /// </summary>
         bool InvoiceDateChosen = false;
 
+        /// <summary>
+        /// This var showsif the user has made any invoice selections
+        /// </summary>
+        bool selectionMade = false;
+
+        /// <summary>
+        /// This specifies which date the user picks
+        /// </summary>
+        private string dateChosen;
+
+        /// <summary>
+        /// Determines whether the user wants to reset the board
+        /// </summary>
+        bool resetSelected = false;
+
+
+
         #endregion var init
+
+
+        #region methods
+
+
 
         /// <summary>
         /// This Selects the specified invoice and redirects
@@ -79,7 +107,14 @@ namespace Final_Project
         {
             try
             {
-                // sends all selected db info back to main page
+                if(!selectionMade)
+                {
+                    MessageBox.Show("Please select an invoice", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    setVars();
+                }
             }
             catch (Exception ex)
             {
@@ -93,14 +128,15 @@ namespace Final_Project
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        public void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
-                InvoiceCB.SelectedIndex = -1;
-                TotalChargesCB.SelectedIndex = -1;
-                srchDataGrid.ItemsSource = clsSL.GetInvoices();
+                resetSelected = true;
+
+                updateDG();
+
             }
             catch (Exception ex)
             {
@@ -118,7 +154,8 @@ namespace Final_Project
         {
             try
             {
-               
+                InvoiceNumChosen = true;
+                updateDG();          
             }
             catch (Exception ex)
             {
@@ -135,6 +172,77 @@ namespace Final_Project
         {
             try
             {
+                TotalChargesChosen = true;
+                updateDG();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This method is called to each time the user determines search 
+        /// criteria and updates the data grid
+        /// </summary>
+        private void updateDG()
+        {
+            try
+            {
+                // The user has specified at least one restraint for their search
+                selectionMade = true;
+
+                if (resetSelected)
+                {
+                    // Resetting all bool values to false
+                    InvoiceNumChosen = false;
+                    TotalChargesChosen = false;
+                    InvoiceDateChosen = false;
+                    selectionMade = false;
+
+                    // Resetting the data grid back to initial state
+                    srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
+
+                    InvoiceCB.SelectedIndex = -1;
+                    TotalChargesCB.SelectedIndex = -1;
+
+                    InvoiceDateDP.SelectedDate = DateTime.MinValue;
+
+                    // resetting this bool
+                    resetSelected = false;
+                }
+
+                // this checks each booleav var to determine with SQL statement should be executed
+                if (InvoiceNumChosen && !TotalChargesChosen && !InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getInvoice(InvoiceCB.SelectedItem as string);
+                }
+                else if(!InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getTotalCharges(TotalChargesCB.SelectedItem as string);
+                }
+                else if(!InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getInvoiceDate(dateChosen);
+                }
+                else if(InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getInvoiceNumDate(InvoiceCB.SelectedItem as string, dateChosen);
+                }
+                else if(InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getAllData(InvoiceCB.SelectedItem as string, TotalChargesCB.SelectedItem as string, dateChosen);
+                }
+                else if(!InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getCostDate(TotalChargesCB.SelectedItem as string, dateChosen);
+                }
+                else if(InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
+                {
+                    srchDataGrid.ItemsSource = clsSL.getNumCost(InvoiceCB.SelectedItem as string, TotalChargesCB.SelectedItem as string);
+                }
+
+
 
             }
             catch (Exception ex)
@@ -142,5 +250,44 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
-    }
+
+        /// <summary>
+        /// This method sets the users chosen date to the specified date 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InvoiceDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                InvoiceDateChosen = true;
+                dateChosen = InvoiceDateDP.SelectedDate.Value.Date.ToShortDateString();
+                updateDG();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+            
+        }
+
+        /// <summary>
+        /// This method will set the variable that will be used on the main window
+        /// </summary>
+        private void setVars()
+        {
+            try
+            {
+                clsSL.setInvoiceNumber(InvoiceCB.SelectedItem as string);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        #endregion methods
+
+    }// end class
 }
