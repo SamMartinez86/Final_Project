@@ -148,14 +148,14 @@ namespace Final_Project
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.GetAllInvoices();
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
-                    MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
+                    
                 }
 
 
@@ -285,14 +285,14 @@ namespace Final_Project
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.GetAllInvoices();
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
-                    MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
+                    
                 }
 
             }
