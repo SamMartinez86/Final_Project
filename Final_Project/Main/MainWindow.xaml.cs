@@ -16,6 +16,7 @@ using System.Reflection;
 
 namespace Final_Project
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -50,6 +51,14 @@ namespace Final_Project
         //public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
 
+<<<<<<< Updated upstream
+=======
+        /// <summary>
+        /// List of items
+        /// </summary>
+        List<Item> Items = new List<Item>();
+
+>>>>>>> Stashed changes
 
         #endregion
 
@@ -67,16 +76,22 @@ namespace Final_Project
             //pull from items window
             clsIL = new clsItemsLogic();
 
+
+
             // new search object
             CurrentSearch = new wndSearch();
 
             // new items object
             CurrentItems = new wndItems();
 
-            
+            Items = clsIL.getItems();
 
-            //add items to combo box
-            itemsCb.ItemsSource = product.getItems();
+            foreach (var item in Items)
+            {
+                itemsCb.Items.Add(item.itemDesc);
+            }
+
+
 
 
 

@@ -30,6 +30,7 @@ namespace Final_Project
         /// List constructor
         /// </summary>
         List<clsSearch> Invoices = new List<clsSearch>();
+
         public wndSearch()
         {
             InitializeComponent();
