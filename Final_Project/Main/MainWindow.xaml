@@ -137,7 +137,7 @@
                         <DropShadowEffect/>
                     </TextBox.Effect>
                 </TextBox>
-                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159" Opacity="0.7">
+                <TextBox x:Name="itemCost" Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159" Opacity="0.7">
                     <TextBox.Effect>
                         <DropShadowEffect/>
                     </TextBox.Effect>

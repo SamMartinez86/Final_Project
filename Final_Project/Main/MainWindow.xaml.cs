@@ -51,14 +51,12 @@ namespace Final_Project
         public clsItemsLogic product = new clsItemsLogic();
 
 
-
-
         /// <summary>
         /// This will store the selected invoice number
         /// </summary>
         //string selectedInvoiceNumber;
 
-       
+
 
         #endregion
 
@@ -82,7 +80,7 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
-
+            
 
             //add items to combo box
             itemsCb.ItemsSource = product.getItems();
