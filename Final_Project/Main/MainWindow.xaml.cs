@@ -148,7 +148,7 @@ namespace Final_Project
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.GetAllInvoices();
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
@@ -285,7 +285,7 @@ namespace Final_Project
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.GetAllInvoices();
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
