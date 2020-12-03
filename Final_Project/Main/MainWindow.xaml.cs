@@ -57,7 +57,10 @@ namespace Final_Project
         /// </summary>
         List<Item> Items = new List<Item>();
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
         #endregion
 

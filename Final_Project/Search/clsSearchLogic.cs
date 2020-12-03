@@ -148,7 +148,7 @@ namespace Final_Project
                     Invoices.Add(new clsSearch
                     {
                         InvoiceNum = ds.Tables[0].Rows[i][0].ToString(),
-                        InvoiceDate = ds.Tables[0].Rows[i][1].ToString(),
+                        InvoiceDate = ds.Tables[0].Rows[i][1].ToString().Split(' ')[0],
                         InvoiceCost = ds.Tables[0].Rows[i][2].ToString()
                     });
                 }

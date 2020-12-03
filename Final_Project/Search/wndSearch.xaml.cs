@@ -206,7 +206,7 @@ namespace Final_Project
 
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
-                    DateCB.SelectedItem = -1;
+                    DateCB.SelectedIndex = -1;
 
                     // Resetting all bool values to false
                     InvoiceNumChosen = false;
@@ -286,13 +286,16 @@ namespace Final_Project
         {
             try
             {
+                if(DateCB.SelectedIndex != -1)
+                {
+                    InvoiceDateChosen = true;
 
-                InvoiceDateChosen = true;
+                    // Splitting the string apart to only get the date and not the time 
+                    dateChosen = DateCB.SelectedItem.ToString().Split(' ')[0];
 
-                // Splitting the string apart to only get the date and not the time 
-                dateChosen = DateCB.SelectedItem.ToString().Split(' ')[0];
+                    updateDG();
+                }
 
-                updateDG();
             }
             catch (Exception ex)
             {
