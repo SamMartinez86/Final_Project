@@ -45,6 +45,7 @@ namespace Final_Project
                 // need to display all invoices in each drop down
                 InvoiceCB.Items.Add(invoice.InvoiceNum);
                 TotalChargesCB.Items.Add(invoice.InvoiceCost);
+                DateCB.Items.Add(invoice.InvoiceDate);
               
             }
 
@@ -194,28 +195,25 @@ namespace Final_Project
         {
             try
             {
-                // The user has specified at least one restraint for their search
+                // The user has specified at least one constraint for their search
                 selectionMade = true;
 
                 if (resetSelected)
                 {
+                    // Resetting the data grid back to initial state
+                    srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
+
+                    InvoiceCB.SelectedIndex = -1;
+                    TotalChargesCB.SelectedIndex = -1;
+                    DateCB.SelectedItem = -1;
+
                     // Resetting all bool values to false
                     InvoiceNumChosen = false;
                     TotalChargesChosen = false;
                     InvoiceDateChosen = false;
                     selectionMade = false;
 
-                    // Resetting the data grid back to initial state
-                    srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
-
-                    InvoiceCB.SelectedIndex = -1;
-                    TotalChargesCB.SelectedIndex = -1;
-
-
-                    //InvoiceDateDP.SelectedDate = DateTime.MinValue;
-
-
-                    // resetting this bool
+                    // resetting the reset bool
                     resetSelected = false;
                 }
 
@@ -259,26 +257,6 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// This method sets the users chosen date to the specified date 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void InvoiceDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                InvoiceDateChosen = true;
-                //dateChosen = InvoiceDateDP.SelectedDate.Value.Date.ToShortDateString();
-                updateDG();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-            }
-            
-        }
-
-        /// <summary>
         /// This method will set the variable that will be used on the main window
         /// </summary>
         private void setVars()
@@ -298,5 +276,28 @@ namespace Final_Project
 
         #endregion methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                InvoiceDateChosen = true;
+
+                // Splitting the string apart to only get the date and not the time 
+                dateChosen = DateCB.SelectedItem.ToString().Split(' ')[0];
+
+                updateDG();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
     }// end class
 }
