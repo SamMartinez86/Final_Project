@@ -23,7 +23,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT ItemCode, ItemDesc, Cost FROM ItemDesc";
+                string sSQL = "SELECT ItemCode, ItemDesc, Cost FROM ItemDesc ORDER BY ItemCode";
                 return sSQL;
             }
             catch (Exception ex)
@@ -82,12 +82,12 @@ namespace Final_Project
         /// <param name="sItemDesc"></param>
         /// <param name="sItemCost"></param>
         /// <returns></returns>
-        public string InsertItem(string sItemCode, string sItemDesc, string sItemCost)
+        public string InsertItem(string code, string sItemDesc, string sItemCost)
         {
             try
             {
                 string sSQL = "INSERT INTO ItemDesc (ItemCode, ItemDesc, Cost) " +
-                              "VALUES (" + sItemCode + "," + sItemDesc + "," + sItemCost +")";
+                              "VALUES (" + "'" + code + "'" + ", " + "'" + sItemDesc + "'" + ", " + "'" + sItemCost + "'" + ");";
                 return sSQL;
             }
             catch (Exception ex)

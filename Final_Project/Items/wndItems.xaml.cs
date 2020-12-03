@@ -46,11 +46,20 @@ namespace Final_Project
         /// <param name="e"></param>
         private void addItemButton_Click(object sender, RoutedEventArgs e)
         {
-            ///When this button is clicked it will check to see if
-            ///anything is selected in the itemsComboBox and if there is it will
-            ///add that item to the invoice and add the item to the list of 
-            ///items in the grid below for the user to see
-            ///
+            try
+            {
+                string code = codeTxtBox.Text;
+                string desc = descTxtBox.Text;
+                string cost = costTxtBox.Text;
+                product.addItem(code, desc, cost);
+
+                ItemDataGrid.ItemsSource = null;           
+                ItemDataGrid.ItemsSource = product.getItems();
+            }
+            catch(System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
