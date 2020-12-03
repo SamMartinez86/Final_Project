@@ -142,7 +142,7 @@
                         <DropShadowEffect/>
                     </TextBox.Effect>
                 </TextBox>
-                <ComboBox x:Name="itemsCb" Canvas.Left="10" Canvas.Top="125" Width="214" Height="24" Opacity="0.7">
+                <ComboBox x:Name="itemsCb" Canvas.Left="10" Canvas.Top="125" Width="214" Height="24" Opacity="0.7" SelectionChanged="itemsCb_SelectionChanged">
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>

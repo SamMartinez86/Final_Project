@@ -75,8 +75,6 @@ namespace Final_Project
             //pull from items window
             clsIL = new clsItemsLogic();
 
-
-
             // new search object
             CurrentSearch = new wndSearch();
 
@@ -88,11 +86,8 @@ namespace Final_Project
             foreach (var item in Items)
             {
                 itemsCb.Items.Add(item.itemDesc);
+                
             }
-
-
-
-
 
         }
 
@@ -361,6 +356,39 @@ namespace Final_Project
         }
 
         /// <summary>
+        /// Item selected from combo box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void itemsCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // loop through items list from db
+                foreach (var item in Items)
+                {
+                    // if select item equals selected description 
+                    if(item.itemDesc == itemsCb.SelectedItem.ToString())
+                    {
+                        // send cost of selected item to cost text box
+                        itemCost.Text = item.itemCost.ToString();
+                    }
+
+                }
+
+               
+                
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+
+        /// <summary>
         /// this method handles errors 
         /// </summary>
         /// <param name="sClass"></param>
@@ -398,6 +426,7 @@ namespace Final_Project
         }
 
         #endregion
+
     }
 }
 
