@@ -68,11 +68,11 @@
                     </Button.Effect>
                 </Button>
                 <Label Content="Date:" Canvas.Left="10" Canvas.Top="54" FontFamily="Verdana" FontWeight="Bold"/>
-                <DatePicker Canvas.Left="61" Canvas.Top="55" Width="163" Opacity="0.7">
-                    <DatePicker.Effect>
+                <ComboBox x:Name="DateCB" Canvas.Left="61" Canvas.Top="55" Width="163" Height="24" Opacity="0.7">
+                    <ComboBox.Effect>
                         <DropShadowEffect/>
-                    </DatePicker.Effect>
-                </DatePicker>
+                    </ComboBox.Effect>
+                </ComboBox>
 
             </Canvas>
         </Grid>

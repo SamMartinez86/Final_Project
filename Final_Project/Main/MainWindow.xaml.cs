@@ -39,8 +39,6 @@ namespace Final_Project
         /// </summary>
         private string selectedInvoiceNumber;
 
-        
-
         string InvoiceNum;
 
         #endregion
