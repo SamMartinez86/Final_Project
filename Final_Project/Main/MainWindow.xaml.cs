@@ -67,10 +67,11 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
-
+            // populate data grid with current invoice
             MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
 
-            
+            // change invoice number text box to the current invoice number
+            InvoiceNumberTxtBx.Text = InvoiceNum;
 
 
         }
