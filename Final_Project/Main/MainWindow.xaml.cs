@@ -82,8 +82,11 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
+
+
             //add items to combo box
             itemsCb.ItemsSource = product.getItems();
+
 
 
         }
@@ -140,18 +143,23 @@ namespace Final_Project
                 CurrentSearch.ShowDialog();
 
                 // collect invoice number 
-                InvoiceNum = clsSL.getInvoiceNum();
+                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
 
                 // check to see if search window has been visited
                 if (InvoiceNum != null)
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
+
+                    // Populating the data grid
+                    MainDataGrid.CanUserAddRows = false;
+                    MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
                 }
+
 
 
             }
@@ -283,6 +291,10 @@ namespace Final_Project
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
+
+                    // Populating the data grid
+                    MainDataGrid.CanUserAddRows = false;
+                    MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
                 }
 
             }
