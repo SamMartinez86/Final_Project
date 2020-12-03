@@ -47,7 +47,7 @@ namespace Final_Project
         /// <summary>
         /// Items passed from the database
         /// </summary>
-        public List<DataGrid> items;
+        //public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
 
 
