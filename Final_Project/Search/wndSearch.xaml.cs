@@ -24,7 +24,7 @@ namespace Final_Project
         /// <summary>
         /// Search Logic constructor
         /// </summary>
-        clsSearchLogic clsSL;
+        public clsSearchLogic clsSL;
 
         /// <summary>
         /// List constructor
@@ -124,11 +124,14 @@ namespace Final_Project
                     // Resetting the data grid back to initial state
                     srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
 
+<<<<<<< Updated upstream
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
 
                     //InvoiceDateDP.SelectedDate = DateTime.MinValue;
 
+=======
+>>>>>>> Stashed changes
                     this.Close();
                 }
             }
@@ -222,8 +225,11 @@ namespace Final_Project
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
 
+<<<<<<< Updated upstream
                     //InvoiceDateDP.SelectedDate = DateTime.MinValue;
 
+=======
+>>>>>>> Stashed changes
                     // resetting this bool
                     resetSelected = false;
                 }
@@ -294,7 +300,9 @@ namespace Final_Project
         {
             try
             {
-                clsSL.setInvoiceNumber(InvoiceCB.SelectedItem as string);
+                srchDataGrid.SelectedIndex = 0;
+    
+                clsSL.setInvoiceNumber(((clsSearch)srchDataGrid.SelectedItem).InvoiceNum);
             }
             catch (Exception ex)
             {

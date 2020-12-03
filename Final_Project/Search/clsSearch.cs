@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Final_Project
 {
-    class clsSearch
+    public class clsSearch
     {
         /// <summary>
         /// This is the variable for the Invoice ID

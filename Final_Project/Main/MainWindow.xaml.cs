@@ -34,6 +34,7 @@ namespace Final_Project
         /// </summary>
         wndItems CurrentItems;
 
+<<<<<<< Updated upstream
         /// <summary>
         /// Search Logic object
         /// </summary>
@@ -49,6 +50,8 @@ namespace Final_Project
         /// </summary>
         public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -57,7 +60,7 @@ namespace Final_Project
         /// </summary>
         //string selectedInvoiceNumber;
 
-        string InvoiceNum;
+       
 
         #endregion
 
@@ -86,6 +89,13 @@ namespace Final_Project
 
 
         }
+
+        /// <summary>
+        /// This will store the selected invoice number
+        /// </summary>
+        private string selectedInvoiceNumber;
+
+        string InvoiceNum;
         #endregion
 
         #region Properties
@@ -264,14 +274,14 @@ namespace Final_Project
                 this.Show();
 
                 // collect invoice number 
-                InvoiceNum = clsSL.getInvoiceNum();
+                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
 
                 // check to see if search window has been visited
                 if (InvoiceNum != null)
                 {
 
                     // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
+                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;

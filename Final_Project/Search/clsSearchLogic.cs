@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Final_Project
 {
-    class clsSearchLogic
+     public class clsSearchLogic
     {
         #region var init
         /// <summary>
@@ -30,7 +30,7 @@ namespace Final_Project
         /// <summary>
         /// This will store the selected invoice number
         /// </summary>
-        private string selectedInvoiceNumber;
+        public string selectedInvoiceNumber;
 
         /// <summary>
         /// Constructing the list that holds the invoices
