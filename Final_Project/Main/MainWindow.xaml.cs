@@ -51,9 +51,6 @@ namespace Final_Project
         public clsItemsLogic product = new clsItemsLogic();
 
 
-
-
-
         #endregion
 
         #region Constructor
@@ -84,7 +81,6 @@ namespace Final_Project
 
 
         }
-
 
         string InvoiceNum;
         #endregion
