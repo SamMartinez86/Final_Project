@@ -39,6 +39,8 @@ namespace Final_Project
         /// </summary>
         private string selectedInvoiceNumber;
 
+        
+
         string InvoiceNum;
 
         #endregion
@@ -59,19 +61,11 @@ namespace Final_Project
             // pull from search window
             clsSL = new clsSearchLogic();
 
-            InvoiceNum = clsSL.getInvoiceNum();
-
             // new search object
             CurrentSearch = new wndSearch();
 
             // new items object
             CurrentItems = new wndItems();
-
-            // populate data grid with current invoice
-            MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
-
-            // change invoice number text box to the current invoice number
-            InvoiceNumberTxtBx.Text = InvoiceNum;
 
 
         }
@@ -117,7 +111,23 @@ namespace Final_Project
             {
 
                 wndSearch CurrentSearch = new wndSearch();
+                
                 CurrentSearch.ShowDialog();
+
+                // collect invoice number 
+                InvoiceNum = clsSL.getInvoiceNum();
+
+                // check to see if search window has been visited
+                if (InvoiceNum != null)
+                {
+
+                    // populate data grid with current invoice
+                    MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
+
+                    // change invoice number text box to the current invoice number
+                    InvoiceNumberTxtBx.Text = InvoiceNum;
+                }
+
 
             }
             catch (Exception ex)
@@ -235,6 +245,21 @@ namespace Final_Project
 
                 // show this menu
                 this.Show();
+
+                // collect invoice number 
+                InvoiceNum = clsSL.getInvoiceNum();
+
+                // check to see if search window has been visited
+                if (InvoiceNum != null)
+                {
+
+                    // populate data grid with current invoice
+                    MainDataGrid.ItemsSource = clsSL.getInvoice(InvoiceNum);
+
+                    // change invoice number text box to the current invoice number
+                    InvoiceNumberTxtBx.Text = InvoiceNum;
+                }
+
             }
             catch (Exception ex)
             {
