@@ -57,7 +57,7 @@
                     </ComboBox.Effect>
                 </ComboBox>
                 <Label Content="Invoice Date:" Margin="520,10,0,0" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox x:Name="DateCB" Width="140" Opacity="0.7" SelectionChanged="TotalChargesCB_SelectionChanged" Canvas.Left="626" Canvas.Top="13">
+                <ComboBox x:Name="DateCB" Width="136" Opacity="0.7" SelectionChanged="TotalChargesCB_SelectionChanged" Canvas.Left="626" Canvas.Top="13">
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>
