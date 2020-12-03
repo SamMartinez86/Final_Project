@@ -114,6 +114,22 @@ namespace Final_Project
                 else
                 {
                     setVars();
+
+                    // Resetting all bool values to false
+                    InvoiceNumChosen = false;
+                    TotalChargesChosen = false;
+                    InvoiceDateChosen = false;
+                    selectionMade = false;
+
+                    // Resetting the data grid back to initial state
+                    srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
+
+                    InvoiceCB.SelectedIndex = -1;
+                    TotalChargesCB.SelectedIndex = -1;
+
+                    InvoiceDateDP.SelectedDate = DateTime.MinValue;
+
+                    this.Close();
                 }
             }
             catch (Exception ex)
