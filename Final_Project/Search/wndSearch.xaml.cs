@@ -127,7 +127,7 @@ namespace Final_Project
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
 
-                    InvoiceDateDP.SelectedDate = DateTime.MinValue;
+                    //InvoiceDateDP.SelectedDate = DateTime.MinValue;
 
                     this.Close();
                 }
@@ -222,7 +222,7 @@ namespace Final_Project
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
 
-                    InvoiceDateDP.SelectedDate = DateTime.MinValue;
+                    //InvoiceDateDP.SelectedDate = DateTime.MinValue;
 
                     // resetting this bool
                     resetSelected = false;
@@ -277,7 +277,7 @@ namespace Final_Project
             try
             {
                 InvoiceDateChosen = true;
-                dateChosen = InvoiceDateDP.SelectedDate.Value.Date.ToShortDateString();
+                //dateChosen = InvoiceDateDP.SelectedDate.Value.Date.ToShortDateString();
                 updateDG();
             }
             catch (Exception ex)

@@ -35,20 +35,33 @@ namespace Final_Project
         wndItems CurrentItems;
 
         /// <summary>
+        /// Search Logic object
+        /// </summary>
+        clsSearchLogic clsSL;
+
+        /// <summary>
+        /// Items logic object
+        /// </summary>
+        clsItemsLogic clsIL;
+
+        /// <summary>
+        /// Items passed from the database
+        /// </summary>
+        public List<DataGrid> items;
+        public clsItemsLogic product = new clsItemsLogic();
+
+
+
+        /// <summary>
         /// This will store the selected invoice number
         /// </summary>
-        private string selectedInvoiceNumber;
+        //string selectedInvoiceNumber;
 
         string InvoiceNum;
 
         #endregion
 
         #region Constructor
-        /// <summary>
-        /// Search Logic constructor
-        /// </summary>
-        clsSearchLogic clsSL;
-        List<clsSearch> Invoices = new List<clsSearch>();
 
         public MainWindow()
         {
@@ -59,11 +72,17 @@ namespace Final_Project
             // pull from search window
             clsSL = new clsSearchLogic();
 
+            //pull from items window
+            clsIL = new clsItemsLogic();
+
             // new search object
             CurrentSearch = new wndSearch();
 
             // new items object
             CurrentItems = new wndItems();
+
+            //add items to combo box
+            itemsCb.ItemsSource = product.getItems();
 
 
         }
