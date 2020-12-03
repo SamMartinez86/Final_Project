@@ -34,7 +34,6 @@ namespace Final_Project
         /// </summary>
         wndItems CurrentItems;
 
-<<<<<<< Updated upstream
         /// <summary>
         /// Search Logic object
         /// </summary>
@@ -50,8 +49,7 @@ namespace Final_Project
         /// </summary>
         public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
-=======
->>>>>>> Stashed changes
+
 
 
 

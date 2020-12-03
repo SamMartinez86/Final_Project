@@ -115,23 +115,9 @@ namespace Final_Project
                 {
                     setVars();
 
-                    // Resetting all bool values to false
-                    InvoiceNumChosen = false;
-                    TotalChargesChosen = false;
-                    InvoiceDateChosen = false;
-                    selectionMade = false;
 
-                    // Resetting the data grid back to initial state
-                    srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
 
-<<<<<<< Updated upstream
-                    InvoiceCB.SelectedIndex = -1;
-                    TotalChargesCB.SelectedIndex = -1;
 
-                    //InvoiceDateDP.SelectedDate = DateTime.MinValue;
-
-=======
->>>>>>> Stashed changes
                     this.Close();
                 }
             }
@@ -225,11 +211,10 @@ namespace Final_Project
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
 
-<<<<<<< Updated upstream
+
                     //InvoiceDateDP.SelectedDate = DateTime.MinValue;
 
-=======
->>>>>>> Stashed changes
+
                     // resetting this bool
                     resetSelected = false;
                 }
