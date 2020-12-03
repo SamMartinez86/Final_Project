@@ -12,8 +12,9 @@ namespace Final_Project
     /// This sets all of the SQL query strings that will be used to
     /// gather information and data from the database
     /// </summary>
-    class clsMainSQL
-    {
+    class clsMainSQL { 
+
+    
         /// <summary>
         /// This SQL updates the data for a given Invoice number
         /// </summary>

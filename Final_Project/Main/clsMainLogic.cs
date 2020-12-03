@@ -29,16 +29,9 @@ namespace Final_Project
 
             ds = clsDataAccess.ExecuteSQLStatement(clsItemsSQL.SelectItemCodeDescCost(), ref iRef);
 
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int i = 0; i < iRef; i++)
             {
-                Item temp = new Item()
-                {
-                    itemCode = ds.Tables[0].Rows[i].ItemArray[0].ToString(),
-                    itemCost = ds.Tables[0].Rows[i].ItemArray[1].ToString(),
-                    itemDesc = ds.Tables[0].Rows[i].ItemArray[2].ToString()
-                };
 
-                items.Add(temp);
             }
 
             return items;

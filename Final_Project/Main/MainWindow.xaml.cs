@@ -51,10 +51,6 @@ namespace Final_Project
         public clsItemsLogic product = new clsItemsLogic();
 
 
-        /// <summary>
-        /// This will store the selected invoice number
-        /// </summary>
-        //string selectedInvoiceNumber;
 
 
 
@@ -89,10 +85,6 @@ namespace Final_Project
 
         }
 
-        /// <summary>
-        /// This will store the selected invoice number
-        /// </summary>
-        private string selectedInvoiceNumber;
 
         string InvoiceNum;
         #endregion
