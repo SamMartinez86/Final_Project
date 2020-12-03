@@ -51,14 +51,13 @@ namespace Final_Project
         //public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
 
-<<<<<<< Updated upstream
-=======
+
         /// <summary>
         /// List of items
         /// </summary>
         List<Item> Items = new List<Item>();
 
->>>>>>> Stashed changes
+
 
         #endregion
 

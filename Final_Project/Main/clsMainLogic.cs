@@ -16,10 +16,6 @@ namespace Final_Project
         private clsDataAccess clsDataAccess = new clsDataAccess();
         private clsItemsSQL clsItemsSQL = new clsItemsSQL();
 
-
-
-
-
         /// <summary>
         /// HandleError 
         /// </summary>
