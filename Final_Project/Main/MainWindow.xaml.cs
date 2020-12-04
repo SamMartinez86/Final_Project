@@ -105,7 +105,6 @@ namespace Final_Project
             CurrentItems = new wndItems();
 
 
-            // pull items into combo box
             Items = clsIL.getItems();
 
             // loop through and populate items in combo box
