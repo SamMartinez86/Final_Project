@@ -63,6 +63,7 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Main\clsMainLogic.cs" />
     <Compile Include="Main\clsMainSQL.cs" />
+    <Compile Include="Main\invoiceCls.cs" />
     <Compile Include="Search\clsSearch.cs" />
     <Compile Include="Search\clsSearchLogic.cs" />
     <Compile Include="Search\clsSearchSQL.cs" />

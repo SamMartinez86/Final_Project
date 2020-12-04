@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Main
 {
-    class invoiceCls
+    public class invoiceCls
     {
     }
 }

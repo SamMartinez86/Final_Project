@@ -9,10 +9,10 @@ using System.Data;
 
 namespace Final_Project
 {
-    class clsMainLogic
+    public class clsMainLogic
     {
 
-         
+       
 
 
         /// <summary>
