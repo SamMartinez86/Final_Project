@@ -57,10 +57,12 @@ namespace Final_Project
         /// </summary>
         List<Item> Items = new List<Item>();
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+        /// <summary>
+        /// List constructor
+        /// </summary>
+        List<clsSearch> Invoices = new List<clsSearch>();
+
 
         #endregion
 
@@ -81,8 +83,13 @@ namespace Final_Project
             // new search object
             CurrentSearch = new wndSearch();
 
+            
             // new items object
             CurrentItems = new wndItems();
+
+
+            // get items for item combo box
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             Items = clsIL.getItems();
 
@@ -92,6 +99,30 @@ namespace Final_Project
                 
             }
 
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            // populate data grid & fill up date combo box
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Getting all invoice records from the Db
+            Invoices = clsSL.GetAllInvoices();
+
+            foreach (var invoice in Invoices)
+            {
+                // need to display all invoices in each drop down
+                //InvoiceCB.Items.Add(invoice.InvoiceNum);
+                //TotalChargesCB.Items.Add(invoice.InvoiceCost);
+                DateCB.Items.Add(invoice.InvoiceDate);
+
+            }
+
+            // Populating the data grid
+            MainDataGrid.CanUserAddRows = false;
+            MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
         string InvoiceNum;
