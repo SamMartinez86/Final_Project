@@ -26,6 +26,17 @@ namespace Final_Project
         #region Attributes
 
         /// <summary>
+        /// main logic object
+        /// </summary>
+        clsMainLogic clsML;
+
+        /// <summary>
+        /// new main logic object
+        /// </summary>
+        List<invoiceCls> invoice = new List<invoiceCls>();
+
+
+        /// <summary>
         /// Search window object
         /// </summary>
         wndSearch CurrentSearch;
@@ -80,6 +91,10 @@ namespace Final_Project
             //pull from items window
             clsIL = new clsItemsLogic();
 
+            // pull from main window logic
+            clsML = new clsMainLogic();
+
+
             // new search object
             CurrentSearch = new wndSearch();
 
@@ -101,26 +116,19 @@ namespace Final_Project
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            // pull from main window logic
+            clsML = new clsMainLogic();
 
-            // populate data grid & fill up date combo box
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            // Getting all invoice records from the Db
-            Invoices = clsSL.GetAllInvoices();
+            invoice = clsML.invoiceGtr();
 
             foreach (var invoice in Invoices)
             {
-                // need to display all invoices in each drop down
-                //InvoiceCB.Items.Add(invoice.InvoiceNum);
-                //TotalChargesCB.Items.Add(invoice.InvoiceCost);
                 DateCB.Items.Add(invoice.InvoiceDate);
-
             }
 
             // Populating the data grid
             MainDataGrid.CanUserAddRows = false;
-            MainDataGrid.ItemsSource = clsSL.GetAllInvoices();
-
+            MainDataGrid.ItemsSource = clsML.invoiceGtr();
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }

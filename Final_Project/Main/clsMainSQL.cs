@@ -14,7 +14,44 @@ namespace Final_Project
     /// </summary>
     class clsMainSQL {
 
+        private string sSQL;
 
+
+        /// <summary>
+        /// This SQL gets all data from the Invoice table
+        /// </summary>
+        /// <returns>All data</returns>
+        public string SelectAllInvoices()
+        {
+            try
+            {
+                sSQL = "SELECT * FROM Invoices ORDER BY TotalCost";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// This SQL gets all data on an invoice for a given Invoice ID
+        /// </summary>
+        /// <param name="sInvoiceID">The InvoiceID for the invoice to retrieve all data</param>
+        /// <returns>All Data from the given invoice</returns>
+        public string SelectInvoiceData(string sInvoiceID)
+        {
+            try
+            {
+                sSQL = "SELECT * FROM Invoices WHERE InvoiceNum = " + sInvoiceID;
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// This SQL updates the data for a given Invoice number
