@@ -121,9 +121,9 @@ namespace Final_Project
 
             invoice = clsML.invoiceGtr();
 
-            foreach (var invoice in Invoices)
+            foreach (var item in invoice)
             {
-                DateCB.Items.Add(invoice.InvoiceDate);
+                DateCB.Items.Add(item.InvoiceDate);
             }
 
             // Populating the data grid
