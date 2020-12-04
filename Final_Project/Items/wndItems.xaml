@@ -39,10 +39,15 @@
 
 
             </Canvas>
-            <DataGrid x:Name="ItemDataGrid" Margin="10,26,10,10" Opacity="0.7">
+            <DataGrid x:Name="ItemDataGrid" Margin="10,26,10,10" Opacity="0.7" IsReadOnly="True">
                 <DataGrid.Effect>
                     <DropShadowEffect/>
                 </DataGrid.Effect>
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
             </DataGrid>
         </Grid>
         <Button Name="addItemButton" Content="Add Item"  Margin="0,50,130,325" FontFamily="Verdana" Opacity="0.7" FontWeight="Bold" Click="addItemButton_Click" Grid.Column="1">
@@ -61,20 +66,20 @@
             </Button.Effect>
         </Button>
         <Label x:Name="JewelryShoppeLbl" Content="The Jewelry Shoppe" Grid.Column="1" Margin="0,0,0.0,370" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource JewelryShoppeStyle}"/>
-        <Label Content="Code:" Canvas.Left="10" Canvas.Top="47" FontFamily="Verdana" FontWeight="Bold" Width="47" Margin="20,30,197,366"/>
-        <TextBox x:Name="codeTxtBox" Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Code" Canvas.Top="47" Width="159" Opacity="0.7" Margin="82,30,23,370.333">
+        <Label Content="Code:" Canvas.Left="10" Canvas.Top="47" FontFamily="Verdana" FontWeight="Bold" Width="47" Margin="20,30,197,365.333"/>
+        <TextBox x:Name="codeTxtBox" Height="23" Canvas.Left="65" TextWrapping="Wrap" Canvas.Top="47" Width="159" Opacity="0.7" Margin="82,30,23,370.333">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
-        <Label Content="Desc:" FontFamily="Verdana" FontWeight="Bold" Width="47" Margin="20,58,197,338"/>
-        <TextBox x:Name="descTxtBox" Height="23" TextWrapping="Wrap" Text="Item Description" Width="159" Opacity="0.7" Margin="82,58,23,338">
+        <Label Content="Desc:" FontFamily="Verdana" FontWeight="Bold" Margin="20,57,197,334.333"/>
+        <TextBox x:Name="descTxtBox" Height="23" TextWrapping="Wrap" Width="159" Opacity="0.7" Margin="82,58,23,338">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
-        <Label Content="Cost:" FontFamily="Verdana" FontWeight="Bold" Width="47" Margin="20,86,197,310"/>
-        <TextBox x:Name="costTxtBox" Height="23" TextWrapping="Wrap" Text="Cost" Width="159" Opacity="0.7" Margin="82,86,23,310">
+        <Label Content="Cost:" FontFamily="Verdana" FontWeight="Bold" Width="47" Margin="20,86,197,303.333"/>
+        <TextBox x:Name="costTxtBox" Height="23" TextWrapping="Wrap" Width="159" Opacity="0.7" Margin="82,86,23,310">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
