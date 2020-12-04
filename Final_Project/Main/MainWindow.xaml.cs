@@ -25,16 +25,6 @@ namespace Final_Project
 
         #region Attributes
 
-        /// <summary>
-        /// main logic object
-        /// </summary>
-        clsMainLogic clsML;
-
-        /// <summary>
-        /// new main logic object
-        /// </summary>
-        List<invoiceCls> invoice = new List<invoiceCls>();
-
 
         /// <summary>
         /// Search window object
@@ -62,6 +52,10 @@ namespace Final_Project
         //public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
 
+        /// <summary>
+        /// main logic object
+        /// </summary>
+        clsMainLogic clsML;
 
         /// <summary>
         /// List of items
@@ -74,6 +68,16 @@ namespace Final_Project
         /// </summary>
         List<clsSearch> Invoices = new List<clsSearch>();
 
+        /// <summary>
+        /// store user created invoice number
+        /// </summary>
+        public string InvcNum;
+
+        /// <summary>
+        /// store user created invoice date
+        /// </summary>
+        public string InvcDt;
+
 
         #endregion
 
@@ -85,15 +89,14 @@ namespace Final_Project
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-            // pull from search window
+            // New search object
             clsSL = new clsSearchLogic();
 
-            //pull from items window
+            // New Items object
             clsIL = new clsItemsLogic();
 
-            // pull from main window logic
+            // New Main object
             clsML = new clsMainLogic();
-
 
             // new search object
             CurrentSearch = new wndSearch();
@@ -103,34 +106,18 @@ namespace Final_Project
             CurrentItems = new wndItems();
 
 
-            // get items for item combo box
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+            // pull items into combo box
             Items = clsIL.getItems();
 
+            // loop through and populate items in combo box
             foreach (var item in Items)
             {
+
                 itemsCb.Items.Add(item.itemDesc);
                 
             }
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            // pull from main window logic
-            clsML = new clsMainLogic();
-
-            invoice = clsML.invoiceGtr();
-
-            foreach (var item in invoice)
-            {
-                DateCB.Items.Add(item.InvoiceDate);
-            }
-
-            // Populating the data grid
-            MainDataGrid.CanUserAddRows = false;
-            MainDataGrid.ItemsSource = clsML.invoiceGtr();
-
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
         string InvoiceNum;
@@ -181,7 +168,7 @@ namespace Final_Project
 
                 // collect invoice number 
                 InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
-
+;
                 // check to see if search window has been visited
                 if (InvoiceNum != null)
                 {
@@ -191,6 +178,9 @@ namespace Final_Project
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
+
+                    // invoice date in drop down
+                    DateTB.Text = InvoiceNum;
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
@@ -265,7 +255,22 @@ namespace Final_Project
         {
             try
             {
+                
+                // collect invoice number 
+                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
+
                 // deletes current invoice
+                clsML.DeleteInvoice(InvoiceNum);
+
+                // clear data grid
+                MainDataGrid.ItemsSource = null;
+
+                // clear invoice number text box 
+                InvoiceNumberTxtBx.Text = "";
+
+                // clear date text box
+                DateTB.Text = "";
+
             }
             catch (Exception ex)
             {
@@ -285,8 +290,18 @@ namespace Final_Project
             try
             {
                 // creates new invoice 
+
+                // get new invoice number
+                InvcNum = InvoiceNumberTxtBx.Text;
+
+                // get invoice date
+                InvcDt = DateTB.Text;
+
+                // insert new invoice with info from text boxes
+                clsML.NewInvoice(InvcNum, InvcDt);
+
                 // populate new invoice "TBD" number
-                //InvoiceNumberTxtBx.Text
+                //InvoiceNumberTxtBx.Text = 
             }
             catch (Exception ex)
             {
@@ -328,6 +343,9 @@ namespace Final_Project
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
+
+                    // invoice date in drop down
+                    DateTB.Text = InvoiceNum;
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;

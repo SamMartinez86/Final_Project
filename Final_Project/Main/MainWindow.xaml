@@ -68,11 +68,11 @@
                     </Button.Effect>
                 </Button>
                 <Label Content="Date:" Canvas.Left="10" Canvas.Top="54" FontFamily="Verdana" FontWeight="Bold"/>
-                <ComboBox x:Name="DateCB" Canvas.Left="61" Canvas.Top="55" Width="163" Height="24" Opacity="0.7">
-                    <ComboBox.Effect>
+                <TextBox x:Name="DateTB" Canvas.Left="61" Canvas.Top="55" Width="163" Height="24" Opacity="0.7">
+                    <TextBox.Effect>
                         <DropShadowEffect/>
-                    </ComboBox.Effect>
-                </ComboBox>
+                    </TextBox.Effect>
+                </TextBox>
 
             </Canvas>
         </Grid>

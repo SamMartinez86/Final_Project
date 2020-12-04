@@ -252,7 +252,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -293,7 +293,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -335,7 +335,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -377,7 +377,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement

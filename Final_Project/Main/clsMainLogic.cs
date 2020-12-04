@@ -12,52 +12,93 @@ namespace Final_Project
     public class clsMainLogic
     {
 
+        /// <summary>
+        /// main SQL Object
+        /// </summary>
         clsMainSQL SQLMain = new clsMainSQL();
-        private List<invoiceCls> Invoices;
-        clsDataAccess db = new clsDataAccess();
-        public string sSQL;
 
         /// <summary>
-        /// returns all invoices
+        /// data access class
+        /// </summary>
+        clsDataAccess db = new clsDataAccess();
+
+        /// <summary>
+        /// SQL statement 
+        /// </summary>
+        public string sSQL;
+
+        // list from search logic
+        /////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Search window object
+        /// </summary>
+        wndSearch CurrentSearch;
+
+        /// <summary>
+        /// Search Logic object
+        /// </summary>
+        clsSearchLogic clsSL;
+
+        /// <summary>
+        /// This will store the selected invoice number
+        /// </summary>
+        public string selectedInvoiceNumber;
+        /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        /// <summary>
+        /// This method will return the selected invoice number to the main window
         /// </summary>
         /// <returns></returns>
-        public List<invoiceCls> invoiceGtr()
+        public string getInvoiceNum()
         {
             try
             {
-                Invoices = new List<invoiceCls>();
+                return selectedInvoiceNumber;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
-                // Data set hold data
-                DataSet ds;
-
-                /// This is the returned from the executed SQL statement
-                int iRet = 0;
-
-                sSQL = SQLMain.SelectAllInvoices();
-
-                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
-
-                for (int i = 0; i < iRet; i++)
-                {
-                    // Adding the Invoice number, invoice cost and invoice date
-                    Invoices.Add(new invoiceCls
-                    {
-                        InvoiceNum = ds.Tables[0].Rows[i][0].ToString(),
-                        InvoiceDate = ds.Tables[0].Rows[i][1].ToString(),
-                        InvoiceCost = ds.Tables[0].Rows[i][2].ToString()
-                    });
-                }
-                return Invoices;
-
+        /// <summary>
+        /// This method deletes invoices
+        /// </summary>
+        public void DeleteInvoice(string invoicenum)
+        {
+            try
+            {
+                
+                // SQL statement to delete invoice
+                sSQL = SQLMain.DeleteInvoices(invoicenum);
 
             }
             catch (Exception ex)
             {
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
-
         }
 
+        /// <summary>
+        /// This method inserts new invoice into database
+        /// </summary>
+        /// <param name="sInvoiceDate"></param>
+        /// <param name="sTotalCost"></param>
+        public void NewInvoice(string sInvoiceDate, string sTotalCost)
+        {
+            try
+            {
+                // insert new item into database
+                sSQL = SQLMain.InsertInvoices(sInvoiceDate, sTotalCost);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        } 
 
 
         /// <summary>
