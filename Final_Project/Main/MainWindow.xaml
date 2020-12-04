@@ -57,12 +57,12 @@
                     <DropShadowEffect/>
                 </Canvas.Effect>
 
-                <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="EditInvoiceBtn_Click">
+                <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="EditInvoiceBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <Button x:Name="DltInvoiceBtn" Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="DltInvoiceBtn_Click">
+                <Button x:Name="DltInvoiceBtn" Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="DltInvoiceBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
@@ -125,19 +125,19 @@
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
-                <Button x:Name="AddItemBtn" Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="AddItemBtn_Click">
+                <Button x:Name="AddItemBtn" Content="Add" Canvas.Left="10" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="AddItemBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
                 <Label Content="Cost:" Canvas.Left="10" Canvas.Top="47" FontFamily="Verdana" FontWeight="Bold" Width="47"/>
                 <Label Content="Total:" Canvas.Left="8" Canvas.Top="86" FontFamily="Verdana" FontWeight="Bold" Width="52"/>
-                <TextBox Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Total" Canvas.Top="86" Width="159" Opacity="0.7">
+                <TextBox x:Name="TotalItemBx" Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Total" Canvas.Top="86" Width="159" Opacity="0.7" IsEnabled="False">
                     <TextBox.Effect>
                         <DropShadowEffect/>
                     </TextBox.Effect>
                 </TextBox>
-                <TextBox x:Name="itemCost" Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159" Opacity="0.7">
+                <TextBox x:Name="itemCost" Height="23" Canvas.Left="65" TextWrapping="Wrap" Text="Cost" Canvas.Top="47" Width="159" Opacity="0.7" IsEnabled="False">
                     <TextBox.Effect>
                         <DropShadowEffect/>
                     </TextBox.Effect>
@@ -147,7 +147,7 @@
                         <DropShadowEffect/>
                     </ComboBox.Effect>
                 </ComboBox>
-                <Button x:Name="RemoveItemBtn" Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="RemoveItemBtn_Click">
+                <Button x:Name="RemoveItemBtn" Content="Remove" Canvas.Left="144" Canvas.Top="10" Width="80" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="RemoveItemBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>

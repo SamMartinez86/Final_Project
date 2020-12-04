@@ -49,7 +49,6 @@ namespace Final_Project
         /// <summary>
         /// Items passed from the database
         /// </summary>
-        //public List<DataGrid> items;
         public clsItemsLogic product = new clsItemsLogic();
 
         /// <summary>
@@ -168,7 +167,11 @@ namespace Final_Project
 
                 // collect invoice number 
                 InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
-;
+
+
+                // enable buttons & text boxes
+                enableItems();
+                ;
                 // check to see if search window has been visited
                 if (InvoiceNum != null)
                 {
@@ -300,6 +303,9 @@ namespace Final_Project
                 // insert new invoice with info from text boxes
                 clsML.NewInvoice(InvcNum, InvcDt);
 
+                // enable buttons & text boxes
+                enableItems();
+
                 // populate new invoice "TBD" number
                 //InvoiceNumberTxtBx.Text = 
             }
@@ -331,6 +337,9 @@ namespace Final_Project
                 // show this menu
                 this.Show();
 
+                // enable buttons & text boxes
+                enableItems();
+
                 // collect invoice number 
                 InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
 
@@ -349,7 +358,8 @@ namespace Final_Project
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
-                    
+
+   
                 }
 
             }
@@ -435,9 +445,41 @@ namespace Final_Project
                     }
 
                 }
+  
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
 
-               
-                
+        /// <summary>
+        /// This method enables all buttons after returning from search invoice or creating a new invoice
+        /// </summary>
+        private void enableItems()
+        {
+            try
+            {
+                // enable edit invoice button
+                EditInvoiceBtn.IsEnabled = true;
+
+                // enable delete invoice button   
+                DltInvoiceBtn.IsEnabled = true;
+
+                // enable add item button
+                AddItemBtn.IsEnabled = true;
+
+                // enable remove button
+                RemoveItemBtn.IsEnabled = true;
+
+                // enable item cost text box
+                itemCost.IsEnabled = true;
+
+                // enable total item text box
+                TotalItemBx.IsEnabled = true;
+
             }
             catch (Exception ex)
             {
