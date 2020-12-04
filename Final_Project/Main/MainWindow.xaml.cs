@@ -104,6 +104,12 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
+            // Removing blank space in main dg
+            MainDataGrid.CanUserAddRows = false;
+
+            // Removing blank space in main invoice dg
+            mainInvDG.CanUserAddRows = false;
+
 
             Items = clsIL.getItems();
 
@@ -175,14 +181,13 @@ namespace Final_Project
                 if (InvoiceNum != null)
                 {
 
-                    // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    // populate invoice data grid with current select invoice data
+                    mainInvDG.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
 
-                    // invoice date in drop down
-                    DateTB.Text = InvoiceNum;
+
 
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
@@ -270,8 +275,7 @@ namespace Final_Project
                 // clear invoice number text box 
                 InvoiceNumberTxtBx.Text = "";
 
-                // clear date text box
-                DateTB.Text = "";
+
 
             }
             catch (Exception ex)
@@ -296,8 +300,7 @@ namespace Final_Project
                 // get new invoice number
                 InvcNum = InvoiceNumberTxtBx.Text;
 
-                // get invoice date
-                InvcDt = DateTB.Text;
+
 
                 // insert new invoice with info from text boxes
                 clsML.NewInvoice(InvcNum, InvcDt);
@@ -346,19 +349,15 @@ namespace Final_Project
                 if (InvoiceNum != null)
                 {
 
-                    // populate data grid with current invoice
-                    MainDataGrid.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    // populate invoice data grid with current select invoice data
+                    mainInvDG.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
 
                     // change invoice number text box to the current invoice number
                     InvoiceNumberTxtBx.Text = InvoiceNum;
 
-                    // invoice date in drop down
-                    DateTB.Text = InvoiceNum;
-
                     // Populating the data grid
                     MainDataGrid.CanUserAddRows = false;
-
-   
+  
                 }
 
             }

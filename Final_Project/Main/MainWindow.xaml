@@ -52,27 +52,23 @@
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="141*"/>
             </Grid.RowDefinitions>
-            <Canvas Background="#FF487396" Opacity="0.7" Grid.RowSpan="2">
+            <Canvas Background="#FF487396" Opacity="0.7" Grid.RowSpan="2" Margin="0,0,-12.2,-0.2">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
 
-                <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Canvas.Left="10" Canvas.Top="10" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="EditInvoiceBtn_Click" IsEnabled="False">
+                <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Canvas.Left="10" Canvas.Top="301" Width="90" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="EditInvoiceBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <Button x:Name="DltInvoiceBtn" Content="Delete Invoice" Canvas.Left="114" Canvas.Top="10" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="DltInvoiceBtn_Click" IsEnabled="False">
+                <Button x:Name="DltInvoiceBtn" Content="Delete Invoice" Canvas.Left="126" Canvas.Top="301" Width="110" FontFamily="Verdana" FontWeight="Bold" Opacity="0.7" Click="DltInvoiceBtn_Click" IsEnabled="False">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <Label Content="Date:" Canvas.Left="10" Canvas.Top="54" FontFamily="Verdana" FontWeight="Bold"/>
-                <TextBox x:Name="DateTB" Canvas.Left="61" Canvas.Top="55" Width="163" Height="24" Opacity="0.7">
-                    <TextBox.Effect>
-                        <DropShadowEffect/>
-                    </TextBox.Effect>
-                </TextBox>
+                <DataGrid x:Name="mainInvDG" Height="44" Canvas.Left="10" Canvas.Top="46" Width="226" ColumnWidth="*"/>
+                <Label x:Name="edInvLbl" Content="Edit Invoice" Canvas.Left="64" Canvas.Top="5" Width="113" FontSize="20"/>
 
             </Canvas>
         </Grid>

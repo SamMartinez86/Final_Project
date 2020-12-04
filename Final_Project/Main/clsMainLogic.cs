@@ -74,6 +74,9 @@ namespace Final_Project
                 // SQL statement to delete invoice
                 sSQL = SQLMain.DeleteInvoices(invoicenum);
 
+                // Passing the sSQL string to be executed
+                db.ExecuteNonQuery(sSQL);
+
             }
             catch (Exception ex)
             {
