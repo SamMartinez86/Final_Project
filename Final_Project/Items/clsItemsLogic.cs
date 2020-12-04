@@ -64,7 +64,7 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// This method will update an item in the datagrid
+        /// This method will update an item in the data grid
         /// </summary>
         /// <param name="code"></param>
         /// <param name="desc"></param>
@@ -90,7 +90,7 @@ namespace Final_Project
             string query = clsItemsSQL.DeleteItem(code);
             clsDataAccess.ExecuteNonQuery(query);
 
-            return true; //successsful delete
+            return true; //successful delete
         }
 
         /// <summary>
