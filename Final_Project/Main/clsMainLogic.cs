@@ -11,15 +11,8 @@ namespace Final_Project
 {
     class clsMainLogic
     {
-       // List<Item> items = new List<Item>();
-        //private clsDataAccess clsDataAccess = new clsDataAccess();
-        //private clsItemsSQL clsItemsSQL = new clsItemsSQL();
 
-        /// <summary>
-        /// new Db object
-        /// </summary>
-      //  clsDataAccess db = new clsDataAccess();
-
+         
 
 
         /// <summary>

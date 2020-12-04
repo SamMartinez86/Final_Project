@@ -10,6 +10,8 @@ namespace Final_Project
     class clsSearchSQL
     {
 
+
+
         private string sSQL;
         /// <summary>
         /// This SQL gets all data from the Invoice table
