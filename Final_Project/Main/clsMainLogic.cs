@@ -18,39 +18,41 @@ namespace Final_Project
         /// main SQL Object
         /// </summary>
         clsMainSQL SQLMain;
-
+        /// <summary>
+        /// Item SQL object
+        /// </summary>
+        clsItemsSQL SQLItems;
         /// <summary>
         /// data access class
         /// </summary>
         clsDataAccess db;
-
         /// <summary>
         /// SQL statement 
         /// </summary>
         public string sSQL;
-
         // list from search logic
         /////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Search window object
         /// </summary>
         wndSearch CurrentSearch;
-
         /// <summary>
         /// Search Logic object
         /// </summary>
         clsSearchLogic clsSL;
-
         /// <summary>
         /// This will store the selected invoice number
         /// </summary>
         public string selectedInvoiceNumber;
-        /////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////        
+        List<Item> items;
 
 
         public clsMainLogic()
         {
             SQLMain = new clsMainSQL();
+            SQLItems = new clsItemsSQL();
+            items = new List<Item>();
 
             db = new clsDataAccess();
         }
@@ -134,6 +136,37 @@ namespace Final_Project
 
 
         }
+
+        /// <summary>
+        /// Method returns the item cost to 
+        /// the UI
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <returns></returns>
+        public string getItemCost(string desc)
+        {
+            int iRet = 0;
+            DataSet ds = new DataSet();
+
+            ds = db.ExecuteSQLStatement(SQLItems.SelectDistinctItemCostByDesc(desc), ref iRet);
+
+            return ds.Tables[0].Rows[0].ItemArray[0].ToString();
+        }
+
+        public string getItemCode(string desc, string cost)
+        {
+            int iRet = 0;
+            DataSet ds = new DataSet();
+
+            ds = db.ExecuteSQLStatement(SQLItems.SelectDistinctItemCodeByDescCost(desc, cost), ref iRet);
+
+            return ds.Tables[0].Rows[0].ItemArray[0].ToString();
+        }
+
+        //public List<Item> getItems(string code)
+        //{
+            
+        //}
 
         /// <summary>
         /// this method handles errors 

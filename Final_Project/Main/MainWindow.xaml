@@ -137,7 +137,7 @@
                         <DropShadowEffect/>
                     </ComboBox.Effect>
                 </ComboBox>
-                <DataGrid Height="200" Opacity="0.7" Canvas.Left="10" Canvas.Top="185" Width="214">
+                <DataGrid x:Name="NewInvoiceDataGrid" Height="182" Opacity="0.7" Canvas.Left="10" Canvas.Top="162" Width="214" ColumnWidth="*">
                     <DataGrid.Effect>
                         <DropShadowEffect/>
                     </DataGrid.Effect>
@@ -158,7 +158,7 @@
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <DatePicker Canvas.Left="19" Canvas.Top="147" Width="195"/>
+                <DatePicker Canvas.Left="19" Canvas.Top="363" Width="195"/>
             </Canvas>
 
 

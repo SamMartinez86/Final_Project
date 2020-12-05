@@ -23,6 +23,12 @@ namespace Final_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        public struct NewInvoiceData 
+        { 
+            public string itemDescription { set; get; }
+            public string itemCost { set; get; }
+        }
+
 
         #region Attributes
 
@@ -62,6 +68,7 @@ namespace Final_Project
         /// </summary>
         List<Item> Items = new List<Item>();
 
+        List<NewInvoiceData> newInvoiceItems;
 
         /// <summary>
         /// List constructor
@@ -131,6 +138,21 @@ namespace Final_Project
 
             // Populating the item lists in the drop downs
             popItemLists();
+
+            ////Set up the New Invoice Data Grid
+            //DataGridTextColumn itemDescription = new DataGridTextColumn();
+            //DataGridTextColumn itemCost = new DataGridTextColumn();
+
+            //itemDescription.Header = "Item Description";
+            //itemDescription.Binding = new Binding("ItemDescription");
+
+            //itemCost.Header = "Item Cost";
+            //itemCost.Binding = new Binding("ItemCost");
+
+            //NewInvoiceDataGrid.Columns.Add(itemDescription);
+            //NewInvoiceDataGrid.Columns.Add(itemCost);
+
+            newInvoiceItems = new List<NewInvoiceData>();
 
         }
 
@@ -366,7 +388,12 @@ namespace Final_Project
         {
             try
             {
-                // adds an items to the current invoice
+                string selectedItem = itemsCb.SelectedItem.ToString();
+                string cost = clsML.getItemCost(selectedItem);
+
+                newInvoiceItems.Add(new NewInvoiceData { itemCost = cost, itemDescription = selectedItem });
+
+                NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
             }
             catch (Exception ex)
             {
