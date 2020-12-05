@@ -575,6 +575,7 @@ namespace Final_Project
         {
             try
             {
+                editItemsCB.Text = "";
                 InvoiceNumberLbl.Content = "";
                 editItemsCB.IsEnabled = false;
                 AddItemToCurrentBtn.IsEnabled = false;
