@@ -31,6 +31,57 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+        public string SelectDistinctItemCodeDescCost(string code)
+        {
+            try
+            {
+                string sSQL = "SELECT ItemCode, ItemDesc, Cost FROM ItemDesc WHERE ItemCode = " + "'" + code + "'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This is a SQL Query to get the Item cost based on the item
+        /// description
+        /// </summary>
+        /// <param name="itemDesc"></param>
+        /// <returns></returns>
+        public string SelectDistinctItemCostByDesc(string itemDesc)
+        {
+            try
+            {
+                string sSQL = "SELECT Cost FROM ItemDesc WHERE ItemDesc = " + "'" + itemDesc + "'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This SQL returns a distinct Item Code
+        /// </summary>
+        /// <param name="itemDesc"></param>
+        /// <param name="cost"></param>
+        /// <returns></returns>
+        public string SelectDistinctItemCodeByDescCost(string itemDesc, string cost)
+        {
+            try
+            {
+                string sSQL = "SELECT ItemCode FROM ItemDesc WHERE ItemDesc = " + "'" + itemDesc + "'" + " AND Cost = " + "'" + cost + "'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
 
         /// <summary>
         /// This SQL returns a distinct invoice number 

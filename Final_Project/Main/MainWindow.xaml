@@ -137,7 +137,7 @@
                         <DropShadowEffect/>
                     </ComboBox.Effect>
                 </ComboBox>
-                <DataGrid Height="182" Opacity="0.7" Canvas.Left="10" Canvas.Top="162" Width="214">
+                <DataGrid x:Name="NewInvoiceDataGrid" Height="182" Opacity="0.7" Canvas.Left="10" Canvas.Top="162" Width="214" ColumnWidth="*">
                     <DataGrid.Effect>
                         <DropShadowEffect/>
                     </DataGrid.Effect>
