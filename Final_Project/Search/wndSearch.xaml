@@ -64,7 +64,7 @@
                 </ComboBox>
 
             </Canvas>
-            <DataGrid x:Name="srchDataGrid" Margin="10,50,10,10" Grid.ColumnSpan="20" Opacity="0.7" ColumnWidth="*">
+            <DataGrid x:Name="srchDataGrid" Margin="10,50,10,10" Grid.ColumnSpan="20" Opacity="0.7" ColumnWidth="*" MouseLeftButtonDown="setVars">
                 <DataGrid.Effect>
                     <DropShadowEffect/>
                 </DataGrid.Effect>

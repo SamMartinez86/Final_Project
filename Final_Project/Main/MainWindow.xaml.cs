@@ -118,9 +118,12 @@ namespace Final_Project
 
             // Removing blank space in main invoice dg
             mainInvDG.CanUserAddRows = false;
+            mainInvDG.IsReadOnly = true;
 
             // Locking the edit region until the user chooses to edit an invoice
             lockEditRegion();
+
+            createInvCV.IsEnabled = true;
             
 
 
@@ -197,8 +200,12 @@ namespace Final_Project
 
                     // enable edit invoice button
                     EditInvoiceBtn.IsEnabled = true;
+
                     // enable edit invoice button
                     DltInvoiceBtn.IsEnabled = true;
+
+                    // Enable current invoice canvas
+                    currentInvoiceCV.IsEnabled = true;
 
                 }
                      
@@ -250,6 +257,9 @@ namespace Final_Project
                 // Populating the edit invoice item list
                 popItemLists();
 
+                // Disabling all but the edit table
+                createInvCV.IsEnabled = false;
+                currentInvoiceCV.IsEnabled = false;
             }
             catch (Exception ex)
             {
@@ -323,50 +333,6 @@ namespace Final_Project
             }
         }
 
-        /// <summary>
-        /// Click event for search for invoice button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void searchForInvoiceButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                CurrentSearch = new wndSearch();
-
-                // hide main menu
-                this.Hide();
-
-                // show search menu
-                CurrentSearch.ShowDialog();
-
-                // show this menu
-                this.Show();
-
-                // collect invoice number 
-                //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
-
-
-                // check to see if search window has been visited
-                if (MainWindowInvoice.InvoiceNum != null)
-                {
-
-                    // add invoice to invoice text box 
-                    InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
-
-
-                    // calls items for particular invoice into data grid
-                    dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
-                    MainDataGrid.ItemsSource = dataGridList;
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-            }
-        }
 
         private void AddItemBtn(object sender, RoutedEventArgs e)
         {
@@ -474,12 +440,6 @@ namespace Final_Project
         {
             try
             {
-                // enable edit invoice button
-                EditInvoiceBtn.IsEnabled = true;
-
-                // enable delete invoice button   
-                DltInvoiceBtn.IsEnabled = true;
-
                 // enable add item button
                 AddItemToCurrentBtn.IsEnabled = true;
 
@@ -557,7 +517,8 @@ namespace Final_Project
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
         }
 
@@ -581,11 +542,15 @@ namespace Final_Project
                 AddItemToCurrentBtn.IsEnabled = false;
                 RemoveItemBtn.IsEnabled = false;
 
+                // clear data grid
+                MainDataGrid.ItemsSource = null;
+
                 disableItems();
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
 
         }
@@ -602,17 +567,22 @@ namespace Final_Project
                 AddItemToCurrentBtn.IsEnabled = true;
                 RemoveItemBtn.IsEnabled = true;
 
+
+
                 // enable buttons & text boxes
                 enableItems();
+
+                // calls items for particular invoice into data grid
+                dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+                MainDataGrid.ItemsSource = dataGridList;
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
 
-            // calls items for particular invoice into data grid
-            //dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
-            //MainDataGrid.ItemsSource = dataGridList;
+
         }
 
         /// <summary>
@@ -641,7 +611,8 @@ namespace Final_Project
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
         }
     }

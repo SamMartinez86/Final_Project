@@ -95,6 +95,12 @@ namespace Final_Project
         /// </summary>
         bool resetSelected = false;
 
+        /// <summary>
+        /// This will store the invoice number the the user mouses over on the
+        /// search window
+        /// </summary>
+        private string selectedInv;
+
 
 
         #endregion var init
@@ -306,6 +312,27 @@ namespace Final_Project
                     updateDG();
                 }
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// This method handles click event of the user choosing an invoice from 
+        /// the data grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setVars(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                //selectedInv = (sender as DataGrid);
+
+                clsSL.setInvoiceNumber(((clsSearch)srchDataGrid.SelectedItem).InvoiceNum);
             }
             catch (Exception ex)
             {

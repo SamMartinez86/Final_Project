@@ -52,7 +52,7 @@
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="141*"/>
             </Grid.RowDefinitions>
-            <Canvas Background="#FF487396" Opacity="0.7" Grid.RowSpan="2" Margin="0,-21,-11.2,-0.2">
+            <Canvas x:Name="currentInvoiceCV" Background="#FF487396" Opacity="0.7" Grid.RowSpan="2" Margin="0,-21,-11.2,-0.2">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
@@ -122,7 +122,7 @@
                 <RowDefinition Height="289*"/>
                 <RowDefinition Height="0*"/>
             </Grid.RowDefinitions>
-            <Canvas Background="#FF3C7086" Opacity="0.7" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,-19,-0.4,-0.2">
+            <Canvas x:Name="createInvCV" Background="#FF3C7086" Opacity="0.7" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,-19,-0.4,-0.2">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>
