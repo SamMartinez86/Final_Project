@@ -78,6 +78,12 @@ namespace Final_Project
         /// </summary>
         public string InvcDt;
 
+        /// <summary>
+        /// Bool var that tracks if the user has chosen to edit 
+        /// an invoice
+        /// </summary>
+        private bool isOkayToEdit = false;
+
         public static clsSearch MainWindowInvoice { get; set; }
 
         public static ObservableCollection<Item> dataGridList; 
@@ -113,18 +119,15 @@ namespace Final_Project
             // Removing blank space in main invoice dg
             mainInvDG.CanUserAddRows = false;
 
+            // Locking the edit region until the user chooses to edit an invoice
+            lockEditRegion();
+            
+
+
             MainWindowInvoice = new clsSearch();
 
-            Items = clsIL.getItems();
-
-            // loop through and populate items in combo box
-            foreach (var item in Items)
-            {
-
-                itemsCb.Items.Add(item.itemDesc);
-                
-            }
-
+            // Populating the item lists in the drop downs
+            popItemLists();
 
         }
 
@@ -177,10 +180,10 @@ namespace Final_Project
                 // collect invoice number 
                 //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
          
-                // check to see if the invoice number has been sen
-
-                     
-                     // collect invoice number 
+                // check to see if the invoice number has been set
+                if(CurrentSearch.clsSL.invNumSet)
+                {
+                    // collect invoice number 
                     InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
 
                     // add invoice to invoice text box 
@@ -189,16 +192,16 @@ namespace Final_Project
                     // Populating the main inv num on main
                     mainInvDG.ItemsSource = clsSL.getInvoice(InvoiceNum);
 
-                    // enable buttons & text boxes
-                    enableItems();
+                    // Unlocking the edit region
+                    lockEditRegion();
 
-                    // calls items for particular invoice into data grid
-                    dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
-                    MainDataGrid.ItemsSource = dataGridList;
+                    // enable edit invoice button
+                    EditInvoiceBtn.IsEnabled = true;
+                    // enable edit invoice button
+                    DltInvoiceBtn.IsEnabled = true;
 
-                
-
-
+                }
+                     
 
             }
             catch (Exception ex)
@@ -238,16 +241,15 @@ namespace Final_Project
         {
             try
             {
-                //goes to items screen for editing
+                // Setting the edit button bool tracker to true
+                isOkayToEdit = true;
 
-                // hide main menu
-                this.Hide();
+                // Unlocking the edit region for the user
+                unlockEditRegion();
 
-                // show Items menu
-                CurrentItems.ShowDialog();
+                // Populating the edit invoice item list
+                popItemLists();
 
-                // show this menu
-                this.Show();
             }
             catch (Exception ex)
             {
@@ -352,9 +354,6 @@ namespace Final_Project
                     // add invoice to invoice text box 
                     InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
 
-
-                    // enable buttons & text boxes
-                    enableItems();
 
                     // calls items for particular invoice into data grid
                     dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
@@ -496,6 +495,34 @@ namespace Final_Project
             }
         }
 
+        /// <summary>
+        /// This helper method disables buttons / cb's when the user is restricted access
+        /// </summary>
+        private void disableItems()
+        {
+            try
+            {
+                // enable edit invoice button
+                EditInvoiceBtn.IsEnabled = false;
+
+                // enable delete invoice button   
+                DltInvoiceBtn.IsEnabled = false;
+
+                // enable add item button
+                AddItemToCurrentBtn.IsEnabled = false;
+
+                // enable remove button
+                RemoveItemBtn.IsEnabled = false;
+
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
 
         /// <summary>
         /// this method handles errors 
@@ -539,6 +566,82 @@ namespace Final_Project
         private void RemoveItemFromNewBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// This helper method locks the edit region
+        /// </summary>
+        public void lockEditRegion()
+        {
+            try
+            {
+                InvoiceNumberLbl.Content = "";
+                editItemsCB.IsEnabled = false;
+                AddItemToCurrentBtn.IsEnabled = false;
+                RemoveItemBtn.IsEnabled = false;
+
+                disableItems();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// This helper method unlocks the edit region
+        /// </summary>
+        public void unlockEditRegion()
+        {
+            try
+            {
+                InvoiceNumberLbl.Content = InvoiceNum;
+                editItemsCB.IsEnabled = true;
+                AddItemToCurrentBtn.IsEnabled = true;
+                RemoveItemBtn.IsEnabled = true;
+
+                // enable buttons & text boxes
+                enableItems();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+            // calls items for particular invoice into data grid
+            //dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+            //MainDataGrid.ItemsSource = dataGridList;
+        }
+
+        /// <summary>
+        /// This method populates the items drop downs
+        /// </summary>
+        private void popItemLists()
+        {
+            try
+            {
+
+                Items = clsIL.getItems();
+
+                // loop through and populate items in combo box
+                foreach (var item in Items)
+                {
+
+                    itemsCb.Items.Add(item.itemDesc);
+
+                    // If the user has selected
+                    if (isOkayToEdit)
+                    {
+                        editItemsCB.Items.Add(item.itemDesc);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
         }
     }
 }

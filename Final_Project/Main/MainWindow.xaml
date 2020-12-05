@@ -97,7 +97,7 @@
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <ComboBox x:Name="itemsCb_Copy" Canvas.Left="20" Canvas.Top="135" Width="214" Height="24" Opacity="0.7" SelectionChanged="itemsCb_SelectionChanged">
+                <ComboBox x:Name="editItemsCB" Canvas.Left="20" Canvas.Top="135" Width="214" Height="24" Opacity="0.7" SelectionChanged="itemsCb_SelectionChanged">
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>
