@@ -45,6 +45,11 @@ namespace Final_Project
 
         }
 
+        /// <summary>
+        /// a boolean variable has been set
+        /// </summary>
+        public bool invNumSet = false;
+
         #endregion var init
 
         #region methods
@@ -58,6 +63,8 @@ namespace Final_Project
             try
             {
                 selectedInvoiceNumber = invoiceNum;
+
+                invNumSet = true;
             }
             catch (Exception ex)
             {
@@ -74,6 +81,9 @@ namespace Final_Project
             try
             {
                 return selectedInvoiceNumber;
+
+
+                invNumSet = false;
             }
             catch (Exception ex)
             {

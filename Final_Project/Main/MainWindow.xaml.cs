@@ -177,12 +177,17 @@ namespace Final_Project
                 // collect invoice number 
                 //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
          
-                // check to see if search window has been visited
-                if (MainWindowInvoice.InvoiceNum != null)
-                {
+                // check to see if the invoice number has been sen
+
+                     
+                     // collect invoice number 
+                    InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
 
                     // add invoice to invoice text box 
                     InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
+
+                    // Populating the main inv num on main
+                    mainInvDG.ItemsSource = clsSL.getInvoice(InvoiceNum);
 
                     // enable buttons & text boxes
                     enableItems();
@@ -191,7 +196,7 @@ namespace Final_Project
                     dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
                     MainDataGrid.ItemsSource = dataGridList;
 
-                }
+                
 
 
 

@@ -121,7 +121,7 @@ namespace Final_Project
                 }
                 else
                 {
-                    //setVars();
+                    setVars();
 
 
                     // take items from data grid and cast to object to move to main
