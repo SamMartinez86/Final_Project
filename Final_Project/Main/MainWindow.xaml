@@ -158,7 +158,7 @@
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <DatePicker Canvas.Left="19" Canvas.Top="147" Width="195"/>
+                <DatePicker Canvas.Left="19" Canvas.Top="363" Width="195"/>
             </Canvas>
 
 
