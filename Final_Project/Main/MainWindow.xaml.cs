@@ -363,12 +363,36 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+
+        private void AddItemBtn(object sender, RoutedEventArgs e)
+        {
+
+        }
         /// <summary>
         /// click event for add item button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddItemBtn_Click(object sender, RoutedEventArgs e)
+        private void AddItemToCurrentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // adds an items to the current invoice
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// click event for add item button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddItemToNewBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -453,7 +477,7 @@ namespace Final_Project
                 DltInvoiceBtn.IsEnabled = true;
 
                 // enable add item button
-                AddItemBtn.IsEnabled = true;
+                AddItemToCurrentBtn.IsEnabled = true;
 
                 // enable remove button
                 RemoveItemBtn.IsEnabled = true;
@@ -507,6 +531,10 @@ namespace Final_Project
 
         #endregion
 
+        private void RemoveItemFromNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
