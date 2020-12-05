@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
+using System.Collections.ObjectModel;
 
 namespace Final_Project
 {
@@ -77,6 +78,9 @@ namespace Final_Project
         /// </summary>
         public string InvcDt;
 
+        public static clsSearch MainWindowInvoice { get; set; }
+
+        public static ObservableCollection<Item> dataGridList; 
 
         #endregion
 
@@ -100,7 +104,6 @@ namespace Final_Project
             // new search object
             CurrentSearch = new wndSearch();
 
-            
             // new items object
             CurrentItems = new wndItems();
 
@@ -110,6 +113,7 @@ namespace Final_Project
             // Removing blank space in main invoice dg
             mainInvDG.CanUserAddRows = false;
 
+            MainWindowInvoice = new clsSearch();
 
             Items = clsIL.getItems();
 
@@ -171,27 +175,22 @@ namespace Final_Project
                 CurrentSearch.ShowDialog();
 
                 // collect invoice number 
-                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
-
-
-                // enable buttons & text boxes
-                enableItems();
-                ;
+                //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
+         
                 // check to see if search window has been visited
-                if (InvoiceNum != null)
+                if (MainWindowInvoice.InvoiceNum != null)
                 {
 
-                    // populate invoice data grid with current select invoice data
-                    mainInvDG.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    // add invoice to invoice text box 
+                    InvoiceNumberTxtBx.Text = MainWindowInvoice.InvoiceNum;
 
-                    // change invoice number text box to the current invoice number
-                    InvoiceNumberTxtBx.Text = InvoiceNum;
+                    // enable buttons & text boxes
+                    enableItems();
 
+                    // calls items for particular invoice into data grid
+                    dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+                    MainDataGrid.ItemsSource = dataGridList;
 
-
-                    // Populating the data grid
-                    MainDataGrid.CanUserAddRows = false;
-                    
                 }
 
 
@@ -298,10 +297,8 @@ namespace Final_Project
                 // creates new invoice 
 
                 // get new invoice number
+
                 InvcNum = InvoiceNumberTxtBx.Text;
-
-
-
                 // insert new invoice with info from text boxes
                 clsML.NewInvoice(InvcNum, InvcDt);
 
@@ -339,25 +336,25 @@ namespace Final_Project
                 // show this menu
                 this.Show();
 
-                // enable buttons & text boxes
-                enableItems();
-
                 // collect invoice number 
-                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
+                //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
+
 
                 // check to see if search window has been visited
-                if (InvoiceNum != null)
+                if (MainWindowInvoice.InvoiceNum != null)
                 {
 
-                    // populate invoice data grid with current select invoice data
-                    mainInvDG.ItemsSource = CurrentSearch.clsSL.getInvoice(InvoiceNum);
+                    // add invoice to invoice text box 
+                    InvoiceNumberTxtBx.Text = MainWindowInvoice.InvoiceNum;
 
-                    // change invoice number text box to the current invoice number
-                    InvoiceNumberTxtBx.Text = InvoiceNum;
 
-                    // Populating the data grid
-                    MainDataGrid.CanUserAddRows = false;
-  
+                    // enable buttons & text boxes
+                    enableItems();
+
+                    // calls items for particular invoice into data grid
+                    dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+                    MainDataGrid.ItemsSource = dataGridList;
+
                 }
 
             }

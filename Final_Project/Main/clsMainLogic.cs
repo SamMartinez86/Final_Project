@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
 using System.Data;
+using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace Final_Project
 {
@@ -15,12 +17,12 @@ namespace Final_Project
         /// <summary>
         /// main SQL Object
         /// </summary>
-        clsMainSQL SQLMain = new clsMainSQL();
+        clsMainSQL SQLMain;
 
         /// <summary>
         /// data access class
         /// </summary>
-        clsDataAccess db = new clsDataAccess();
+        clsDataAccess db;
 
         /// <summary>
         /// SQL statement 
@@ -45,6 +47,13 @@ namespace Final_Project
         public string selectedInvoiceNumber;
         /////////////////////////////////////////////////////////////////////////////////////////
 
+
+        public clsMainLogic()
+        {
+            SQLMain = new clsMainSQL();
+
+            db = new clsDataAccess();
+        }
 
 
         /// <summary>
@@ -101,8 +110,30 @@ namespace Final_Project
             {
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
-        } 
+        }
 
+        internal ObservableCollection<Item> PopulateLineItemsOnInvoiceNum(string invoiceNum)
+        {
+            ObservableCollection<Item> list = new ObservableCollection<Item>();
+            int iRet = 0;
+            DataSet ds = new DataSet();
+
+            ds = db.ExecuteSQLStatement(SQLMain.SelectLineItemDesc(invoiceNum), ref iRet);
+
+
+            for (int i = 0; i < iRet; i++)
+            {
+                list.Add(new Item
+                {
+                    itemCode = ds.Tables[0].Rows[i][0].ToString(),
+                    itemDesc = ds.Tables[0].Rows[i]["ItemDesc"].ToString(),
+                    itemCost = ds.Tables[0].Rows[i]["Cost"].ToString()
+                });
+            }
+            return list;
+
+
+        }
 
         /// <summary>
         /// this method handles errors 

@@ -31,6 +31,8 @@ namespace Final_Project
         /// </summary>
         List<clsSearch> Invoices = new List<clsSearch>();
 
+        
+
         public wndSearch()
         {
             InitializeComponent();
@@ -111,13 +113,20 @@ namespace Final_Project
             {
                 if(!selectionMade)
                 {
+
+
                     MessageBox.Show("Please select an invoice", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
-                    setVars();
+                    //setVars();
 
 
+                    // take items from data grid and cast to object to move to main
+                    clsSearch Invoice = (clsSearch)srchDataGrid.SelectedItem;
+
+                    // set equal to main window object
+                    MainWindow.MainWindowInvoice = Invoice;
 
 
                     this.Close();
