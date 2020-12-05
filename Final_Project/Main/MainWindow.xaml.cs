@@ -182,7 +182,7 @@ namespace Final_Project
                 {
 
                     // add invoice to invoice text box 
-                    InvoiceNumberTxtBx.Text = MainWindowInvoice.InvoiceNum;
+                    InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
 
                     // enable buttons & text boxes
                     enableItems();
@@ -271,8 +271,8 @@ namespace Final_Project
                 // clear data grid
                 MainDataGrid.ItemsSource = null;
 
-                // clear invoice number text box 
-                InvoiceNumberTxtBx.Text = "";
+                // clear invoice number Label 
+                InvoiceNumberLbl.Content = "";
 
 
 
@@ -298,7 +298,7 @@ namespace Final_Project
 
                 // get new invoice number
 
-                InvcNum = InvoiceNumberTxtBx.Text;
+                InvcNum = (string)InvoiceNumberLbl.Content;
                 // insert new invoice with info from text boxes
                 clsML.NewInvoice(InvcNum, InvcDt);
 
@@ -345,7 +345,7 @@ namespace Final_Project
                 {
 
                     // add invoice to invoice text box 
-                    InvoiceNumberTxtBx.Text = MainWindowInvoice.InvoiceNum;
+                    InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
 
 
                     // enable buttons & text boxes
@@ -429,18 +429,7 @@ namespace Final_Project
         {
             try
             {
-                // loop through items list from db
-                foreach (var item in Items)
-                {
-                    // if select item equals selected description 
-                    if(item.itemDesc == itemsCb.SelectedItem.ToString())
-                    {
-                        // send cost of selected item to cost text box
-                        itemCost.Text = item.itemCost.ToString();
-                    }
-
-                }
-  
+                  
             }
             catch (Exception ex)
             {
@@ -468,12 +457,6 @@ namespace Final_Project
 
                 // enable remove button
                 RemoveItemBtn.IsEnabled = true;
-
-                // enable item cost text box
-                itemCost.IsEnabled = true;
-
-                // enable total item text box
-                TotalItemBx.IsEnabled = true;
 
             }
             catch (Exception ex)
