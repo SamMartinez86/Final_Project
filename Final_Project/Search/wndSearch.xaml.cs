@@ -54,7 +54,9 @@ namespace Final_Project
 
             // Populating the data grid
             srchDataGrid.CanUserAddRows = false;
+            srchDataGrid.IsReadOnly = true;
             srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
+
 
         }
 
