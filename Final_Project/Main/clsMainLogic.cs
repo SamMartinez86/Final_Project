@@ -272,14 +272,43 @@ namespace Final_Project
         /// <param name="lineItemNum"></param>
         /// <param name="itemCode"></param>
         /// <returns></returns>
-        public void removeItemFromInv(string invNum, string itemCode)
+        public void removeItemFromInv(string invNum, string lineItemNum)
         {
             try
             {
               
-                sSQL = SQLMain.DeleteLineItem(invNum, itemCode);
+                sSQL = SQLMain.DeleteLineItem(invNum, lineItemNum);
 
                 db.ExecuteNonQuery(sSQL);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// gets the line item numer
+        /// </summary>
+        /// <param name="invNum"></param>
+        /// <param name="lineItemNum"></param>
+        /// <param name="itemCode"></param>
+        /// <returns></returns>
+        public string getLineItemNum(string invNum, string code)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+
+                int iRet = 0;
+
+                sSQL = SQLMain.getLineItemNum(invNum, code);
+
+                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
+
+                return ds.Tables[0].Rows[0].ItemArray[0].ToString();
+
             }
             catch (Exception ex)
             {

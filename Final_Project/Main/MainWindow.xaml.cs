@@ -479,10 +479,11 @@ namespace Final_Project
 
                 string desc = selectedIndex.itemDesc;
 
-                /// This stores the item code of the item to be added to an existing invoice
-                string itemCodeToDelete = clsML.getItemCode(desc, cost);
+                string code = selectedIndex.itemCode;
 
-                clsML.removeItemFromInv(InvoiceNum, itemCodeToDelete);
+                string lineItemNum = clsML.getLineItemNum(InvoiceNum, code);
+
+                clsML.removeItemFromInv(InvoiceNum, lineItemNum);
 
 
                 dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);

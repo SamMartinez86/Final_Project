@@ -91,12 +91,13 @@ namespace Final_Project
         /// </summary>
         /// <param name="sInvoiceNum"></param>
         /// <returns></returns>
-        public string DeleteLineItem(string sInvoiceNum, string itemCode)
+        public string DeleteLineItem(string sInvoiceNum, string lineItemNum)
         {
             try
             {
-                string sSQL = "DELETE FROM LineItems WHERE InvoiceNum = "+ sInvoiceNum +
-                              " AND ItemCode = '" + itemCode + "'";
+                string sSQL = "DELETE FROM LineItems WHERE InvoiceNum = " + sInvoiceNum +
+                              " AND LineItemNum = " + lineItemNum ;
+
                 return sSQL;
             }
             catch (Exception ex)
@@ -233,6 +234,25 @@ namespace Final_Project
                 string sSQL = "SELECT LineItems.ItemCode, ItemDesc.ItemDesc, ItemDesc.Cost " +
                               "FROM LineItems, ItemDesc Where LineItems.ItemCode = ItemDesc.ItemCode " +
                               "And LineItems.InvoiceNum = " + sInvoiceNum;
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This returns line item number
+        /// </summary>
+        /// <param name="sInvoiceNum"></param>
+        /// <returns></returns>
+        public string getLineItemNum(string sInvoiceNum, string code)
+        {
+            try
+            {
+                string sSQL = "SELECT LineItemNum FROM LineItems WHERE InvoiceNum = " + sInvoiceNum +
+                              " AND ItemCode = '" + code + "'";
                 return sSQL;
             }
             catch (Exception ex)
