@@ -67,7 +67,11 @@
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <DataGrid x:Name="mainInvDG" Height="92" Canvas.Left="10" Canvas.Top="82" Width="226" ColumnWidth="*"/>
+                <DataGrid x:Name="mainInvDG" Opacity="0.7" Height="92" Canvas.Left="10" Canvas.Top="82" Width="226" ColumnWidth="*">
+                    <DataGrid.Effect>
+                        <DropShadowEffect/>
+                    </DataGrid.Effect>
+                </DataGrid>
                 <Label x:Name="edInvLbl" Content="Current Invoice" Canvas.Left="47" Canvas.Top="4" Width="162" FontSize="20" FontWeight="Bold"/>
 
             </Canvas>
