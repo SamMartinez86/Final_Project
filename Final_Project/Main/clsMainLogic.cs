@@ -41,6 +41,7 @@ namespace Final_Project
         /// Search window object
         /// </summary>
         wndSearch CurrentSearch;
+
         /// <summary>
         /// Search Logic object
         /// </summary>
