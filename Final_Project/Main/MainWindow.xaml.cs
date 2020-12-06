@@ -281,12 +281,16 @@ namespace Final_Project
         {
             try
             {
-                
-                // collect invoice number 
-                InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
+                string invoiceNum;
+                List<clsSearch> invoices = (List<clsSearch>)mainInvDG.ItemsSource;
+                clsSearch invoice = invoices.FirstOrDefault();
 
-                // deletes current invoice
-                clsML.DeleteInvoice(InvoiceNum);
+
+                invoiceNum = invoice.InvoiceNum;
+
+                // deletes current invoice and line item
+                clsML.deleteLineItem(invoiceNum);
+                clsML.DeleteInvoice(invoiceNum);
 
                 // clear data grid
                 MainDataGrid.ItemsSource = null;
@@ -294,8 +298,8 @@ namespace Final_Project
                 // clear invoice number Label 
                 InvoiceNumberLbl.Content = "";
 
-
-
+                mainInvDG.ItemsSource = null;
+                MainDataGrid.ItemsSource = null;
             }
             catch (Exception ex)
             {

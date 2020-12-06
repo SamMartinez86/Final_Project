@@ -91,17 +91,34 @@ namespace Final_Project
         /// <summary>
         /// This method deletes invoices
         /// </summary>
-        public void DeleteInvoice(string invoicenum)
+        public void DeleteInvoice(string invoiceNum)
         {
             try
             {
                 
                 // SQL statement to delete invoice
-                sSQL = SQLMain.DeleteInvoices(invoicenum);
+                sSQL = SQLMain.DeleteInvoices(invoiceNum);
 
                 // Passing the sSQL string to be executed
                 db.ExecuteNonQuery(sSQL);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method will delete all items from an invoice
+        /// </summary>
+        /// <param name="invoiceNum"></param>
+        public void deleteLineItem(string invoiceNum)
+        {
+            try
+            {
+                string sSQL = SQLMain.DeleteLineItems(invoiceNum);
+                db.ExecuteNonQuery(sSQL);
             }
             catch (Exception ex)
             {
