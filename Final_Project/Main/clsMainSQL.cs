@@ -52,6 +52,19 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+        
+        public string SelectInvoiceNumber()
+        {
+            try
+            {
+                string sSQL = "SELECT MAX(InvoiceNum) FROM Invoices";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// This SQL updates the data for a given Invoice number

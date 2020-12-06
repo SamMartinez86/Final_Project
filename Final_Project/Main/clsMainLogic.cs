@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Data;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 namespace Final_Project
 {
@@ -22,6 +23,10 @@ namespace Final_Project
         /// Item SQL object
         /// </summary>
         clsItemsSQL SQLItems;
+        /// <summary>
+        /// Search SQL object
+        /// </summary>
+        clsSearchSQL SQLSearch;
         /// <summary>
         /// data access class
         /// </summary>
@@ -62,11 +67,19 @@ namespace Final_Project
         /// This method will return the selected invoice number to the main window
         /// </summary>
         /// <returns></returns>
-        public string getInvoiceNum()
+        public string getInvoiceNum(bool isNewInvoice = false)
         {
             try
             {
-                return selectedInvoiceNumber;
+                if(!isNewInvoice)
+                    return selectedInvoiceNumber;
+                DataSet ds;
+                int iRet = 0;                
+
+                ds = db.ExecuteSQLStatement(SQLMain.SelectInvoiceNumber(), ref iRet);
+
+                return ds.Tables[0].Rows[0].ItemArray[0].ToString();
+
             }
             catch (Exception ex)
             {
@@ -163,17 +176,43 @@ namespace Final_Project
             return ds.Tables[0].Rows[0].ItemArray[0].ToString();
         }
 
-        //public List<Item> getItems(string code)
-        //{
-            
-        //}
+        /// <summary>
+        /// Method removes an item from 
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="cost"></param>
+        public void deleteItem(string desc, string cost)
+        {
+            string itemCode = SQLItems.SelectDistinctItemCodeByDescCost(desc, cost);
+            string query = SQLItems.DeleteItem(itemCode);
+            db.ExecuteNonQuery(query);
+        }
 
         /// <summary>
-        /// this method handles errors 
+        /// Method will insert several line items to a single invoice.
         /// </summary>
-        /// <param name="sClass"></param>
-        /// <param name="sMethod"></param>
-        /// <param name="sMessage"></param>
+        /// <param name="itemCodes"></param>
+        /// <param name="invoiceNum"></param>
+        public void insertLineItems(List<string> itemCodes, string invoiceNum)
+        {
+            int lineNum = 1;
+            foreach(var item in itemCodes)
+            {
+                SQLMain.InsertLineItems(invoiceNum, lineNum.ToString(), item);
+                lineNum++;
+            }
+        }
+
+        /// <summary>
+        /// Method adds a new invoice into the database
+        /// </summary>
+        /// <param name="totalCost"></param>
+        /// <param name="date"></param>
+        public void createInvoice(string totalCost, string date)
+        {
+            db.ExecuteNonQuery(SQLMain.InsertInvoices(date, totalCost));
+        }
+        
         private void HandleError(string sClass, string sMethod, string sMessage)
         {
             try

@@ -393,6 +393,36 @@ namespace Final_Project
 
                 newInvoiceItems.Add(new NewInvoiceData { itemCost = cost, itemDescription = selectedItem });
 
+                NewInvoiceDataGrid.ItemsSource = null;
+                NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
+
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method removes a selected item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveItemFromNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NewInvoiceData selectedItem = (NewInvoiceData)NewInvoiceDataGrid.SelectedItem;
+
+                string desc = selectedItem.itemDescription;
+                string cost = selectedItem.itemCost;
+
+                NewInvoiceData itemToDelete = newInvoiceItems.Where(a => a.itemDescription == desc && a.itemCost == cost).FirstOrDefault();
+                newInvoiceItems.Remove(itemToDelete);
+
+                NewInvoiceDataGrid.ItemsSource = null;
                 NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
             }
             catch (Exception ex)
@@ -432,6 +462,57 @@ namespace Final_Project
             try
             {
                 // save current invoice
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        private void SaveNewInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int totalCost = 0;
+                foreach (NewInvoiceData item in NewInvoiceDataGrid.ItemsSource)
+                {
+                    int cost = Convert.ToInt32(item.itemCost);
+                    totalCost += cost;                    
+                }
+
+                string date = InvoiceDate.SelectedDate.ToString();
+                string invoiceNum;
+
+                clsML.createInvoice(totalCost.ToString(), date);
+
+                invoiceNum = clsML.getInvoiceNum();
+                List<string> itemCodes = new List<string>();
+                foreach(NewInvoiceData item in NewInvoiceDataGrid.ItemsSource)
+                {
+                    var cost = item.itemCost;
+                    var desc = item.itemDescription;
+                    string itemCode = clsML.getItemCode(desc, cost);
+
+                    itemCodes.Add(itemCode);
+                }
+
+                clsML.insertLineItems(itemCodes, invoiceNum);                
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        private void CancelNewInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Cancel new invoice creation
             }
             catch (Exception ex)
             {
@@ -551,11 +632,6 @@ namespace Final_Project
 
         #endregion
 
-        private void RemoveItemFromNewBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// This helper method locks the edit region
         /// </summary>
@@ -642,6 +718,7 @@ namespace Final_Project
                             MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
         }
+
     }
 }
 
