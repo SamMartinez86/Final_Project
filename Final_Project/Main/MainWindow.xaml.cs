@@ -356,10 +356,6 @@ namespace Final_Project
         }
 
 
-        private void AddItemBtn(object sender, RoutedEventArgs e)
-        {
-
-        }
         /// <summary>
         /// click event for add item button
         /// </summary>
@@ -369,7 +365,37 @@ namespace Final_Project
         {
             try
             {
-                // adds an items to the current invoice
+                // select item
+                // query cost
+                // query item code using item cost / descr
+                // insert into items
+
+                if(editItemsCB.SelectedIndex != -1)
+                {
+                    ///This stores the item that will be added to an existing invoice
+                    string itemToAddDesc = editItemsCB.SelectedItem.ToString();
+
+                    ///This stores the cost of the item to be added to an existing invoice
+                    string addedItemCost = clsML.getItemCost(itemToAddDesc);
+
+                    /// This stores the item code of the item to be added to an existing invoice
+                    string addedItemCode = clsML.getItemCode(itemToAddDesc, addedItemCost);
+
+                    /// This stores the max line item count for the given invoice number
+                    string maxLineItem = clsML.getMaxLineItem(InvoiceNum);
+
+                    // Saving the max line item for specified invoic number
+                    int i = Convert.ToInt32(maxLineItem);
+
+                    // adding one to the max
+                    string newMaxLinNum = (i + 1).ToString();
+
+                    clsML.updateExistingInv(InvoiceNum, newMaxLinNum, addedItemCode);
+                }
+
+                dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+                MainDataGrid.ItemsSource = dataGridList;
+
             }
             catch (Exception ex)
             {
@@ -441,8 +467,8 @@ namespace Final_Project
         private void RemoveItemBtn_Click(object sender, RoutedEventArgs e)
         {
             try
-            {   
-                // removes items from current invoice
+            {
+                string itemToDelete;
             }
             catch (Exception ex)
             {

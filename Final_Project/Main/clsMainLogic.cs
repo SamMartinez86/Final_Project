@@ -202,6 +202,54 @@ namespace Final_Project
                 lineNum++;
             }
         }
+        /// <summary>
+        /// This method will return the max line item number from 
+        /// a specified invoice number
+        /// </summary>
+        /// <param name="invNum"></param>
+        /// <returns></returns>
+        public string getMaxLineItem(string invNum)
+        {
+            try
+            {
+                sSQL = SQLMain.selectMaxLineItem(invNum);
+
+                string maxLine = db.ExecuteScalarSQL(sSQL);
+
+                return maxLine;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This method will insert a new line item into the and existing invoice
+        /// </summary>
+        /// <param name="invNum"></param>
+        /// <param name="lineItemNum"></param>
+        /// <param name="itemCode"></param>
+        /// <returns></returns>
+        public void updateExistingInv(string invNum, string lineItemNum, string itemCode)
+        {
+            try
+            {
+                sSQL = SQLMain.InsertLineItems(invNum, lineItemNum, itemCode);
+
+                db.ExecuteNonQuery(sSQL);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        //public List<Item> getItems(string code)
+        //{
+            
+        //}
 
         /// <summary>
         /// Method adds a new invoice into the database

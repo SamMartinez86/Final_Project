@@ -73,7 +73,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "SELECT ItemCode FROM ItemDesc WHERE ItemDesc = " + "'" + itemDesc + "'" + " AND Cost = " + "'" + cost + "'";
+                string sSQL = "SELECT ItemCode FROM ItemDesc WHERE ItemDesc = " + "'" + itemDesc + "'" + " AND Cost = " + cost;
                 return sSQL;
             }
             catch (Exception ex)

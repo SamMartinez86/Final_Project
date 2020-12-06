@@ -134,7 +134,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "INSERT INTO LineItems (InvoiceNum, LineItemNum, ItemCode) Values ("+ sInvoiceNum + "," + sLineItemNum + "," + sItemCode + ")";
+                string sSQL = "INSERT INTO LineItems (InvoiceNum, LineItemNum, ItemCode) Values ("+ sInvoiceNum + "," + sLineItemNum + ",'" + sItemCode + "' )";
                 return sSQL;
             }
             catch (Exception ex)
@@ -212,6 +212,27 @@ namespace Final_Project
                 string sSQL = "SELECT LineItems.ItemCode, ItemDesc.ItemDesc, ItemDesc.Cost " +
                               "FROM LineItems, ItemDesc Where LineItems.ItemCode = ItemDesc.ItemCode " +
                               "And LineItems.InvoiceNum = " + sInvoiceNum;
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This SQL will be used to find the last line item number
+        /// so a new one can be inserted
+        /// </summary>
+        /// <param name="invNum"></param>
+        /// <returns></returns>
+        public string selectMaxLineItem(string invNum)
+        {
+            try
+            {
+                string sSQL = "SELECT MAX(LineItemNum)" +
+                               "FROM LineItems " +
+                               "WHERE InvoiceNum = " + invNum;
                 return sSQL;
             }
             catch (Exception ex)
