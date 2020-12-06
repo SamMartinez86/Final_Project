@@ -23,12 +23,6 @@ namespace Final_Project
     /// </summary>
     public partial class MainWindow : Window
     {
-        public struct NewInvoiceData 
-        { 
-            public string itemDescription { set; get; }
-            public string itemCost { set; get; }
-        }
-
 
         #region Attributes
 
@@ -68,7 +62,7 @@ namespace Final_Project
         /// </summary>
         List<Item> Items = new List<Item>();
 
-        List<NewInvoiceData> newInvoiceItems;
+        List<Item> newInvoiceItems;
 
         /// <summary>
         /// List constructor
@@ -131,7 +125,7 @@ namespace Final_Project
             lockEditRegion();
 
             createInvCV.IsEnabled = true;
-            
+
 
 
             MainWindowInvoice = new clsSearch();
@@ -139,20 +133,7 @@ namespace Final_Project
             // Populating the item lists in the drop downs
             popItemLists();
 
-            ////Set up the New Invoice Data Grid
-            //DataGridTextColumn itemDescription = new DataGridTextColumn();
-            //DataGridTextColumn itemCost = new DataGridTextColumn();
-
-            //itemDescription.Header = "Item Description";
-            //itemDescription.Binding = new Binding("ItemDescription");
-
-            //itemCost.Header = "Item Cost";
-            //itemCost.Binding = new Binding("ItemCost");
-
-            //NewInvoiceDataGrid.Columns.Add(itemDescription);
-            //NewInvoiceDataGrid.Columns.Add(itemCost);
-
-            newInvoiceItems = new List<NewInvoiceData>();
+            newInvoiceItems = new List<Item>();
 
         }
 
@@ -416,8 +397,9 @@ namespace Final_Project
             {
                 string selectedItem = itemsCb.SelectedItem.ToString();
                 string cost = clsML.getItemCost(selectedItem);
+                string itemCode = clsML.getItemCode(selectedItem, cost);
 
-                newInvoiceItems.Add(new NewInvoiceData { itemCost = cost, itemDescription = selectedItem });
+                newInvoiceItems.Add(new Item { itemCode = itemCode, itemCost = cost, itemDesc = selectedItem });
 
                 NewInvoiceDataGrid.ItemsSource = null;
                 NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
@@ -440,12 +422,12 @@ namespace Final_Project
         {
             try
             {
-                NewInvoiceData selectedItem = (NewInvoiceData)NewInvoiceDataGrid.SelectedItem;
+                Item selectedItem = (Item)NewInvoiceDataGrid.SelectedItem;
 
-                string desc = selectedItem.itemDescription;
+                string desc = selectedItem.itemDesc;
                 string cost = selectedItem.itemCost;
 
-                NewInvoiceData itemToDelete = newInvoiceItems.Where(a => a.itemDescription == desc && a.itemCost == cost).FirstOrDefault();
+                Item itemToDelete = newInvoiceItems.Where(a => a.itemDesc == desc && a.itemCost == cost).FirstOrDefault();
                 newInvoiceItems.Remove(itemToDelete);
 
                 NewInvoiceDataGrid.ItemsSource = null;
@@ -502,7 +484,7 @@ namespace Final_Project
             try
             {
                 int totalCost = 0;
-                foreach (NewInvoiceData item in NewInvoiceDataGrid.ItemsSource)
+                foreach (Item item in NewInvoiceDataGrid.ItemsSource)
                 {
                     int cost = Convert.ToInt32(item.itemCost);
                     totalCost += cost;                    
@@ -515,10 +497,10 @@ namespace Final_Project
 
                 invoiceNum = clsML.getInvoiceNum();
                 List<string> itemCodes = new List<string>();
-                foreach(NewInvoiceData item in NewInvoiceDataGrid.ItemsSource)
+                foreach(Item item in NewInvoiceDataGrid.ItemsSource)
                 {
                     var cost = item.itemCost;
-                    var desc = item.itemDescription;
+                    var desc = item.itemDesc;
                     string itemCode = clsML.getItemCode(desc, cost);
 
                     itemCodes.Add(itemCode);
