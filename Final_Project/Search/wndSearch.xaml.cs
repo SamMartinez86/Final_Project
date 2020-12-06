@@ -119,10 +119,10 @@ namespace Final_Project
         {
             try
             {
-                if(!selectionMade)
+                clsSearch selection = (clsSearch)srchDataGrid.SelectedItem;
+
+                if (selection == null)
                 {
-
-
                     MessageBox.Show("Please select an invoice", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
