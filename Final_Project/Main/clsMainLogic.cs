@@ -276,8 +276,8 @@ namespace Final_Project
         {
             try
             {
-                
-                sSQL = SQLMain.DeleteLineItems(invNum, itemCode);
+              
+                sSQL = SQLMain.DeleteLineItem(invNum, itemCode);
 
                 db.ExecuteNonQuery(sSQL);
             }

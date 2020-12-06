@@ -278,7 +278,7 @@ namespace Final_Project
 
                 // Disabling all but the edit table
                 createInvCV.IsEnabled = false;
-                currentInvoiceCV.IsEnabled = false;
+
             }
             catch (Exception ex)
             {
@@ -616,9 +616,6 @@ namespace Final_Project
             {
                 // enable edit invoice button
                 EditInvoiceBtn.IsEnabled = false;
-
-                // enable delete invoice button   
-                DltInvoiceBtn.IsEnabled = false;
 
                 // enable add item button
                 AddItemToCurrentBtn.IsEnabled = false;

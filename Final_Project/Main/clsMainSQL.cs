@@ -91,12 +91,32 @@ namespace Final_Project
         /// </summary>
         /// <param name="sInvoiceNum"></param>
         /// <returns></returns>
-        public string DeleteLineItems(string sInvoiceNum, string itemCode)
+        public string DeleteLineItem(string sInvoiceNum, string itemCode)
         {
             try
             {
                 string sSQL = "DELETE FROM LineItems WHERE InvoiceNum = "+ sInvoiceNum +
                               " AND ItemCode = '" + itemCode + "'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// This SQL deletes data with reference to the specified
+        /// invoice number
+        /// </summary>
+        /// <param name="sInvoiceNum"></param>
+        /// <returns></returns>
+        public string DeleteLineItems(string sInvoiceNum)
+        {
+            try
+            {
+                string sSQL = "DELETE FROM LineItems WHERE InvoiceNum = " + sInvoiceNum;
                 return sSQL;
             }
             catch (Exception ex)
