@@ -85,7 +85,7 @@
                 <RowDefinition Height="61*"/>
                 <RowDefinition Height="267*"/>
             </Grid.RowDefinitions>
-            <Canvas Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2" Margin="-17,-21,-16,0.333" Grid.ColumnSpan="2">
+            <Canvas Name="cvEditInvoice" Background="#FF6BB9DD" Opacity="0.7" Grid.RowSpan="2" Margin="-17,-21,-16,0.333" Grid.ColumnSpan="2">
                 <Canvas.Effect>
                     <DropShadowEffect/>
                 </Canvas.Effect>

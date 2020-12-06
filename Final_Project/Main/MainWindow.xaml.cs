@@ -277,8 +277,18 @@ namespace Final_Project
                 popItemLists();
 
                 // Disabling all but the edit table
-                createInvCV.IsEnabled = false;
-
+                if (createInvCV.IsEnabled == true)
+                {
+                    createInvCV.IsEnabled = false;
+                    EditInvoiceBtn.Content = "Stop Editing";
+                    cvEditInvoice.IsEnabled = true;
+                }
+                else
+                {
+                    createInvCV.IsEnabled = true;
+                    cvEditInvoice.IsEnabled = false;
+                    EditInvoiceBtn.Content = "Edit Invoice";
+                }
             }
             catch (Exception ex)
             {

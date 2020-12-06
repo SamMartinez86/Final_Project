@@ -142,7 +142,7 @@ namespace Final_Project
         {
             try
             {
-                Item item = (Item)(dataRow.DataContext);
+                Item item = (Item)(ItemDataGrid.SelectedItem);
                 if(item == null)
                 {
                     MessageBox.Show("Please first select an item to delete by double clicking an item in the grid.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);   
