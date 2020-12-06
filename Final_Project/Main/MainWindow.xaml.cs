@@ -490,23 +490,20 @@ namespace Final_Project
                     totalCost += cost;                    
                 }
 
-                string date = InvoiceDate.SelectedDate.ToString();
+                string date = InvoiceDate.SelectedDate.ToString().Split(' ')[0];
                 string invoiceNum;
 
                 clsML.createInvoice(totalCost.ToString(), date);
 
-                invoiceNum = clsML.getInvoiceNum();
+                invoiceNum = clsML.getInvoiceNum(true);
                 List<string> itemCodes = new List<string>();
                 foreach(Item item in NewInvoiceDataGrid.ItemsSource)
                 {
-                    var cost = item.itemCost;
-                    var desc = item.itemDesc;
-                    string itemCode = clsML.getItemCode(desc, cost);
-
-                    itemCodes.Add(itemCode);
+                    itemCodes.Add(item.itemCode);
                 }
 
-                clsML.insertLineItems(itemCodes, invoiceNum);                
+                clsML.insertLineItems(itemCodes, invoiceNum);
+                ClearNewInvoice();
             }
             catch (Exception ex)
             {
@@ -514,6 +511,14 @@ namespace Final_Project
                 HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
                             MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
+        }
+
+        private void ClearNewInvoice()
+        {
+            itemsCb.SelectedIndex = -1;
+            NewInvoiceDataGrid.ItemsSource = null;
+            InvoiceDate.SelectedDate = null;
+            newInvoiceItems = new List<Item>();
         }
 
         private void CancelNewInvoiceBtn_Click(object sender, RoutedEventArgs e)

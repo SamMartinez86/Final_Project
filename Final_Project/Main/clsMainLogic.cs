@@ -198,7 +198,7 @@ namespace Final_Project
             int lineNum = 1;
             foreach(var item in itemCodes)
             {
-                SQLMain.InsertLineItems(invoiceNum, lineNum.ToString(), item);
+                db.ExecuteNonQuery(SQLMain.InsertLineItems(invoiceNum, lineNum.ToString(), item));
                 lineNum++;
             }
         }

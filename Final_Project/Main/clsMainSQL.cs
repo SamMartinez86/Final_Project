@@ -154,7 +154,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "INSERT INTO Invoices (InvoiceDate, TotalCost) Values ('#" + sInvoiceDate + "#', " + sTotalCost + ")";
+                string sSQL = "INSERT INTO Invoices (InvoiceDate, TotalCost) Values ('" + sInvoiceDate + "', " + "'" + sTotalCost + "')";
                 return sSQL;
             }
             catch (Exception ex)
