@@ -58,6 +58,16 @@ namespace Final_Project
         clsMainLogic clsML;
 
         /// <summary>
+        /// search class object
+        /// </summary>
+        clsSearch clsSearch;
+
+        /// <summary>
+        /// item class object
+        /// </summary>
+        Item clsItem;
+
+        /// <summary>
         /// List of items
         /// </summary>
         List<Item> Items = new List<Item>();
@@ -107,6 +117,12 @@ namespace Final_Project
 
             // New Main object
             clsML = new clsMainLogic();
+
+            // New search class object
+            clsSearch = new clsSearch();
+
+            // new item class object
+            clsItem = new Item();
 
             // new search object
             CurrentSearch = new wndSearch();
@@ -454,7 +470,23 @@ namespace Final_Project
         {
             try
             {
-                string itemToDelete;
+                // getting the item description from the selected index
+                Item selectedIndex = ((Item)MainDataGrid.SelectedItem);
+
+                Item selectedCost = ((Item)MainDataGrid.SelectedItem);
+
+                string cost = selectedCost.itemCost;
+
+                string desc = selectedIndex.itemDesc;
+
+                /// This stores the item code of the item to be added to an existing invoice
+                string itemCodeToDelete = clsML.getItemCode(desc, cost);
+
+                clsML.removeItemFromInv(InvoiceNum, itemCodeToDelete);
+
+
+                dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+                MainDataGrid.ItemsSource = dataGridList;
             }
             catch (Exception ex)
             {
@@ -494,20 +526,23 @@ namespace Final_Project
                     totalCost += cost;                    
                 }
 
-                string date = InvoiceDate.SelectedDate.ToString().Split(' ')[0];
+                string date = InvoiceDate.SelectedDate.ToString();
                 string invoiceNum;
 
-                clsML.createInvoice(totalCost.ToString(), date);
+        //        clsML.createInvoice(totalCost.ToString(), date);
 
-                invoiceNum = clsML.getInvoiceNum(true);
+                invoiceNum = clsML.getInvoiceNum();
                 List<string> itemCodes = new List<string>();
                 foreach(Item item in NewInvoiceDataGrid.ItemsSource)
                 {
-                    itemCodes.Add(item.itemCode);
+                    var cost = item.itemCost;
+                    var desc = item.itemDesc;
+                    string itemCode = clsML.getItemCode(desc, cost);
+
+                    itemCodes.Add(itemCode);
                 }
 
-                clsML.insertLineItems(itemCodes, invoiceNum);
-                ClearNewInvoice();
+                clsML.insertLineItems(itemCodes, invoiceNum);                
             }
             catch (Exception ex)
             {
@@ -515,14 +550,6 @@ namespace Final_Project
                 HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
                             MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
-        }
-
-        private void ClearNewInvoice()
-        {
-            itemsCb.SelectedIndex = -1;
-            NewInvoiceDataGrid.ItemsSource = null;
-            InvoiceDate.SelectedDate = null;
-            newInvoiceItems = new List<Item>();
         }
 
         private void CancelNewInvoiceBtn_Click(object sender, RoutedEventArgs e)
@@ -736,6 +763,10 @@ namespace Final_Project
             }
         }
 
+        //private void SaveNewInvoiceBtn_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
     }
 }
 

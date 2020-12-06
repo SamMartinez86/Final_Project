@@ -54,6 +54,7 @@ namespace Final_Project
         List<Item> items;
 
 
+
         public clsMainLogic()
         {
             SQLMain = new clsMainSQL();
@@ -264,9 +265,32 @@ namespace Final_Project
 
         }
 
+        /// <summary>
+        /// This method will remove an item from a specified invoice
+        /// </summary>
+        /// <param name="invNum"></param>
+        /// <param name="lineItemNum"></param>
+        /// <param name="itemCode"></param>
+        /// <returns></returns>
+        public void removeItemFromInv(string invNum, string itemCode)
+        {
+            try
+            {
+                
+                sSQL = SQLMain.DeleteLineItems(invNum, itemCode);
+
+                db.ExecuteNonQuery(sSQL);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
         //public List<Item> getItems(string code)
         //{
-            
+
         //}
 
         /// <summary>
