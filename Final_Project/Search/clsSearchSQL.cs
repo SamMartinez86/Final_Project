@@ -10,9 +10,13 @@ namespace Final_Project
     class clsSearchSQL
     {
 
-
+        #region attributes
 
         private string sSQL;
+
+        #endregion
+
+        #region methods
         /// <summary>
         /// This SQL gets all data from the Invoice table
         /// </summary>
@@ -27,7 +31,7 @@ namespace Final_Project
             catch (Exception ex)
             {
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-            }         
+            }
         }
 
         /// <summary>
@@ -165,6 +169,8 @@ namespace Final_Project
 
         }
 
-    }// end clsSearchSQL
+    }
+
+    #endregion
 }
 

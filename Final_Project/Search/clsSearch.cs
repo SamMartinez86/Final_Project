@@ -9,6 +9,9 @@ namespace Final_Project
 {
     public class clsSearch
     {
+
+        #region properties
+
         /// <summary>
         /// This is the variable for the Invoice ID
         /// </summary>
@@ -23,6 +26,8 @@ namespace Final_Project
         /// Variable for the Invoice Date
         /// </summary>
         public string InvoiceDate { get; set; }
+
+        #endregion
 
     }
 }

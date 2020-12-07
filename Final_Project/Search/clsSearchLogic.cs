@@ -8,14 +8,14 @@ using System.Data;
 
 namespace Final_Project
 {
-     public class clsSearchLogic
+    public class clsSearchLogic
     {
-        #region var init
+        #region attributes
+
         /// <summary>
         /// New clsSearchSQL class
         /// </summary>
         clsSearchSQL SQLSearch = new clsSearchSQL();
-
 
         /// <summary>
         /// Instantiating the new clsDataAccess
@@ -38,6 +38,14 @@ namespace Final_Project
         private List<clsSearch> Invoices;
 
         /// <summary>
+        /// a boolean variable has been set
+        /// </summary>
+        public bool invNumSet = false;
+
+        #endregion
+
+        #region constructor
+        /// <summary>
         /// clsSearchLogic object
         /// </summary>
         public clsSearchLogic()
@@ -45,12 +53,7 @@ namespace Final_Project
 
         }
 
-        /// <summary>
-        /// a boolean variable has been set
-        /// </summary>
-        public bool invNumSet = false;
-
-        #endregion var init
+        #endregion
 
         #region methods
 
@@ -62,8 +65,10 @@ namespace Final_Project
         {
             try
             {
+                // get invoice number 
                 selectedInvoiceNumber = invoiceNum;
 
+                // set invoice number boolean to true
                 invNumSet = true;
             }
             catch (Exception ex)
@@ -80,10 +85,9 @@ namespace Final_Project
         {
             try
             {
+                // return selected invoice number
                 return selectedInvoiceNumber;
 
-
-                //invNumSet = false;
             }
             catch (Exception ex)
             {
@@ -102,7 +106,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -112,7 +116,7 @@ namespace Final_Project
 
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
 
-                for(int i = 0; i < iRet; i++)
+                for (int i = 0; i < iRet; i++)
                 {
                     // Adding the Invoice number, invoice cost and invoice date
                     Invoices.Add(new clsSearch
@@ -143,7 +147,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -183,7 +187,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -223,7 +227,7 @@ namespace Final_Project
                 /// Making a new list to store the invoices
                 Invoices = new List<clsSearch>();
 
-                // Creating datat set to hold the data
+                // Creating data set to hold the data
                 DataSet ds;
 
                 /// This is the returned from the executed SQL statement
@@ -298,7 +302,7 @@ namespace Final_Project
         /// This method returns all information for the invoices
         /// </summary>
         /// <returns></returns>
-        public List<clsSearch> getAllData(string invNum, string totCost, string invDate )
+        public List<clsSearch> getAllData(string invNum, string totCost, string invDate)
         {
             try
             {
@@ -340,7 +344,7 @@ namespace Final_Project
         /// total cost and the date
         /// </summary>
         /// <returns></returns>
-        public List<clsSearch> getCostDate( string totCost, string invDate)
+        public List<clsSearch> getCostDate(string totCost, string invDate)
         {
             try
             {
@@ -421,5 +425,5 @@ namespace Final_Project
 
         #endregion methods
 
-    } // end class
+    }
 }

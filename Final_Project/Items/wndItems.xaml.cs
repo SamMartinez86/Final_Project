@@ -19,7 +19,8 @@ namespace Final_Project
     /// </summary>
     public partial class wndItems : Window
     {
-        #region Class Members
+        #region attributes
+
         /// <summary>
         /// This is a boolean to tell the Main 
         /// Page whether or not it needs to refresh.
@@ -39,13 +40,22 @@ namespace Final_Project
         /// row
         /// </summary>
         private DataGridRow dataRow;
+
         #endregion
+
+        #region constructor
 
         public wndItems()
         {
             InitializeComponent();
+
+            // get items to populate data grid
             ItemDataGrid.ItemsSource = product.getItems();
         }
+
+        #endregion
+
+        #region methods
 
         /// <summary>
         /// Button to Add an item
@@ -56,18 +66,22 @@ namespace Final_Project
         {
             try
             {
+                // variables for items class properties 
                 string code = codeTxtBox.Text;
                 string desc = descTxtBox.Text;
                 string cost = costTxtBox.Text;
+
+                // add items
                 product.addItem(code, desc, cost);
 
-                ItemDataGrid.ItemsSource = null;           
+                // get items and clear all text boxes
+                ItemDataGrid.ItemsSource = null;
                 ItemDataGrid.ItemsSource = product.getItems();
                 codeTxtBox.Text = "";
                 descTxtBox.Text = "";
                 costTxtBox.Text = "";
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -83,11 +97,13 @@ namespace Final_Project
         {
             try
             {
+                // enable edit button
                 editButton.IsEnabled = true;
 
+                // select data grid row
                 dataRow = (DataGridRow)sender;
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -105,8 +121,10 @@ namespace Final_Project
         {
             try
             {
+                // item data grid is read only
                 if (ItemDataGrid.IsReadOnly)
                 {
+
                     ItemDataGrid.IsReadOnly = false;
                     editButton.Content = "Save Edit";
                     return;
@@ -117,15 +135,18 @@ namespace Final_Project
                     editButton.Content = "Edit Item";
                 }
 
+                // store selected info in item
                 Item item = (Item)(dataRow.DataContext);
 
+                // variables for items class properties 
                 string code = item.itemCode;
                 string desc = item.itemDesc;
                 string cost = item.itemCost;
 
+                // call update item method
                 product.updateItem(code, desc, cost);
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -142,16 +163,20 @@ namespace Final_Project
         {
             try
             {
+                // store selected info in item
                 Item item = (Item)(ItemDataGrid.SelectedItem);
-                if(item == null)
+                if (item == null)
                 {
-                    MessageBox.Show("Please first select an item to delete by double clicking an item in the grid.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);   
+                    MessageBox.Show("Please first select an item to delete by double clicking an item in the grid.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
-                string code = item.itemCode;            
-            
+                // store item code
+                string code = item.itemCode;
+
+                // delete item is called
                 if (product.deleteItem(code))
                 {
+                    // return changes list
                     ItemDataGrid.ItemsSource = product.getItems();
                     return;
                 }
@@ -161,10 +186,12 @@ namespace Final_Project
                     MessageBox.Show("This item cannot be deleted because it is attached to Invoice : " + attachedInvoice, "Unsuccessful Deletion", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        #endregion
     }
 }

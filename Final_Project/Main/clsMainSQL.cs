@@ -7,15 +7,23 @@ using System.Reflection;
 using System.Globalization;
 
 namespace Final_Project
-{   
+{
     /// <summary>
     /// This sets all of the SQL query strings that will be used to
     /// gather information and data from the database
     /// </summary>
-    class clsMainSQL {
+    class clsMainSQL
+    {
+        #region attributes
 
+        /// <summary>
+        /// holds 
+        /// </summary>
         private string sSQL;
 
+        #endregion
+
+        #region methods
 
         /// <summary>
         /// This SQL gets all data from the Invoice table
@@ -52,7 +60,7 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
-        
+
         public string SelectInvoiceNumber()
         {
             try
@@ -96,7 +104,7 @@ namespace Final_Project
             try
             {
                 string sSQL = "DELETE FROM LineItems WHERE InvoiceNum = " + sInvoiceNum +
-                              " AND LineItemNum = " + lineItemNum ;
+                              " AND LineItemNum = " + lineItemNum;
 
                 return sSQL;
             }
@@ -152,11 +160,11 @@ namespace Final_Project
         /// <param name="val2"></param>
         /// <param name="sval3"></param>
         /// <returns></returns>
-        public string InsertLineItems(string sInvoiceNum, string sLineItemNum , string sItemCode)
+        public string InsertLineItems(string sInvoiceNum, string sLineItemNum, string sItemCode)
         {
             try
             {
-                string sSQL = "INSERT INTO LineItems (InvoiceNum, LineItemNum, ItemCode) Values ("+ sInvoiceNum + "," + sLineItemNum + ",'" + sItemCode + "' )";
+                string sSQL = "INSERT INTO LineItems (InvoiceNum, LineItemNum, ItemCode) Values (" + sInvoiceNum + "," + sLineItemNum + ",'" + sItemCode + "' )";
                 return sSQL;
             }
             catch (Exception ex)
@@ -281,6 +289,8 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
-        
+
+        #endregion
+
     }
 }

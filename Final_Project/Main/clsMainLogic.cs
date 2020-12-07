@@ -73,6 +73,8 @@ namespace Final_Project
 
         #endregion
 
+        #region methods
+
         /// <summary>
         /// This method will return the selected invoice number to the main window
         /// </summary>
@@ -81,11 +83,13 @@ namespace Final_Project
         {
             try
             {
+                // return invoice number
                 if (!isNewInvoice)
                     return selectedInvoiceNumber;
                 DataSet ds;
                 int iRet = 0;
 
+                // calls SQL statement
                 ds = db.ExecuteSQLStatement(SQLMain.SelectInvoiceNumber(), ref iRet);
 
                 return ds.Tables[0].Rows[0].ItemArray[0].ToString();
@@ -126,6 +130,7 @@ namespace Final_Project
         {
             try
             {
+                // call SQL delete statement
                 string sSQL = SQLMain.DeleteLineItems(invoiceNum);
                 db.ExecuteNonQuery(sSQL);
             }
@@ -156,13 +161,15 @@ namespace Final_Project
 
         internal ObservableCollection<Item> PopulateLineItemsOnInvoiceNum(string invoiceNum)
         {
+            // create observable collection list
             ObservableCollection<Item> list = new ObservableCollection<Item>();
             int iRet = 0;
             DataSet ds = new DataSet();
 
+            // call SQL line items query
             ds = db.ExecuteSQLStatement(SQLMain.SelectLineItemDesc(invoiceNum), ref iRet);
 
-
+            // fill observable collection
             for (int i = 0; i < iRet; i++)
             {
                 list.Add(new Item
@@ -172,6 +179,7 @@ namespace Final_Project
                     itemCost = ds.Tables[0].Rows[i]["Cost"].ToString()
                 });
             }
+            // return list
             return list;
 
 
@@ -188,18 +196,28 @@ namespace Final_Project
             int iRet = 0;
             DataSet ds = new DataSet();
 
+            // SQL get item cost
             ds = db.ExecuteSQLStatement(SQLItems.SelectDistinctItemCostByDesc(desc), ref iRet);
 
+            // return SQL query
             return ds.Tables[0].Rows[0].ItemArray[0].ToString();
         }
 
+        /// <summary>
+        /// get item code method
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="cost"></param>
+        /// <returns></returns>
         public string getItemCode(string desc, string cost)
         {
             int iRet = 0;
             DataSet ds = new DataSet();
 
+            // SQL statement get items codes 
             ds = db.ExecuteSQLStatement(SQLItems.SelectDistinctItemCodeByDescCost(desc, cost), ref iRet);
 
+            // return SQL query
             return ds.Tables[0].Rows[0].ItemArray[0].ToString();
         }
 
@@ -210,8 +228,11 @@ namespace Final_Project
         /// <param name="cost"></param>
         public void deleteItem(string desc, string cost)
         {
+            // use SQL query to find item code
             string itemCode = SQLItems.SelectDistinctItemCodeByDescCost(desc, cost);
             string query = SQLItems.DeleteItem(itemCode);
+
+            // execute delete SQL
             db.ExecuteNonQuery(query);
         }
 
@@ -222,9 +243,11 @@ namespace Final_Project
         /// <param name="invoiceNum"></param>
         public void insertLineItems(List<string> itemCodes, string invoiceNum)
         {
+            // loop through and insert line items
             int lineNum = 1;
             foreach (var item in itemCodes)
             {
+                // SQL insert statement
                 db.ExecuteNonQuery(SQLMain.InsertLineItems(invoiceNum, lineNum.ToString(), item));
                 lineNum++;
             }
@@ -239,10 +262,13 @@ namespace Final_Project
         {
             try
             {
+                // Get max line items of invoice number
                 sSQL = SQLMain.selectMaxLineItem(invNum);
 
+                // call SQL statement
                 string maxLine = db.ExecuteScalarSQL(sSQL);
 
+                // return max line
                 return maxLine;
             }
             catch (Exception ex)
@@ -262,8 +288,10 @@ namespace Final_Project
         {
             try
             {
+                // call method to get invoice number, item number and item code
                 sSQL = SQLMain.InsertLineItems(invNum, lineItemNum, itemCode);
 
+                // execute SQL statement
                 db.ExecuteNonQuery(sSQL);
             }
             catch (Exception ex)
@@ -284,9 +312,10 @@ namespace Final_Project
         {
             try
             {
-
+                // get invoice number and line item number
                 sSQL = SQLMain.DeleteLineItem(invNum, lineItemNum);
 
+                // execute SQL
                 db.ExecuteNonQuery(sSQL);
             }
             catch (Exception ex)
@@ -297,7 +326,7 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// gets the line item numer
+        /// gets the line item number
         /// </summary>
         /// <param name="invNum"></param>
         /// <param name="lineItemNum"></param>
@@ -307,14 +336,18 @@ namespace Final_Project
         {
             try
             {
+                // new Data set
                 DataSet ds = new DataSet();
 
                 int iRet = 0;
 
+                // get invoice number and code
                 sSQL = SQLMain.getLineItemNum(invNum, code);
 
+                // execute statement
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
 
+                // return query
                 return ds.Tables[0].Rows[0].ItemArray[0].ToString();
 
             }
@@ -325,11 +358,6 @@ namespace Final_Project
 
         }
 
-        //public List<Item> getItems(string code)
-        //{
-
-        //}
-
         /// <summary>
         /// Method adds a new invoice into the database
         /// </summary>
@@ -337,6 +365,7 @@ namespace Final_Project
         /// <param name="date"></param>
         public void createInvoice(string totalCost, string date)
         {
+            // create new invoice insert SQL
             db.ExecuteNonQuery(SQLMain.InsertInvoices(date, totalCost));
         }
 
@@ -352,6 +381,8 @@ namespace Final_Project
                 System.IO.File.AppendAllText("C:Error.txt", Environment.NewLine + "HandleError Exception: " + ex.Message);
             }
         }
+
+        #endregion
 
     }
 }

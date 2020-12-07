@@ -14,6 +14,8 @@ namespace Final_Project
     /// 
     class clsItemsSQL
     {
+
+        #region methods
         /// <summary>
         /// This SQL returns data information from the Item Description
         /// table
@@ -115,7 +117,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "UPDATE ItemDesc SET ItemDesc = " + "'" + sItemDesc +  "'" + ", " + "Cost = " + "'" + sItemCost + "'" + 
+                string sSQL = "UPDATE ItemDesc SET ItemDesc = " + "'" + sItemDesc + "'" + ", " + "Cost = " + "'" + sItemCost + "'" +
                               " WHERE ItemCode = " + "'" + sItemCode + "'";
                 return sSQL;
             }
@@ -158,7 +160,7 @@ namespace Final_Project
         {
             try
             {
-                string sSQL = "DELETE FROM ItemDesc WHERE ItemCode = " +  "'" + sItemCode + "'";
+                string sSQL = "DELETE FROM ItemDesc WHERE ItemCode = " + "'" + sItemCode + "'";
                 return sSQL;
             }
             catch (Exception ex)
@@ -166,6 +168,8 @@ namespace Final_Project
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+
+        #endregion
 
     }
 }

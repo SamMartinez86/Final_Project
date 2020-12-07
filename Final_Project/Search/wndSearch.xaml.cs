@@ -21,6 +21,9 @@ namespace Final_Project
     /// </summary>
     public partial class wndSearch : Window
     {
+
+        #region attributes
+
         /// <summary>
         /// Search Logic constructor
         /// </summary>
@@ -31,7 +34,9 @@ namespace Final_Project
         /// </summary>
         List<clsSearch> Invoices = new List<clsSearch>();
 
-        
+        #endregion
+
+        #region constructor
 
         public wndSearch()
         {
@@ -43,13 +48,13 @@ namespace Final_Project
             // Getting all invoice records from the Db
             Invoices = clsSL.GetAllInvoices();
 
-            foreach(var invoice in Invoices)
+            foreach (var invoice in Invoices)
             {
                 // need to display all invoices in each drop down
                 InvoiceCB.Items.Add(invoice.InvoiceNum);
                 TotalChargesCB.Items.Add(invoice.InvoiceCost);
                 DateCB.Items.Add(invoice.InvoiceDate);
-              
+
             }
 
             // Populating the data grid
@@ -60,7 +65,9 @@ namespace Final_Project
 
         }
 
-        #region var init
+        #endregion
+
+        #region attributes 2
 
         /// <summary>
         /// This boolean var show if the user
@@ -96,19 +103,14 @@ namespace Final_Project
         bool resetSelected = false;
 
         /// <summary>
-        /// This will store the invoice number the the user mouses over on the
+        /// This will store the invoice number the user mouses over on the
         /// search window
         /// </summary>
         private string selectedInv;
 
-
-
-        #endregion var init
-
+        #endregion 
 
         #region methods
-
-
 
         /// <summary>
         /// This Selects the specified invoice and redirects
@@ -119,6 +121,7 @@ namespace Final_Project
         {
             try
             {
+                // get selected item from data grid
                 clsSearch selection = (clsSearch)srchDataGrid.SelectedItem;
 
                 if (selection == null)
@@ -127,8 +130,8 @@ namespace Final_Project
                 }
                 else
                 {
+                    // call set vars method
                     setVars();
-
 
                     // take items from data grid and cast to object to move to main
                     clsSearch Invoice = (clsSearch)srchDataGrid.SelectedItem;
@@ -144,7 +147,7 @@ namespace Final_Project
             {
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -157,8 +160,10 @@ namespace Final_Project
 
             try
             {
+                // set boolean to true
                 resetSelected = true;
 
+                // call update data grid method
                 updateDG();
 
             }
@@ -178,8 +183,11 @@ namespace Final_Project
         {
             try
             {
+                // set invoice number chosen boolean to true
                 InvoiceNumChosen = true;
-                updateDG();          
+
+                // call update data grid method
+                updateDG();
             }
             catch (Exception ex)
             {
@@ -196,7 +204,10 @@ namespace Final_Project
         {
             try
             {
+                // set total charges boolean to true
                 TotalChargesChosen = true;
+
+                // call update data grid method
                 updateDG();
             }
             catch (Exception ex)
@@ -221,46 +232,47 @@ namespace Final_Project
                     // Resetting the data grid back to initial state
                     srchDataGrid.ItemsSource = clsSL.GetAllInvoices();
 
+                    // reset selected indexes
                     InvoiceCB.SelectedIndex = -1;
                     TotalChargesCB.SelectedIndex = -1;
                     DateCB.SelectedIndex = -1;
 
-                    // Resetting all bool values to false
+                    // Resetting all boolean values to false
                     InvoiceNumChosen = false;
                     TotalChargesChosen = false;
                     InvoiceDateChosen = false;
                     selectionMade = false;
 
-                    // resetting the reset bool
+                    // resetting the reset boolean
                     resetSelected = false;
                 }
 
-                // this checks each booleav var to determine with SQL statement should be executed
+                // this checks each boolean variable to determine with SQL statement should be executed
                 if (InvoiceNumChosen && !TotalChargesChosen && !InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getInvoice(InvoiceCB.SelectedItem as string);
                 }
-                else if(!InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
+                else if (!InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getTotalCharges(TotalChargesCB.SelectedItem as string);
                 }
-                else if(!InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
+                else if (!InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getInvoiceDate(dateChosen);
                 }
-                else if(InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
+                else if (InvoiceNumChosen && !TotalChargesChosen && InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getInvoiceNumDate(InvoiceCB.SelectedItem as string, dateChosen);
                 }
-                else if(InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
+                else if (InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getAllData(InvoiceCB.SelectedItem as string, TotalChargesCB.SelectedItem as string, dateChosen);
                 }
-                else if(!InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
+                else if (!InvoiceNumChosen && TotalChargesChosen && InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getCostDate(TotalChargesCB.SelectedItem as string, dateChosen);
                 }
-                else if(InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
+                else if (InvoiceNumChosen && TotalChargesChosen && !InvoiceDateChosen)
                 {
                     srchDataGrid.ItemsSource = clsSL.getNumCost(InvoiceCB.SelectedItem as string, TotalChargesCB.SelectedItem as string);
                 }
@@ -280,8 +292,10 @@ namespace Final_Project
         {
             try
             {
+                // set selected index for data grid to 0
                 srchDataGrid.SelectedIndex = 0;
-    
+
+                // get invoice number from data grid to pass the object to main
                 clsSL.setInvoiceNumber(((clsSearch)srchDataGrid.SelectedItem).InvoiceNum);
             }
             catch (Exception ex)
@@ -290,8 +304,6 @@ namespace Final_Project
             }
 
         }
-
-        #endregion methods
 
         /// <summary>
         /// 
@@ -302,13 +314,16 @@ namespace Final_Project
         {
             try
             {
-                if(DateCB.SelectedIndex != -1)
+                // if there is no selected date 
+                if (DateCB.SelectedIndex != -1)
                 {
+                    // change boolean for invoice date to true
                     InvoiceDateChosen = true;
 
                     // Splitting the string apart to only get the date and not the time 
                     dateChosen = DateCB.SelectedItem.ToString().Split(' ')[0];
 
+                    // call update data grid method
                     updateDG();
                 }
 
@@ -330,8 +345,8 @@ namespace Final_Project
         {
             try
             {
-                //selectedInv = (sender as DataGrid);
 
+                // get invoice number from data grid to pass the object to main
                 clsSL.setInvoiceNumber(((clsSearch)srchDataGrid.SelectedItem).InvoiceNum);
             }
             catch (Exception ex)
@@ -340,5 +355,7 @@ namespace Final_Project
             }
 
         }
-    }// end class
+
+        #endregion
+    }
 }
