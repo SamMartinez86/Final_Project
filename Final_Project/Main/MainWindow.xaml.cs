@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 
 namespace Final_Project
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,7 +25,6 @@ namespace Final_Project
     {
 
         #region Attributes
-
 
         /// <summary>
         /// Search window object
@@ -72,6 +71,9 @@ namespace Final_Project
         /// </summary>
         List<Item> Items = new List<Item>();
 
+        /// <summary>
+        /// list of invoice items
+        /// </summary>
         List<Item> newInvoiceItems;
 
         /// <summary>
@@ -90,19 +92,24 @@ namespace Final_Project
         public string InvcDt;
 
         /// <summary>
-        /// Bool var that tracks if the user has chosen to edit 
+        /// Boolean variable that tracks if the user has chosen to edit 
         /// an invoice
         /// </summary>
         private bool isOkayToEdit = false;
 
+        /// <summary>
+        /// static property for invoice & items
+        /// </summary>
         public static clsSearch MainWindowInvoice { get; set; }
 
-        public static ObservableCollection<Item> dataGridList; 
+        /// <summary>
+        /// observable collection object for data grid
+        /// </summary>
+        public static ObservableCollection<Item> dataGridList;
 
         #endregion
 
         #region Constructor
-
         public MainWindow()
         {
             InitializeComponent();
@@ -130,36 +137,33 @@ namespace Final_Project
             // new items object
             CurrentItems = new wndItems();
 
-            // Removing blank space in main dg
+            // Removing blank space in main data grid
             MainDataGrid.CanUserAddRows = false;
 
-            // Removing blank space in main invoice dg
+            // Removing blank space in main invoice data grid
             mainInvDG.CanUserAddRows = false;
             mainInvDG.IsReadOnly = true;
 
             // Locking the edit region until the user chooses to edit an invoice
             lockEditRegion();
 
+            // create invoice pane enable
             createInvCV.IsEnabled = true;
 
-
-
+            // create main window invoice object
             MainWindowInvoice = new clsSearch();
 
             // Populating the item lists in the drop downs
             popItemLists();
 
+            // new invoice list object
             newInvoiceItems = new List<Item>();
 
         }
 
+        // string variable to hold passed invoice number
         string InvoiceNum;
         #endregion
-
-        #region Properties
-
-        #endregion
-
 
         #region Methods
 
@@ -194,16 +198,13 @@ namespace Final_Project
         {
             try
             {
-
+                // new search window object
                 wndSearch CurrentSearch = new wndSearch();
-                
+
                 CurrentSearch.ShowDialog();
 
-                // collect invoice number 
-                //InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
-         
                 // check to see if the invoice number has been set
-                if(CurrentSearch.clsSL.invNumSet)
+                if (CurrentSearch.clsSL.invNumSet)
                 {
                     // collect invoice number 
                     InvoiceNum = CurrentSearch.clsSL.getInvoiceNum();
@@ -211,7 +212,7 @@ namespace Final_Project
                     // add invoice to invoice text box 
                     InvoiceNumberLbl.Content = MainWindowInvoice.InvoiceNum;
 
-                    // Populating the main inv num on main
+                    // Populating the main invoice number on main
                     mainInvDG.ItemsSource = clsSL.getInvoice(InvoiceNum);
 
                     // Unlocking the edit region
@@ -227,7 +228,7 @@ namespace Final_Project
                     currentInvoiceCV.IsEnabled = true;
 
                 }
-                     
+
 
             }
             catch (Exception ex)
@@ -267,7 +268,7 @@ namespace Final_Project
         {
             try
             {
-                // Setting the edit button bool tracker to true
+                // Setting the edit button boolean tracker to true
                 isOkayToEdit = true;
 
                 // Unlocking the edit region for the user
@@ -307,11 +308,14 @@ namespace Final_Project
         {
             try
             {
+                // instantiate string for invoice number
                 string invoiceNum;
+
+                // list of invoices object
                 List<clsSearch> invoices = (List<clsSearch>)mainInvDG.ItemsSource;
                 clsSearch invoice = invoices.FirstOrDefault();
 
-
+                // store invoice number from invoice
                 invoiceNum = invoice.InvoiceNum;
 
                 // deletes current invoice and line item
@@ -324,6 +328,7 @@ namespace Final_Project
                 // clear invoice number Label 
                 InvoiceNumberLbl.Content = "";
 
+                // clear data grids
                 mainInvDG.ItemsSource = null;
                 MainDataGrid.ItemsSource = null;
             }
@@ -347,16 +352,14 @@ namespace Final_Project
                 // creates new invoice 
 
                 // get new invoice number
-
                 InvcNum = (string)InvoiceNumberLbl.Content;
+
                 // insert new invoice with info from text boxes
                 clsML.NewInvoice(InvcNum, InvcDt);
 
                 // enable buttons & text boxes
                 enableItems();
 
-                // populate new invoice "TBD" number
-                //InvoiceNumberTxtBx.Text = 
             }
             catch (Exception ex)
             {
@@ -378,10 +381,10 @@ namespace Final_Project
             {
                 // select item
                 // query cost
-                // query item code using item cost / descr
+                // query item code using item cost / description
                 // insert into items
 
-                if(editItemsCB.SelectedIndex != -1)
+                if (editItemsCB.SelectedIndex != -1)
                 {
                     ///This stores the item that will be added to an existing invoice
                     string itemToAddDesc = editItemsCB.SelectedItem.ToString();
@@ -395,16 +398,20 @@ namespace Final_Project
                     /// This stores the max line item count for the given invoice number
                     string maxLineItem = clsML.getMaxLineItem(InvoiceNum);
 
-                    // Saving the max line item for specified invoic number
+                    // Saving the max line item for specified invoice number
                     int i = Convert.ToInt32(maxLineItem);
 
                     // adding one to the max
                     string newMaxLinNum = (i + 1).ToString();
 
+                    // call main logic update existing invoice method
                     clsML.updateExistingInv(InvoiceNum, newMaxLinNum, addedItemCode);
                 }
 
+                // fill data grid variable with line items
                 dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
+
+                // fill data grid with contents of variable
                 MainDataGrid.ItemsSource = dataGridList;
 
             }
@@ -425,13 +432,18 @@ namespace Final_Project
         {
             try
             {
+                // initialize string variables for items
                 string selectedItem = itemsCb.SelectedItem.ToString();
                 string cost = clsML.getItemCost(selectedItem);
                 string itemCode = clsML.getItemCode(selectedItem, cost);
 
+                // add items
                 newInvoiceItems.Add(new Item { itemCode = itemCode, itemCost = cost, itemDesc = selectedItem });
 
+                // clear data grid 
                 NewInvoiceDataGrid.ItemsSource = null;
+
+                // fill data grid with items
                 NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
 
             }
@@ -452,15 +464,23 @@ namespace Final_Project
         {
             try
             {
+                // fill item object with selected items
                 Item selectedItem = (Item)NewInvoiceDataGrid.SelectedItem;
 
+                // initialize variables with selected items
                 string desc = selectedItem.itemDesc;
                 string cost = selectedItem.itemCost;
 
+                // find items to delete
                 Item itemToDelete = newInvoiceItems.Where(a => a.itemDesc == desc && a.itemCost == cost).FirstOrDefault();
+
+                // remove items
                 newInvoiceItems.Remove(itemToDelete);
 
+                // clear data grid
                 NewInvoiceDataGrid.ItemsSource = null;
+
+                // fill data grid with new invoice items
                 NewInvoiceDataGrid.ItemsSource = newInvoiceItems;
             }
             catch (Exception ex)
@@ -483,40 +503,25 @@ namespace Final_Project
                 // getting the item description from the selected index
                 Item selectedIndex = ((Item)MainDataGrid.SelectedItem);
 
+                // get item cost from selected index
                 Item selectedCost = ((Item)MainDataGrid.SelectedItem);
 
+                // string variables for items class  
                 string cost = selectedCost.itemCost;
-
                 string desc = selectedIndex.itemDesc;
-
                 string code = selectedIndex.itemCode;
 
+                // call main logic get line items number method
                 string lineItemNum = clsML.getLineItemNum(InvoiceNum, code);
 
+                // main logic remove line items from invoice method
                 clsML.removeItemFromInv(InvoiceNum, lineItemNum);
 
-
+                // fill data grid variable with line items
                 dataGridList = clsML.PopulateLineItemsOnInvoiceNum(MainWindowInvoice.InvoiceNum);
-                MainDataGrid.ItemsSource = dataGridList;
-            }
-            catch (Exception ex)
-            {
-                //This is the top level method so we want to handle the exception
-                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
-                            MethodInfo.GetCurrentMethod().Name, ex.Message);
-            }
-        }
 
-        /// <summary>
-        /// Click event for save invoice button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SaveInvoiceBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // save current invoice
+                // fill data grid with contents of variable
+                MainDataGrid.ItemsSource = dataGridList;
             }
             catch (Exception ex)
             {
@@ -530,21 +535,28 @@ namespace Final_Project
         {
             try
             {
+                // variable to store total cost
                 int totalCost = 0;
+
+                // loop through and add costs
                 foreach (Item item in NewInvoiceDataGrid.ItemsSource)
                 {
                     int cost = Convert.ToInt32(item.itemCost);
-                    totalCost += cost;                    
+                    totalCost += cost;
                 }
 
+                // change selected invoice data to string
                 string date = InvoiceDate.SelectedDate.ToString();
                 string invoiceNum;
 
-        //        clsML.createInvoice(totalCost.ToString(), date);
-
+                // get invoice and store in variable
                 invoiceNum = clsML.getInvoiceNum();
+
+                // list for item codes
                 List<string> itemCodes = new List<string>();
-                foreach(Item item in NewInvoiceDataGrid.ItemsSource)
+
+                // loop through and add item codes
+                foreach (Item item in NewInvoiceDataGrid.ItemsSource)
                 {
                     var cost = item.itemCost;
                     var desc = item.itemDesc;
@@ -553,7 +565,8 @@ namespace Final_Project
                     itemCodes.Add(itemCode);
                 }
 
-                clsML.insertLineItems(itemCodes, invoiceNum);                
+                // call main logic insert line items method
+                clsML.insertLineItems(itemCodes, invoiceNum);
             }
             catch (Exception ex)
             {
@@ -568,25 +581,6 @@ namespace Final_Project
             try
             {
                 // Cancel new invoice creation
-            }
-            catch (Exception ex)
-            {
-                //This is the top level method so we want to handle the exception
-                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
-                            MethodInfo.GetCurrentMethod().Name, ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Item selected from combo box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void itemsCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                  
             }
             catch (Exception ex)
             {
@@ -619,7 +613,7 @@ namespace Final_Project
         }
 
         /// <summary>
-        /// This helper method disables buttons / cb's when the user is restricted access
+        /// This helper method disables buttons / combo boxes when the user is restricted access
         /// </summary>
         private void disableItems()
         {
@@ -682,7 +676,7 @@ namespace Final_Project
             }
         }
 
-        #endregion
+        
 
         /// <summary>
         /// This helper method locks the edit region
@@ -691,6 +685,7 @@ namespace Final_Project
         {
             try
             {
+                // enable buttons and clear text
                 editItemsCB.Text = "";
                 InvoiceNumberLbl.Content = "";
                 editItemsCB.IsEnabled = false;
@@ -717,12 +712,11 @@ namespace Final_Project
         {
             try
             {
+                // enable various buttons & fill invoice number
                 InvoiceNumberLbl.Content = InvoiceNum;
                 editItemsCB.IsEnabled = true;
                 AddItemToCurrentBtn.IsEnabled = true;
                 RemoveItemBtn.IsEnabled = true;
-
-
 
                 // enable buttons & text boxes
                 enableItems();
@@ -747,13 +741,13 @@ namespace Final_Project
         {
             try
             {
-
+                // items logic get items method
                 Items = clsIL.getItems();
 
                 // loop through and populate items in combo box
                 foreach (var item in Items)
                 {
-
+                    // add item description
                     itemsCb.Items.Add(item.itemDesc);
 
                     // If the user has selected
@@ -770,11 +764,9 @@ namespace Final_Project
                             MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
         }
+        
+        #endregion
 
-        //private void SaveNewInvoiceBtn_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
     }
 }
 

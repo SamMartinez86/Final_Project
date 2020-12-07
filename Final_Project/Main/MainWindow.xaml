@@ -101,7 +101,7 @@
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
-                <ComboBox x:Name="editItemsCB" Canvas.Left="10" Canvas.Top="136" Width="247" Height="24" Opacity="0.7" SelectionChanged="itemsCb_SelectionChanged">
+                <ComboBox x:Name="editItemsCB" Canvas.Left="10" Canvas.Top="136" Width="247" Height="24" Opacity="0.7" >
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>
@@ -137,7 +137,7 @@
                     </Button.Effect>
                 </Button>
                 <Label Content="Select Items for Invoice:" Canvas.Left="19" Canvas.Top="44" FontFamily="Verdana" FontWeight="Bold" Width="195"/>
-                <ComboBox x:Name="itemsCb" Canvas.Left="10" Canvas.Top="107" Width="214" Height="24" Opacity="0.7" SelectionChanged="itemsCb_SelectionChanged">
+                <ComboBox x:Name="itemsCb" Canvas.Left="10" Canvas.Top="107" Width="214" Height="24" Opacity="0.7" >
                     <ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>

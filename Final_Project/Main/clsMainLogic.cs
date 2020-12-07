@@ -15,55 +15,63 @@ namespace Final_Project
     public class clsMainLogic
     {
 
+        #region attributes
+
         /// <summary>
         /// main SQL Object
         /// </summary>
         clsMainSQL SQLMain;
+
         /// <summary>
         /// Item SQL object
         /// </summary>
         clsItemsSQL SQLItems;
+
         /// <summary>
         /// Search SQL object
         /// </summary>
         clsSearchSQL SQLSearch;
+
         /// <summary>
         /// data access class
         /// </summary>
         clsDataAccess db;
+
         /// <summary>
         /// SQL statement 
         /// </summary>
         public string sSQL;
-        // list from search logic
-        /////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Search window object
-        /// </summary>
-        wndSearch CurrentSearch;
 
-        /// <summary>
-        /// Search Logic object
-        /// </summary>
-        clsSearchLogic clsSL;
         /// <summary>
         /// This will store the selected invoice number
         /// </summary>
         public string selectedInvoiceNumber;
-        /////////////////////////////////////////////////////////////////////////////////////////        
+
+        /// <summary>
+        /// list object to store items
+        /// </summary>
         List<Item> items;
 
+        #endregion
 
+        #region constructor
 
         public clsMainLogic()
         {
+            // new main SQL object
             SQLMain = new clsMainSQL();
+
+            // new items SQL object
             SQLItems = new clsItemsSQL();
+
+            // new list object
             items = new List<Item>();
 
+            // new db object
             db = new clsDataAccess();
         }
 
+        #endregion
 
         /// <summary>
         /// This method will return the selected invoice number to the main window
@@ -73,10 +81,10 @@ namespace Final_Project
         {
             try
             {
-                if(!isNewInvoice)
+                if (!isNewInvoice)
                     return selectedInvoiceNumber;
                 DataSet ds;
-                int iRet = 0;                
+                int iRet = 0;
 
                 ds = db.ExecuteSQLStatement(SQLMain.SelectInvoiceNumber(), ref iRet);
 
@@ -96,7 +104,7 @@ namespace Final_Project
         {
             try
             {
-                
+
                 // SQL statement to delete invoice
                 sSQL = SQLMain.DeleteInvoices(invoiceNum);
 
@@ -215,7 +223,7 @@ namespace Final_Project
         public void insertLineItems(List<string> itemCodes, string invoiceNum)
         {
             int lineNum = 1;
-            foreach(var item in itemCodes)
+            foreach (var item in itemCodes)
             {
                 db.ExecuteNonQuery(SQLMain.InsertLineItems(invoiceNum, lineNum.ToString(), item));
                 lineNum++;
@@ -276,7 +284,7 @@ namespace Final_Project
         {
             try
             {
-              
+
                 sSQL = SQLMain.DeleteLineItem(invNum, lineItemNum);
 
                 db.ExecuteNonQuery(sSQL);
@@ -331,7 +339,7 @@ namespace Final_Project
         {
             db.ExecuteNonQuery(SQLMain.InsertInvoices(date, totalCost));
         }
-        
+
         private void HandleError(string sClass, string sMethod, string sMessage)
         {
             try

@@ -83,7 +83,7 @@ namespace Final_Project
                 return selectedInvoiceNumber;
 
 
-                invNumSet = false;
+                //invNumSet = false;
             }
             catch (Exception ex)
             {

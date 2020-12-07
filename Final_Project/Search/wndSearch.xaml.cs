@@ -81,7 +81,7 @@ namespace Final_Project
         bool InvoiceDateChosen = false;
 
         /// <summary>
-        /// This var showsif the user has made any invoice selections
+        /// This var shows if the user has made any invoice selections
         /// </summary>
         bool selectionMade = false;
 
